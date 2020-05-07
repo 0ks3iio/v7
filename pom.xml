@@ -1,0 +1,185 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.wanpeng</groupId>
+        <artifactId>smartcampus</artifactId>
+        <version>0.0.1.RELEASE</version>
+    </parent>
+
+    <groupId>net.zdsoft</groupId>
+    <artifactId>szxy-v7</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <!--<module>app</module>-->
+        <!--&lt;!&ndash;已验证的子系统&ndash;&gt;-->
+        <!--<module>framework</module>-->
+        <!--<module>basedata</module>-->
+        <!--&lt;!&ndash;<module>studevelop</module>&ndash;&gt;-->
+        <!--<module>desktop</module>-->
+        <!--<module>career</module>-->
+        <!--<module>careerplan</module>-->
+        <!--<module>datacollection</module>-->
+        <!--<module>datareport</module>-->
+        <!--<module>diathesis</module>-->
+        <!--<module>exammanage</module>-->
+        <!--<module>stuwork</module>-->
+        <!--<module>scoremanage</module>-->
+        <!--<module>newstusys</module>-->
+        <!--<module>eclasscard</module>-->
+        <!--<module>officework</module>-->
+        <!--<module>studevelop</module>-->
+
+        <!--&lt;!&ndash;正在验证的子系统&ndash;&gt;-->
+        <!--<module>teaexam</module>-->
+        <!--<module>familydear</module>-->
+        <!--<module>evaluation</module>-->
+        <!--<module>infrastructure</module>-->
+        <!--<module>openapi</module>-->
+
+        <!--未验证的子系统-->
+        <!--<module>newgkelective</module>-->
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <name>eis</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- poi version -->
+        <poi.version>3.17</poi.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.wanpeng</groupId>
+                <artifactId>sc-boot-dependencies</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--poi-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-scratchpad</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!--google-->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>3.4.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.62</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-plugin-passport</artifactId>
+                <version>1.0.0.RELEASE</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>ant</artifactId>
+                        <groupId>ant</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft.passport</groupId>
+                <artifactId>passport-remoting</artifactId>
+                <version>0.5.3</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>net.zdsoft.passport</groupId>
+                        <artifactId>net.zdsoft.passport</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>ant</artifactId>
+                        <groupId>ant</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft.passport</groupId>
+                <artifactId>passport-remoting-system</artifactId>
+                <version>0.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-eis6-officedoc-remote</artifactId>
+                <version>3.5</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>release</id>
+            <name>release</name>
+            <url>http://192.168.20.53:8081/repository/maven-releases/</url>
+        </repository>
+        <repository>
+            <id>public</id>
+            <name>public</name>
+            <url>http://192.168.20.53:8081/repository/maven-public/</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://192.168.20.53:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://192.168.20.53:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

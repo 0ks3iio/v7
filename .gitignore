@@ -1,0 +1,13 @@
+*.iml
+
+.idea
+
+*.class
+
+*.DS_Store
+
+logs/
+.log
+.svn
+.git
+target/

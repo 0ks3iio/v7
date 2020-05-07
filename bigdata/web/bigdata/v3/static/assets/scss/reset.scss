@@ -1,0 +1,200 @@
+@import 'var';
+@import 'mixin';
+
+// =1 reset 
+
+html {
+    font-size: $fz;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font: #{$fz}/#{$lh} $fm;
+    outline: none;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+var,
+optgroup {
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+del,
+ins {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+caption {
+    text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before,
+q:after {
+    content: '';
+}
+
+abbr,
+acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+sup {
+    vertical-align: baseline;
+}
+
+sub {
+    vertical-align: baseline;
+}
+
+a {
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+//禁用文本域手动放大缩小
+textarea {
+    resize: none;
+}
+
+//chrome获取焦点外框去除
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+//chrome表单自动填充去掉input黄色背景
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+//屏蔽 video标签下载按钮
+video::-webkit-media-controls-enclosur {
+    overflow: hidden;
+}
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px);
+}
+
+//placeholder文字颜色
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    //IE10+
+    color: $c-light;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    //Firefox 4 to 18
+    color: $c-light;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+	//Firefox 19+
+    color: $c-light;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: $c-light;
+}
+
+//拖动鼠标字体选择颜色效果
+::-moz-selection {
+    background: $c-primary;
+    color: $c-white;
+}
+::selection {
+    background:$c-primary;
+    color: $c-white;
+}
+
+//IE input 叉叉和眼睛图标
+::-ms-clear,
+::-ms-reveal {
+	display:none;
+}
+
+//重置盒模型
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

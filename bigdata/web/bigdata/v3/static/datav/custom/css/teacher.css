@@ -1,0 +1,402 @@
+/*normalize.css*/
+
+h1,h2,h3,h4,h5,h6{
+    margin:0;position: relative;
+}
+.col-cell {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col-24 {
+    width: 100%;
+}
+
+.col-23 {
+    width: 95.83333333%;
+}
+
+.col-22 {
+    width: 91.66666667%;
+}
+
+.col-21 {
+    width: 87.5%;
+}
+
+.col-20 {
+    width: 83.33333333%;
+}
+
+.col-19 {
+    width: 79.16666667%;
+}
+
+.col-18 {
+    width: 75%;
+}
+
+.col-17 {
+    width: 70.83333333%;
+}
+
+.col-16 {
+    width: 66.66666667%;
+}
+
+.col-15 {
+    width: 62.5%;
+}
+
+.col-14 {
+    width: 58.33333333%;
+}
+
+.col-13 {
+    width: 54.16666667%;
+}
+
+.col-12 {
+    width: 50%;
+}
+
+.col-11 {
+    width: 45.83333333%;
+}
+
+.col-10 {
+    width: 41.66666667%;
+}
+
+.col-9 {
+    width: 37.5%;
+}
+
+.col-8 {
+    width: 33.33333333%;
+}
+
+.col-7 {
+    width: 29.16666667%;
+}
+
+.col-6 {
+    width: 25%;
+}
+
+.col-5 {
+    width: 20.83333333%;
+}
+
+.col-4 {
+    width: 16.66666667%;
+}
+
+.col-3 {
+    width: 12.5%;
+}
+
+.col-2 {
+    width: 8.33333333%;
+}
+
+.col-1 {
+    width: 4.16666667%;
+}
+
+body {
+    min-height: 810px;
+    min-width: 1440px;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background: linear-gradient(#083c6b, #060725);
+}
+
+.header {
+    position: relative;
+    height: 70px;
+    background: #0c406d;
+}
+
+.header:after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #0c3f6b, #00c1de, #0c3f6b);
+}
+
+.page-title {
+    position: relative;
+    font-size: 26px;
+    text-align: center;
+    line-height: 70px;
+    text-shadow: 0 5px rgba(0, 0, 0, .35);
+    color: #00c1de;
+    font-weight: bold;
+}
+
+.page-title:after {
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    content: '';
+    width: 130px;
+    height: 8px;
+    margin-left: -65px;
+    background-color: #00c1de;
+}
+
+.height-70 {
+    height: 70px;
+}
+
+.page-title>img {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.changeText {
+    position: relative;
+    padding: 0 30px;
+}
+
+.page-title .fa-pencil {
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+}
+
+.main {
+    padding: 23px 20px 0;
+}
+
+.data {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.data h3 {
+    padding-left: 20px;
+}
+
+.del {
+    height: 60px;
+    line-height: 60px;
+}
+
+.template {
+    display: none;
+}
+
+
+/*自定义*/
+.table {
+    width: 100%;
+    max-width: 100%;
+}
+
+.table th,
+.table td {
+    padding: 3px 12px;
+    border-bottom: 1px solid #154e64;
+    text-align: left;
+    color: #fff;
+}
+
+.box {
+    position: relative;
+    margin-bottom: 20px;
+    background-color: rgba(127, 219, 244, .08);
+}
+
+.box:before,
+.box:after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 12px;
+    height: 7px;
+    border: 1px solid transparent;
+}
+
+.box:before {
+    left: 0;
+    border-color: transparent transparent #7fdbf4 #7fdbf4;
+}
+
+.box:after {
+    right: 0;
+    border-color: transparent #7fdbf4 #7fdbf4 transparent;
+}
+
+.box:hover {
+    background-color: #1a4a71;
+}
+
+.box:hover .fa-plus {
+    color: #4b88cd;
+}
+
+.fa-plus,
+.fa-trash {
+    color: #275c8d;
+    cursor: pointer;
+}
+
+.fa-trash {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.vetically-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+}
+
+.echart-all p {
+    color: #337ab7;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.box-header {
+    position: relative;
+}
+
+.box-header:before,
+.box-header:after {
+    position: absolute;
+    top: 0;
+    content: '';
+    width: 12px;
+    height: 7px;
+    border: 1px solid transparent;
+}
+
+.box-header:before {
+    left: 0;
+    border-color: #7fdbf4 transparent transparent #7fdbf4;
+}
+
+.box-header:after {
+    right: 0;
+    border-color: #7fdbf4 #7fdbf4 transparent transparent;
+}
+
+.box-title {
+    padding: 20px 0;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: center;
+    color: #00c1de;
+}
+
+.box-body {
+    padding: 0 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/***教师特殊样式**/
+.head {
+    padding: 0;
+}
+.teacher-main {
+    height: calc(100% - 70px);
+}
+
+.teacher-body {
+    height: 100%;
+}
+
+.teacher-body .col-cell {
+    height: 100%;
+}
+
+.teacher-body .box-sm {
+    height: calc(50% - 20px);
+}
+
+.teacher-body .box-xbig {
+    height: calc(100% - 20px);
+}
+
+.teacher-body .chart {
+    height: 100%;
+}
+.teacher-body .box-body.mapchart {
+    height: calc(100% - 20px);
+}
+.teacher-top-box {
+    height: 66.66666666%;
+}
+.teacher-body .box-body {
+    height: calc(100% - 60px);
+}
+.teacher-body .teacher-body-chart {
+    height: 100%;
+}
+.teacher-down-box {
+    height: 33.33333333%;
+}
+.teacher-body .teacher-more-title {
+    padding-bottom: 0;
+}
+.teacher-body .teacher-more-body {
+    height: calc(100% - 40px);
+}
+.teacher-more-body .col-cell {
+    padding-left: 0;
+    padding-right: 0;
+}
+.teacher-age-body {
+    padding: 14px 0;
+    text-align: center;
+}
+.teacher-age-body .age-btn {
+    height: 32px;
+    padding: 0 12px;
+    line-height: 30px;
+    box-shadow: 0 0 10px #018fd7 inset;
+    color: #5f90bf;
+    cursor: pointer;
+    display: inline-block;
+    color: #4C8198;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+.teacher-age-body .age-btn:hover {
+    border: 1px solid #7FDBF4;
+    color: #00C1DE;
+    box-shadow: none;
+}
+.teacher-age-body .age-btn.active {
+    border: 1px solid #7FDBF4;
+    color: #00C1DE;
+    box-shadow: none;
+}

@@ -1,0 +1,13 @@
+.datav-border01{border-style: solid;border-width: 71px 23px;border-image: url(../images/border01.png)  71 23 / 1 / 0 stretch;}
+.datav-border02{border-style: solid;border-width: 32px 37px;border-image: url(../images/border02.png) 32 37 fill / 1 / 0 stretch;}
+.datav-border03{
+    border: 14px solid;
+    border-image: url(../images/border03.png) 14 fill / 1 / 0 stretch;}
+.datav-border04{border-style: solid;border-width: 14px 100px;border-image: url(../images/border04.png) 14 100 / 1 / 0 stretch;}
+.datav-border05{border-style: solid;border-width: 46px 305px 117px 33px;border-image: url(../images/border05.png) 46 305 117 33 fill / 1 / 0 repeat;}
+.datav-border06{border-style: solid;border-width: 45px 103px 51px 29px;border-image: url(../images/border06.png) 45 103 51 29 fill / 1 / 0 repeat;}
+.datav-border07{border-style: solid;border-width: 29px 107px 109px 16px;border-image: url(../images/border07.png) 29 107 109 16 fill / 1 / 0 repeat;}
+.datav-border08{border-style: solid;border-width: 15px 11px 16px 8px;border-image: url(../images/border08.png) 15 11 16 8 fill / 1 / 0 repeat;}
+.datav-border09{border-style: solid;border-width: 152px 27px 127px 354px;border-image: url(../images/border09.png) 152 27 127 354 fill / 1 / 0 repeat;}
+.datav-border10{border-style: solid;border-width: 56px 4px 76px 393px;border-image: url(../images/border10.png) 56 4 76 393 fill / 1 / 0 repeat;}
+.datav-border11{border-style: solid;border-width: 17px 24px 18px 19px;border-image: url(../images/border11.png) 17 24 18 19 fill / 1 / 0 repeat;}

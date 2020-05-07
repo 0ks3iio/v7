@@ -1,0 +1,51 @@
+@import 'var';
+@import 'mixin';
+
+/* =9 navs */
+//面包屑
+.breadcrumb {
+	& li {
+		float: left;
+		display: inline-block;
+		//IE 7
+		*margin-right: 6px;
+		*padding-right: 6px;
+		
+		& a {
+			display: inline-block;
+			text-decoration: none;
+			color: $c-darken;
+		}
+		
+		&.home a:before {
+			float: left;
+			display: inline-block;
+			content: '';
+			width: 16px;
+			height: 16px;
+			background: url(../images/spirit/breadcrumb_home.png) no-repeat 0 0;
+			margin: 2px 6px 0 0;
+		}
+		
+		& a.active,
+		& a:hover,
+		& span {
+			color: $c-primary;
+		}
+		
+		&.home a:hover:before {
+			background-position: 0 -16px;
+		}
+		
+		&:after {
+			display: inline-block;
+			content: '/';
+			margin: 0 10px;
+			color: $c-dark;
+		}
+		
+		&:last-child:after {
+			display: none;
+		}
+	}
+}

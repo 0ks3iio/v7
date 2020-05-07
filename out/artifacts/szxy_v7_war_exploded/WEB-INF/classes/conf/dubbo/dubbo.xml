@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+
+	<!-- 动态分配dubbo服务的端口 -->
+	<bean id="dynamicDubboPortReader"
+		class="net.zdsoft.framework.config.DynamicDubboPortReaderImpl"
+		init-method="init" />
+
+	<dubbo:application name="dubbo-service-remote">
+	<!-- 	<dubbo:parameter key="qos.enable" value="true" />
+		<dubbo:parameter key="qos.accept.foreign.ip"
+			value="false" />
+		<dubbo:parameter key="qos.port" value="33333" />-->
+	</dubbo:application>
+	<dubbo:consumer check="false" timeout="10000" />
+	<dubbo:provider delay="-1" timeout="60000" retries="2" />
+</beans>

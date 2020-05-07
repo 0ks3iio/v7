@@ -1,0 +1,51 @@
+
+.login-sso .login-box{
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6eFFFFFF', endColorstr='#6eFFFFFF',GradientType=0 );
+}
+.navbar-nav>li>a{padding:13px 10px 12px !important;}
+.navbar-nav .navbar-item-user > a{padding:3px 35px 3px 10px !important;}
+.sidebar:before {border-right:1px solid #e8e8e8;}
+.page-tab-wrap{border-bottom:1px solid #e8e8e8;}
+.box-default{border:1px solid #e8e8e8;}
+.dropdowm-menu{border:1px solid #e8e8e8;}
+
+
+/********** 单选框及复选框对IE的支持 **********/
+input[type=checkbox].wp , input[type=radio].wp,
+label input[type=checkbox].wp , label input[type=radio].wp,
+input[type=checkbox].wp.wp-switch , input[type=radio].wp.wp-switch,
+label input[type=checkbox].wp.wp-switch , label input[type=radio].wp.wp-switch {
+
+	position: static !important;
+	width: auto !important;
+	height: auto !important;
+	z-index: auto !important;
+}
+
+input[type=checkbox].wp + .lbl, input[type=radio].wp + .lbl,
+input[type=checkbox].wp ~ .lbl, input[type=radio].wp ~ .lbl {
+	float:none !important;
+	min-height: auto !important;
+	min-width: auto !important;
+	width: auto !important;
+	height: auto !important;
+	position: static !important;
+}
+input[type=checkbox].wp.wp-switch  {width: auto !important;}
+input[type=checkbox].wp.wp-switch + .lbl,
+input[type=checkbox].wp.wp-switch ~ .lbl {
+	position: relative !important;
+	margin: 0 !important;
+	min-height: auto !important;
+}
+.checkbox label input.wp[type="checkbox"] + .lbl,
+.radio label input.wp[type="radio"] + .lbl,
+.checkbox label input.wp[type="checkbox"] ~ .lbl,
+.radio label input.wp[type="radio"] ~ .lbl {margin-left: auto;}
+
+label , [class*="input-"] {max-width: none !important;}
+.form-horizontal label input,
+.form-horizontal label .lbl{margin-top:10px;}
+
+.nav-page input[type=text].form-control{vertical-align: -8px;}

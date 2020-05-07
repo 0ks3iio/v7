@@ -1,0 +1,30 @@
+{
+    "col": "6",
+    "title": "日常应用",
+    "apps": [
+        {
+            "name": "考勤",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        },
+        {
+            "name": "点到",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        },
+        {
+            "name": "学生信息",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        },
+        {
+            "name": "课程开设",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        }
+    ]
+}

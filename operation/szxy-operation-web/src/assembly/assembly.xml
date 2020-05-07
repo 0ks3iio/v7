@@ -1,0 +1,53 @@
+<!-- 程序包 -->
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>bin</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+
+    <dependencySets>
+        <dependencySet>
+            <!--不使用项目的artifact，第三方jar不要解压，打包进zip文件的lib目录-->
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <excludes>
+                <exclude>net.zdsoft:szxy-static</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <!-- 把项目脚本文件，bin目录 -->
+        <fileSet>
+            <directory>${project.basedir}/src/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.sh</include>
+                <include>*.bat</include>
+                <include>readme.txt</include>
+            </includes>
+        </fileSet>
+
+        <!-- 把配置文件，config目录 -->
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <outputDirectory>config</outputDirectory>
+            <includes>
+                <include>application-*.xml</include>
+                <include>application-*.properties</include>
+                <include>*.properties</include>
+            </includes>
+        </fileSet>
+
+        <!-- 把jar，boot目录 -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>boot</outputDirectory>
+            <includes>
+                <include>operation-web-exec-${version}.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>szxy-operation-web</module>
+        <module>szxy-base-api</module>
+        <module>szxy-base-service</module>
+        <module>szxy-base-all</module>
+        <module>szxy-static</module>
+    </modules>
+
+    <parent>
+        <groupId>net.zdsoft</groupId>
+        <artifactId>szxy</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
+    <groupId>net.zdsoft</groupId>
+    <artifactId>szxy-operation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>szxy-operation</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- passport -->
+        <passport-remote.version>0.5.3</passport-remote.version>
+        <passport-remote-system.version>0.3.0</passport-remote-system.version>
+
+        <!-- szxy commons -->
+        <szxy-utils.version>1.0.0.RELEASE</szxy-utils.version>
+        <szxy-plugin-mvc.version>1.0.0.RELEASE</szxy-plugin-mvc.version>
+        <szxy-plugin-dubbo.version>1.0.4.RELEASE</szxy-plugin-dubbo.version>
+        <szxy-plugin-passport.version>1.0.0.RELEASE</szxy-plugin-passport.version>
+        <szxy-plugin-monitor.version>1.2.0.RELEASE</szxy-plugin-monitor.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-base-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-static</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>2.5.1</version>
+            </dependency>
+            <!-- szxy -->
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-plugin-webmvc</artifactId>
+                <version>${szxy-plugin-mvc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-plugin-dubbo</artifactId>
+                <version>${szxy-plugin-dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-plugin-passport</artifactId>
+                <version>${szxy-plugin-passport.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-monitor-adapter</artifactId>
+                <version>${szxy-plugin-monitor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-monitor-api</artifactId>
+                <version>${szxy-plugin-monitor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft</groupId>
+                <artifactId>szxy-utils</artifactId>
+                <version>${szxy-utils.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>szxy-alarm-impl</artifactId>
+                <groupId>net.zdsoft</groupId>
+                <version>1.0.2.RELEASE</version>
+            </dependency>
+            <dependency>
+                <artifactId>szxy-alarm-api</artifactId>
+                <groupId>net.zdsoft</groupId>
+                <version>1.0.2.RELEASE</version>
+            </dependency>
+
+            <!-- passport -->
+            <dependency>
+                <groupId>net.zdsoft.passport</groupId>
+                <artifactId>passport-remoting</artifactId>
+                <version>${passport-remote.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.zdsoft.passport</groupId>
+                <artifactId>passport-remoting-system</artifactId>
+                <version>${passport-remote-system.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oracle</groupId>
+                <artifactId>ojdbc7</artifactId>
+                <version>12.1.0.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.zdsoft</groupId>
+            <artifactId>szxy-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>release</id>
+            <name>release</name>
+            <url>http://192.168.20.53:8081/repository/maven-releases/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>public</id>
+            <name>public</name>
+            <url>http://192.168.20.53:8081/repository/maven-public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>

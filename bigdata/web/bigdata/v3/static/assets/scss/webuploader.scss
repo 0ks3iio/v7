@@ -1,0 +1,376 @@
+@import 'var';
+@import 'mixin';
+
+/* =19 webuploader */
+//上传按钮
+.webuploader-container {
+    position: relative;
+}
+.webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.btn {
+    .webuploader-pick {
+        height: 32px;
+        line-height: 32px;
+        padding: 0 14px;
+        margin: -1px -15px;
+    }
+}
+.btn-sm {
+    .webuploader-pick {
+        height: 26px;
+        line-height: 26px;
+    }
+}
+.btn-lg {
+    .webuploader-pick {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
+        margin: -1px -21px;
+    }
+}
+.webuploader-imgList {
+    .webuploader-pick {
+        width: 95px;
+        height: 95px;
+        margin: -1px;
+    }
+}
+.webuploader-pick {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+.webuploader-pick-disable {
+    opacity: 0.6;
+    pointer-events:none;
+}
+//提示信息
+.webuploader-tips {
+    font-size: $fz-sm;
+    color: $c-light;
+}
+
+//普通上传列表
+.tables + .webuploader-list.block {
+    li {
+        padding-right: 450px;
+        padding-left: 40px;
+        
+        &:first-child {
+            border-top: 0;
+        }
+    }
+    
+    .file-operation {
+        right: 320px;
+    }
+}
+.webuploader-list.block {
+    li {
+        padding-right: 300px;
+    }
+    
+    .file-operation {
+        right: 170px;
+    }
+}
+.webuploader-list {
+    li {
+        height: 56px;
+        position: relative;
+        border-bottom: 1px solid $c-line;
+        padding: 12px 120px 12px 20px;
+        
+        &:first-child {
+            border-top: 1px solid $c-line;
+        }
+    }
+    
+    p {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: 1;
+        
+        & + p {
+            margin-top: 6px;
+        }
+    }
+    
+    .file-name {
+        color: $c-darken;
+    }
+    
+    .tips-error {
+        font-size: $fz-sm;
+        color: $c-danger;
+    }
+    
+    .file-loading {
+        font-size: $fz-sm;
+        color: $c-lighten;
+        
+        span {
+            float: left;
+        }
+        
+        .per-bg {
+            display: inline-block;
+            width: 90%;
+            height: 4px;
+            background: $c-line;
+            border-radius: 2px;
+            margin: 5px 10px 0 0;
+        }
+        
+        .per-in {
+            display: inline-block;
+            width: 50%;
+            height: 4px;
+            background: $c-primary;
+            border-radius: 2px;
+        }
+    }
+    
+    
+    .file-type {
+        float: left;
+        display: inline-block;
+        width: 28px;
+        height: 32px;
+        background-image: url(../images/file/type.png);
+        background-repeat: no-repeat;
+        
+        &.file-3gp {
+            background-position: 0px -34px;
+        }
+        &.file-asf {
+            background-position: 0px -306px;
+        }
+        &.file-avi {
+            background-position: 0px -68px;
+        }
+        &.file-excel {
+            background-position: 0px -102px;
+        }
+        &.file-flv {
+            background-position: 0px -136px;
+        }
+        &.file-img {
+            background-position: 0px -170px;
+        }
+        &.file-mov {
+            background-position: 0px -204px;
+        }
+        &.file-mp4 {
+            background-position: 0px -238px;
+        }
+        &.file-mpg {
+            background-position: 0px -272px;
+        }
+        &.file-other {
+            background-position: 0px 0px;
+        }
+        &.file-pdf {
+            background-position: 0px -340px;
+        }
+        &.file-ppt {
+            background-position: 0px -374px;
+        }
+        &.file-rar {
+            background-position: 0px -408px;
+        }
+        &.file-rm {
+            background-position: 0px -442px;
+        }
+        &.file-rmvb {
+            background-position: 0px -476px;
+        }
+        &.file-video {
+            background-position: 0px -510px;
+        }
+        &.file-wmv {
+            background-position: 0px -544px;
+        }
+        &.file-word {
+            background-position: 0px -578px;
+        }
+        &.file-wrf {
+            background-position: 0px -612px;
+        }
+        
+        & ~ p {
+            margin-left: 38px;
+        }
+        
+        & ~ .file-loading .per-bg {
+            width: 88%;
+        }
+        
+    }
+    
+    .file-operation {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        
+        a {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-image: url(../images/file/operation.png);
+            background-repeat: no-repeat;
+            margin-left: 10px;
+            
+        }
+    }
+    
+    .file-edit {
+        background-position: 0 0;
+        
+        &:hover {
+            background-position: 0 -16px;
+        }
+    }
+    .file-save {
+        background-position: 0 -32px;
+        
+        &:hover {
+            background-position: 0 -48px;
+        }
+    }
+    .file-remove {
+        background-position: 0 -64px;
+        
+        &:hover {
+            background-position: 0 -80px;
+        }
+    }
+    .file-play {
+        background-position: 0 -96px;
+        
+        &:hover {
+            background-position: 0 -112px;
+        }
+    }
+    .file-save {
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        display: block;
+        width: 16px;
+        height: 16px;
+        background-image: url(../images/file/operation.png);
+        background-repeat: no-repeat;
+    }
+    
+    .file-text  {
+        position: relative;
+        margin-top: 0 !important;
+        
+        .form-control {
+            width: 98%;
+            padding-right: 40px;
+        }
+    }
+}
+
+//图文上传列表
+.webuploader-imgList {
+    @include clearfix;
+    
+    li {
+        position: relative;
+        float: left;
+        margin: 0 10px 10px 0;
+        width: 95px;
+        height: 95px;
+        background-color: $c-head;
+        border: 1px solid $c-border;
+        border-radius: 6px;
+        margin-right: 20px;
+        overflow: hidden;
+        
+        &:last-child {
+            margin-right: 0;
+        }
+        
+        &.addition {
+            background-image: url(../images/file/plus.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-style: dashed;
+            cursor: pointer;
+        }
+        
+        i.del {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            width: 26px;
+            height: 26px;
+            background: url(../images/file/operation.png) no-repeat 0 -128px;
+            cursor: pointer;
+        }
+        
+        .file-break,
+        .file-warn,
+        .file-img {
+            width: 94px;
+            height: 94px;
+        }
+        
+        .file-break {
+            background: url(../images/file/break.png) no-repeat center center;
+        }
+        .file-warn {
+            background: url(../images/file/warn.png) no-repeat center center;
+        }
+        
+        .file-img img {
+            width: 158px;
+            height: 158px;
+            vertical-align: middle;
+            margin: 0;
+        }
+        
+        
+        
+        .file-loading {
+            margin: 40px 5px 0;
+            line-height: 1;
+            text-align: center;
+            font-size: $fz-sm;
+            color: $c-lighten;
+            
+            span {
+                float: left;
+            }
+            
+            .per-bg {
+                display: inline-block;
+                width: 55%;
+                height: 4px;
+                background: $c-line;
+                border-radius: 2px;
+                margin: 5px 5px 0 0;
+            }
+            
+            .per-in {
+                display: inline-block;
+                width: 50%;
+                height: 4px;
+                background: $c-primary;
+                border-radius: 2px;
+            }
+        }
+    }
+}

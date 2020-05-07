@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+	<!-- 使用multicast广播注册中心暴露服务地址 
+	<dubbo:registry address="${dubbo.registry.address}" />
+	-->
+	<dubbo:registry address="zookeeper://server.zookeeper:2181" />
+
+	<!-- 公文办公openapi -->
+	<dubbo:reference interface="net.zdsoft.remote.openapi.service.OpenApiOfficeService" 
+	    id="openApiOfficeService"/>
+		
+	<!-- 教师考勤打卡 -->
+	<dubbo:reference interface="net.zdsoft.remote.openapi.service.OpenApiTacherAttendanceService" 
+	    id="openApiTacherAttendanceService"/>
+	    
+	 <!-- 学生教学班考勤 -->
+	<dubbo:reference interface="net.zdsoft.remote.openapi.service.OpenApiNewElectiveService" 
+	    id="openApiNewElectiveService"/>
+</beans>

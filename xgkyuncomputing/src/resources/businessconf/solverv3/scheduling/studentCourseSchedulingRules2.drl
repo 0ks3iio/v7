@@ -1,0 +1,225 @@
+/*
+ * Copyright 2010 Red Hat, Inc. and/or its affiliates.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package net.zdsoft.newgkelective.data.optaplanner.solver;
+    dialect "java"
+
+import org.optaplanner.core.api.score.buildin.bendable.BendableScoreHolder;
+
+import net.zdsoft.newgkelective.data.optaplanner.domain.scheduling.*;
+import function net.zdsoft.newgkelective.data.optaplanner.func.CGFunctions.*;
+
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+global BendableScoreHolder scoreHolder;
+
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+/**/
+//时间冲突：同一个教学班的几个Lecture，在时间上不能有冲突
+/**/
+rule "rule1"
+	when
+		$lecture1 : CGSectionLecture($leftId : id, $oldId : courseSection.oldId, $period1 : period,$biweekly1 : isBiWeekly, moveable == true)
+		$lecture2 : CGSectionLecture(id > $leftId, courseSection.oldId == $oldId, period == $period1, this != $lecture1,
+			$biweekly1 + isBiWeekly != 0, $coursePriority : coursePriority)
+	then
+		//System.out.println("rule1 fired!");
+		scoreHolder.addHardConstraintMatch(kcontext, 0, -1 * $coursePriority);
+end  
+
+//教室冲突：同一个教室，同一个时间，不能有2个课
+//单双周冲突约束
+rule "rule3"
+	when
+		CGSectionLecture($leftId : id, period != null, $period : period, room != null, $room : room, $biweekly1 : isBiWeekly,
+				 courseSection.needRoom == 1, courseSection.combineFlag != 0)
+		//not CGSectionLecture(period == $period, room == $room, id < $leftId)
+        CGSectionLecture( id > $leftId, courseSection.combineFlag != 0, period == $period, room == $room, $biweekly1 + isBiWeekly != 0)
+    then
+        scoreHolder.addHardConstraintMatch(kcontext, 0, -1);
+end
+
+/*合班 约束 有些班级必须在同一时间上课*/
+rule "rule4"
+	when
+		CGMeanwhileClassGroup($groups : classSubjectCodeGroup)
+		$lectureList : List(size > 1)
+		from accumulate(
+			$lecture : CGSectionLecture($groups.contains(courseSection.id)),
+            collectList( $lecture )
+		)
+    then
+    	//System.out.println("/difosdfods");
+    	int score = getMeawhileScore($lectureList);
+        scoreHolder.addHardConstraintMatch(kcontext, 0, -1 * score);
+end
+
+
+//老师时间约束：同一个老师上的所有的课，不能有时间上的冲突
+/* */
+rule "rule5"
+	when
+		CGSectionLecture($id1 : id, $teacherId : teacherId, $teacherId != null, $period1 : period, $period1 != null, $biweekly1 : isBiWeekly, courseSection.combineFlag != 0)
+		//not CGSectionLecture(period == $period1, teacherId == $teacherId, id < $id1)
+		CGSectionLecture(id > $id1, courseSection.combineFlag != 0, period == $period1, teacherId == $teacherId, $biweekly1 + isBiWeekly != 0)
+	then
+		//System.out.println("teacherId:"+$teacherId);
+		scoreHolder.addHardConstraintMatch(kcontext, 1, -1);
+end 
+/* 保证单双周的课要在一起上 */
+rule "rule5_2"
+	when
+		CGCourseSection($oldId : oldId)
+		$lectureList : List(size > 1)
+		from accumulate(
+			$lecture : CGSectionLecture($oldId == courseSection.oldId, isBiWeekly != 2, moveable == true),
+            collectList( $lecture )
+		)
+		$periodSet : Set(size > 0)
+		from accumulate(
+			CGSectionLecture($period : period, $oldId == courseSection.oldId, isBiWeekly != 2, moveable == true),
+            collectSet( $period )
+		)
+	then
+		int maxCount = ($lectureList.size()-1)/2+1;
+		int score = getWeekCoupleScore($lectureList);
+		if($periodSet.size() > maxCount || score > 0){
+			scoreHolder.addHardConstraintMatch(kcontext, 2, -1 * ($periodSet.size() - maxCount + score));
+		}
+end  
+
+/* 尽量少的移动位置 */
+rule "rule 6"
+	when 
+		CGSectionLecture(periodInterScore>0, $pScore:periodInterScore)
+	then 
+		scoreHolder.addHardConstraintMatch(kcontext, 3, -1*$pScore);
+		
+end
+
+/********* new rules 18.05.07*************/
+//课程 不联排约束 规定某些课程 必须隔开 一段时间
+rule "rule7"
+	when
+		CGCourseIntervalConstraint($leftSection : leftSection, $rightSection : rightSection, $interval : interval)
+		$lecture1 : CGSectionLecture($id : id, courseSection == $leftSection, moveable == true)
+		$lecture2 : CGSectionLecture(id != $id, courseSection == $rightSection, $coursePriority : coursePriority, moveable == true)
+	then
+		int $s = calcLectureIntervalConstraintScore($lecture1, $lecture2, $interval);
+		if($s > 0){
+			scoreHolder.addSoftConstraintMatch(kcontext, 2, -1 * $s * $coursePriority);
+		}
+end
+// 课程在半天和 一天之内课时分配
+rule "rule7.1"
+	when
+		$const : CGConstants($maxTimeslotIndex : maxTimeslotIndex)
+		$section : CGCourseSection($priority : course.priority)
+		$lectureList : List(size > 0)
+		from accumulate(
+            $lecture : CGSectionLecture($section == courseSection, moveable == true),
+            collectList( $lecture )
+        )
+	then
+		int $s = calcLectureArrangeScore($lectureList, 	$const);
+		if($s > 0){
+			scoreHolder.addSoftConstraintMatch(kcontext, 2, -1 * $s * $priority);
+		}
+		
+end
+// 教师教学进度一致
+rule "rule7.2"
+	when
+		CGConstants($workDayCount : workDayCount)
+		CGTeacher($tCode : code)
+		$lectureList : List(size > 1) 
+        from accumulate(
+            $lecture : CGSectionLecture($tCode == teacherCode),
+            collectList( $lecture )
+        )
+	then
+		int $s2 = calcTeacherScheduleScore($lectureList);
+		if($s2 > 0){
+			scoreHolder.addSoftConstraintMatch(kcontext, 1, -1 * $s2);
+		}
+end
+// 老师的课 分布在同一个半天并且连续
+rule "rule7.3"
+	when
+		CGConstants($workDayCount : workDayCount)
+		CGTeacher($tCode : code)
+		$lectureList : List(size > 1) 
+        from accumulate(
+            $lecture : CGSectionLecture($tCode == teacherCode),
+            collectList( $lecture )
+        )
+	then
+		int $s = calcTeacherArrangeScore($lectureList,$workDayCount);
+		if($s > 0){
+			scoreHolder.addSoftConstraintMatch(kcontext, 2, -1 * $s);
+		}
+end
+
+/* 两个lecture之间的某种约束，包括不能同一时间排，必须同一天排。
+ 例如： 某些课程 不能放在一起 上课 比如 老师 互斥的 部分课程;同一老师教的几个班教学进度一致 */
+rule "rule 8"
+	when
+		CGLectureConflict($lectureId1 : leftLectureId, $lectureId2 : rightLectureId, $constraint: constraint)
+		$lecture1 : CGSectionLecture(id == $lectureId1, $period1 : period)
+		$lecture2 : CGSectionLecture(id == $lectureId2, $period2 : period)
+	then
+		int $s = calcLectureConflict($period1, $period2, $constraint);
+		if($s > 0){
+			if($constraint == 1){
+				// 教师 教学进度
+				//scoreHolder.addSoftConstraintMatch(kcontext, 1, -1 * $s);
+			}else if($constraint == -1){
+				// 互斥教师 互斥课程
+				scoreHolder.addSoftConstraintMatch(kcontext, 2, -1 * $s);
+			}else if($constraint == 2){
+				// temp .必须同一个时间
+				scoreHolder.addSoftConstraintMatch(kcontext, 2, -1 * $s);
+			}
+		}
+end
+
+// ############################################################################
+// Soft constraints
+// ############################################################################
+
+//时间分布约束：同一个教学班的几次课，要分布在几天来上
+/**/
+rule "rule9"
+	when
+		$const : CGConstants($maxTimeslotIndex : maxTimeslotIndex)
+		$section : CGCourseSection($priority : course.priority)
+		$lectureList : List(size > 0)
+		from accumulate(
+            $lecture : CGSectionLecture($section == courseSection, moveable == true),
+            collectList( $lecture )
+        )
+	then
+		int $s3 = getCoupleAndMinworkDayScore($lectureList,$const);
+		//int $s3 = getMinWorkDayDiff($lectureList);
+		if($s3 > 0){
+			scoreHolder.addSoftConstraintMatch(kcontext, 0, -1 * $s3);
+		}
+end
+

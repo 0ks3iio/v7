@@ -1,0 +1,55 @@
+﻿/* --- vip --- */
+.container-vip-wrap{background: #0d0f4c url(../images/bg.jpg) center 110px no-repeat;}
+.container-vip-wrap #container{padding-bottom:195px;margin-top:0;}
+.container-vip-wrap .price-outter{height: 120px;padding: 280px 92px 0 0;text-align: right;}
+.container-vip-wrap .buy-btn{float:right;display:inline-block;width:196px;height:80px;background: url(../images/buy-btn.png);line-height: 78px;text-align: center; color: #fff1b6;font-size: 24px;}
+.container-vip-wrap .buy-btn:hover{color: #fff;text-decoration: none;}
+.container-vip-wrap .price-inner{float: right;margin-top: -8px;}
+.container-vip-wrap .price-vip{display:block;color: #f18023;font-size: 18px;}
+.container-vip-wrap .price-original{display:block;margin-top:-6px;color: #2f4a99;font-size: 16px;}
+.container-vip-wrap .func{height:300px;background: url(../images/func.jpg) center top no-repeat;}
+.container-vip-wrap .obj{height:650px;background: url(../images/obj.jpg) center top no-repeat;}
+.container-vip-wrap .vip{height:800px;background: url(../images/vip.jpg) center top no-repeat;}
+
+/* --- 支付订单 --- */
+.cart-tt{height:50px;font-size:20px;color:#333;}
+.cart-tt span.step{float:right;display:inline-block;width:295px;height:30px;background:url(../images/step1.png) no-repeat;}
+.cart-tt span.step1{background-position:0 0;}
+.cart-tt span.step2{background-position:0 -30px;}
+.cart-wrap{background:#fff;border:1px solid #e0e0e0;}
+.order-wrap{padding:0 30px 30px;}
+.order-info{background:url(../images/icon/right.png) no-repeat 20px center #ffefef;padding:20px 40px 20px 70px;border: 1px solid #fdc5c5;}
+.order-info .order-price{float:right;font-size:16px;color:#333;}
+.order-info .order-des{margin-right:350px;}
+.pay-tips{padding:50px 70px;}
+.pay-tips .abtn{width:96px;height:28px;line-height:28px;border-radius:3px;font-size:14px;text-decoration: none;}
+.order-result{padding:80px 0 100px;}
+.order-result .tt{height:32px;line-height:32px;font-size:24px;color:#333;}
+.order-result .tt span{float:left;display:inline-block;width:32px;height:32px;margin-right:10px;}
+.order-result-right{width:650px;padding-left:275px;}
+.order-result-right .tt span{background:url(../images/icon/right.png) no-repeat;}
+.order-result-error .tt span{background:url(../images/icon/error.png) no-repeat;}
+.order-result-right .list{background:#ffefef;margin:15px 0;padding:10px 20px;border: 1px solid #fdc5c5;}
+.order-result-right .list li{height:28px;line-height:28px;font-size:14px;color:#333;}
+.order-result-error{padding:100px 300px;text-align:center;}
+.order-result-error .inner{display:inline-block;text-align:left;}
+.order-result-error .tt{height:auto;min-height:32px;line-height:32px;}
+.order-result-error .opt{height:40px;line-height:40px;background:#ffefef;margin:15px 0;text-align:center;font-size:14px;color:#333333;border: 1px solid #fdc5c5;}
+.order-result-error .opt a{margin-left:5px;color:#d13434;}
+
+/* --- 登录注册系列 --- */
+.login-table{width: 100%;border-collapse: collapse;margin:30px 0;}
+.login-table td{padding: 10px 0;}
+
+/* --- 登录 --- */
+.loginContainer{background:#fff;}
+.login-outter{width:305px;margin: 0 auto;}
+.login-outter .login-tips {margin-bottom: 5px;color: #ff7200;}
+.login-outter .login-form {margin-bottom: 15px;}
+.login-outter .form-control{float:left;width:224px;height:48px;padding:0 15px;border:1px solid #ded6d0;border-left:none;border-radius:0 2px 2px 0;background: #fff;line-height: 48px;font-size: 14px;}
+.login-outter .login-verCode .form-control{width: 148px;}
+.login-outter .input-group-addon{float:left;height:48px;border:1px solid #ded6d0;border-right:none;border-radius:2px 0 0 2px;background: #fff;}
+.login-outter .abtn{height:50px;line-height:50px;border-radius:4px;background: #d13434;font-size: 20px;}
+
+
+

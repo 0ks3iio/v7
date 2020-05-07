@@ -1,0 +1,73 @@
+{
+  "data" : [
+    {
+      "x" : "小明"
+    },
+    {
+      "x" : "语文",
+      "category": "小明"
+    },
+    {
+      "x" : "数学",
+      "category": "小明"
+    },
+    {
+      "x" : "外语",
+      "category": "小明"
+    },
+    {
+      "x" : "综合",
+      "category": "综合"
+    },
+    {
+      "x" : "物理",
+      "category": "综合"
+    },
+    {
+      "x" : "历史",
+      "category": "综合"
+    },
+    {
+      "x" : "化学",
+      "category": "综合"
+    }
+  ],
+  "link" : [
+    {
+      "target": "小明",
+      "source": "语文",
+      "category" : "yL"
+    },
+    {
+      "target": "小明",
+      "source": "数学",
+      "category" : "ys"
+    },
+    {
+      "target": "小明",
+      "source": "外语",
+      "category" : "yw"
+    },
+    {
+      "target": "小明",
+      "source": "综合",
+      "category" : "yc",
+      "value" : 200
+    },
+    {
+      "target": "综合",
+      "source": "物理",
+      "category" : "ywl"
+    },
+    {
+      "target": "综合",
+      "source": "化学",
+      "category" : "yh"
+    },
+    {
+      "target": "综合",
+      "source": "历史",
+      "category" : "yls"
+    }
+  ]
+}

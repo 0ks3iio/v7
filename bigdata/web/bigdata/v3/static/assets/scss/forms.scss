@@ -1,0 +1,728 @@
+@import 'var';
+@import 'mixin';
+
+/* =5 forms */
+//表头，输入框
+label, .label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    color: $c-darken;
+}
+label + .form-control, .label + .form-control {
+	margin-left: 5px;
+}
+select.form-control {
+	padding-left: 5px !important;
+	padding-right: 0 !important;
+}
+textarea.form-control {
+	height: auto;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.form-control {
+	height: $box-height;
+	background-color: $input-bgc;
+	border: 1px solid $input-border;
+	border-radius: $box-bdrs;
+	padding-right: $input-px;
+	padding-left: $input-px;
+	vertical-align: middle;
+	color: $input-color;
+	@include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+	
+	&:hover {
+		border-color: $input-focus-border;
+	}
+	
+	&:focus {
+		border-color: $input-focus-border;
+		@include box-shadow(0 0 6px rgba(228,49,3,.2));
+	}
+	
+	&[disabled],
+	fieldset[disabled] & {
+	    background-color: $input-bg-disabled;
+	    border-color: $input-border !important;
+	    opacity: 1; 
+	}
+	
+	&[disabled],
+	fieldset[disabled] & {
+	    cursor: $cur-d;
+	}
+	
+	&-warning {
+		border-color: $c-warning;
+	}
+	
+	&-success {
+		border-color: $c-success;
+	}
+	
+	&-danger {
+		border-color: $c-danger;
+	}
+}
+.form-control-sm,
+.pagination-sm .form-control,
+.input-group-sm .form-control {
+	height: $box-height-sm;
+	border-radius: $box-bdrs-sm;
+	font-size: $fz-sm;
+}
+.form-control-lg,
+.pagination-lg .form-control,
+.input-group-lg .form-control {
+	height: $box-height-lg;
+	border-radius: $box-bdrs-lg;
+	font-size: $fz-lg;
+}
+.form-control-toggle {
+	background: url(../images/icon/toggle_down.png) no-repeat right 10px center;
+}
+
+.form-group {
+	display: inline-block;
+	*display:inline;
+	vertical-align: middle;
+}
+
+//正确、错误、警告提示
+.form-tips {
+	display: inline-block;
+	*display:inline;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding-left: 20px;
+	color: $c-light;
+	
+	&-warning {
+		background-image: url(../images/icon/warning_16x16.png);
+		color: $c-warning;
+	}
+	
+	&-success {
+		background-image: url(../images/icon/success_16x16.png);
+		color: $c-success;
+	}
+	
+	&-danger {
+		background-image: url(../images/icon/danger_16x16.png);
+		color: $c-danger;
+	}
+}
+
+
+//普通-单选框、多选框
+.choice {
+    display: inline-block;
+    margin: 5px 30px 5px 0;
+    cursor: pointer;
+    
+	& > input {
+		//IE7 IE8降级
+	    width: 16px;
+	    height: 16px;
+	    margin-bottom: -3px;
+	    *margin-bottom: 1px;
+	    
+	    //利用能力来进行选择的CSS Hack，第一个子元素
+	    &:nth-child(1) {
+		    display: none;
+		}
+		
+		//选中
+	    &:checked ~ .choice-name::before {
+	    	border: 1px solid $c-primary;
+		    background: $c-primary;
+		}
+		
+		//单选
+		&[type="radio"] ~ .choice-name::before {
+		    border-radius: 50%;
+		    background-clip: content-box;
+		}
+		
+		//多选
+		&[type="checkbox"] ~ .choice-name::before {
+		    border-radius: 2px;
+		}
+		
+		//多选选中
+		&[type="checkbox"]:checked ~ .choice-name::before {
+		    background: url(../images/icon/checked.png) no-repeat center center $c-primary;
+		}
+		
+		//禁用
+		&[disabled] ~ .choice-name {
+		    cursor: $cur-d;
+		    color: $c-disable;
+		    &::before {
+			    border-color: $c-border;
+			}
+		}
+		
+		//单选选中+禁用
+		&[type="radio"][disabled]:checked ~ .choice-name:before {
+		    background-color: $c-disable;
+		}
+		
+		//多选选中+禁用
+		&[type="checkbox"][disabled]:checked ~ .choice-name:before {
+		    background: url(../images/icon/checked_disable.png) no-repeat center center #fff;
+		}
+	}
+	
+	//显示文本
+	& > .choice-name {
+	    display: block;
+	    color: #333;
+	    
+	    &::before {
+		    float: left;
+		    display: inline-block;
+		    content: "";
+		    width: 16px;
+		    height: 16px;
+		    background: $c-white;
+		    border: 1px solid $c-border;
+		    margin: 3px 10px 0 0;
+		    padding: 4px;
+		}
+	}
+	
+	//滑过
+	&:hover > .choice-name::before {
+	    border: 1px solid $c-primary;
+	}
+	
+}
+
+//高级-单选框、多选框
+.choice-advanced {
+    display: inline-block;
+    margin: 10px 20px 10px 0;
+    cursor: pointer;
+    
+	& > input {
+		//IE7 IE8降级
+	    width: 16px;
+	    height: 16px;
+	    margin-bottom: -3px;
+	    *margin-bottom: 1px;
+	    
+	    //利用能力来进行选择的CSS Hack，第一个子元素
+	    &:nth-child(1) {
+		    display: none;
+		}
+		
+		//默认
+	    & ~ .choice-name {
+	    	display: inline-block;
+	    	border-radius: 2px;
+	    	text-align: center;
+		}
+		
+		//单选
+		&[type="radio"] ~ .choice-name:nth-child(2) {
+		    min-width: 52px;
+		    height: 24px;
+		    line-height: 24px;
+		    padding: 0 6px;
+		    color: #333;
+		}
+		
+		//多选
+		&[type="checkbox"] ~ .choice-name:nth-child(2) {
+			min-width: 70px;
+		    height: 32px;
+		    line-height: 30px;
+		    padding: 0 12px;
+		    border: 1px solid $c-border;
+		    color: #666;
+		}
+		
+		//单选选中
+		&[type="radio"]:checked ~ .choice-name {
+		    background-color: $c-primary;
+		    color: #fff !important;
+		}
+		
+		//多选选中
+		&[type="checkbox"]:checked ~ .choice-name {
+		    background: url(../images/icon/checked_advanced.png) no-repeat right bottom;
+		    border-color: $c-primary;
+		    color: $c-primary;
+		}
+		
+		//禁用
+		&[disabled] ~ .choice-name {
+			border-color: $c-border !important;
+			cursor: $cur-d;
+		    color: $c-disable !important;
+		}
+		
+		//多选选中+禁用
+		&[type="checkbox"][disabled]:checked ~ .choice-name {
+		    background: url(../images/icon/checked_advanced_disable.png) no-repeat right bottom;
+		}
+	}
+	
+	//滑过
+	&:hover > input ~ .choice-name:nth-child(2) {
+	    color: $c-primary;
+	}
+	&:hover > input[type="checkbox"] ~ .choice-name {
+	    border-color: $c-primary;
+	}
+	
+}
+
+
+//开关
+.switch {
+    display: inline-block;
+    
+    & > input {
+    	/*IE7 IE8*/
+        width: 16px;
+        height: 16px;
+        margin-bottom: -3px;
+        *margin-bottom: 1px;
+        
+        /*利用能力来进行选择的CSS Hack，第一个子元素*/
+        &:nth-child(1) {
+        	display: none;
+    	}
+    }
+    
+    & > .switch-name:last-child {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 22px;
+        background-color: $c-disable;
+        border-radius: 22px;
+        cursor: pointer;
+        text-indent: -9999em;
+    }
+    /*利用能力来进行选择的CSS Hack，最后一个子元素*/
+    
+    & > .switch-name::before {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        display: block;
+        width: 18px;
+        height: 18px;
+        content: "";
+        border-radius: 50%;
+        background: #fff;
+		@include box-shadow(0 1px 2px rgba(0,0,0,.35)); 
+		@include transition(all 0.25s ease); 
+    }
+    
+    & > .switch-name::after {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        display: block;
+        width: 22px;
+        height: 18px;
+        line-height: 18px;
+        content: "";
+        text-indent: 0;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+    }
+    
+    & > input:checked ~ .switch-name {
+        background-color: $c-primary;
+        
+        &::before {
+            left: 24px;
+        }
+        
+        &::after {
+            left: 2px;
+            content: "";
+        }
+    }
+    
+    
+    & > input[disabled] ~ .switch-name {
+        //background-color: #f3bbad;
+        @include opacity(35);
+        cursor: $cur-d;
+    }
+}
+.switch-txt {
+	& > .switch-name::after {
+		content: "关";
+	}
+	
+	& > input:checked ~ .switch-name {
+        &::after {
+            content: "开";
+        }
+    }
+}
+.switch-sm {
+	& > .switch-name:last-child {
+        width: 28px;
+        height: 16px;
+    }
+    
+    & > .switch-name::before {
+        width: 12px;
+        height: 12px;
+    }
+    
+     & > .switch-name::after {
+        width: 12px;
+        height: 8px;
+        line-height: 8px;
+    }
+    
+    & > input:checked ~ .switch-name {
+        &::before {
+            left: 14px;
+        }
+        
+    }
+}
+
+//表单字数校验
+.form-count {
+	display: inline-block;
+    *display:inline;
+    vertical-align: middle;
+    @include clearfix;
+    
+    .form-count-max {
+    	margin-left: 5px;
+    	color: $c-light;
+    }
+    
+    textarea + .form-count-max {
+		display: block;
+		margin: 0;
+	}
+    
+    .form-count-num.exceed {
+    	color: $c-primary;
+    }
+}
+
+//数字输入框
+.form-number {
+	display: inline-block;
+    *display:inline;
+    vertical-align: middle;
+    @include clearfix;
+    
+    > .form-control {
+    	float: left;
+    	width: 55px;
+    	border-top-right-radius: 0;
+    	border-bottom-right-radius: 0;
+    	
+    	& + a {
+    		border-top-right-radius: $box-bdrs;
+    	}
+    	
+    	& + a + a {
+    		border-bottom-right-radius: $box-bdrs;
+    	}
+    	
+    	&-sm {
+			~ a {
+				height: $box-height-sm / 2;
+		    	line-height: $box-height-sm / 2 - 2;
+		    	
+		    	& + a{
+		    		line-height: $box-height-sm / 2 - 1;
+		    	}
+			}
+		}
+		
+		&-lg {
+			~ a {
+				height: $box-height-lg / 2;
+		    	line-height: $box-height-lg / 2 - 2;
+		    	
+		    	& + a{
+		    		line-height: $box-height-lg / 2 - 1;
+		    	}
+			}
+		}
+    }
+    
+    > a {
+    	display: block;
+    	width: 23px;
+    	height: $box-height / 2;
+    	line-height: $box-height / 2 - 2;
+    	border: 1px solid $input-border;
+    	border-left: 0;
+    	margin-left: 55px;
+    	text-decoration: none;
+    	text-align: center;
+    	color: $c-lighten;
+    	
+    	& + a{
+    		line-height: $box-height / 2 - 1;
+    		border-top: 0;
+    	}
+    	
+    	&:hover {
+    		color: $c-primary;
+    	}
+    	&:active {
+    		background-color: $c-bgc;
+    		color: $c-primary;
+    	}
+    }
+}
+
+//前后置元素
+.input-group {
+	display: table;
+	border-collapse: separate;
+	
+	> .form-control {
+		display: table-cell;
+		width: 100%;
+		
+		&:first-child {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		
+		&:last-child {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+		
+		&:not(:first-child):not(:last-child) {
+	        border-radius: 0;
+	    }
+	}
+	
+	> .input-group-addon:first-child {
+		border-right: 0;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	
+	> .input-group-addon:last-child {
+		border-left: 0;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+}
+.input-group-addon {
+	display: table-cell;
+	width: 1%;
+	background-color: $c-bgc;
+	border: 1px solid $input-border;
+	border-radius: $box-bdrs;
+	padding: 0 8px;
+	white-space:nowrap;
+	vertical-align: middle;
+	color: $c-light;
+	
+	> img {
+		vertical-align: middle;
+	}
+}
+
+//显示隐藏密码、日期选择
+.form-group-date,
+.form-group-pwd {
+    position: relative;
+    display: inline-block;
+    *display:inline;
+    vertical-align: middle;
+    
+    .form-control {
+        padding-right: 35px;
+    }
+    
+    > i {
+        position: absolute;
+        right: 5px;
+        display: block;
+        width: 20px;
+        height: 14px;
+        background-image: url(../images/spirit/eye.png);
+        background-repeat: no-repeat;
+        cursor: pointer;
+        
+        &.hide {
+            background-position: 0 0;
+        }
+        
+        &.show {
+            background-position: 0 -14px;
+        }
+    }
+    
+    .form-control + i {
+        top: 9px;
+    }
+    
+    .form-control-sm + i {
+        top: 6px;
+    }
+    
+    .form-control-lg + i {
+        top: 13px;
+    }
+}
+.form-group-date {
+    
+    > i {
+        right: 10px;
+        width: 15px;
+        height: 16px;
+        background: url(../images/spirit/date.png) no-repeat 0 0;
+        
+        &:hover {
+            background-position: 0 -16px;
+        }
+    }
+}
+.form-connector {
+    margin: 0 10px;
+    color: $c-darken;
+}
+
+//标签输入
+.form-tags {
+	display: inline-block;
+    *display:inline;
+    vertical-align: middle;
+    min-height: $box-height;
+	background-color: $input-bgc;
+	border: 1px solid $input-border;
+	border-radius: $box-bdrs;
+	padding: 5px $input-px;
+	line-height: 1;
+	@include clearfix;
+	
+	&-input {
+	    display: inline-block;
+	    background-color: transparent;
+	    width: 20px;
+	    height: 24px;
+	    outline: 0;
+	    border: 0;
+	    margin: 2px 0 0 5px;
+	    vertical-align: top;
+	}
+	
+	&-list {
+		display: inline;
+    	
+    	li {
+    		position: relative;
+    		display: inline-block;
+    		*display:inline;
+    		height: 24px;
+    		line-height: 24px;
+    		background-color: $c-primary;
+			border-radius: 2px;
+    		padding: 0 24px 0 5px;
+    		margin: 2px;
+    		white-space:nowrap;
+    		overflow: hidden;
+    		color: $c-white;
+    		
+    		i {
+    			position: absolute;
+    			right: 0;
+    			top: 0;
+    			display: block;
+    			width: 20px;
+    			height: 24px;
+    			font-style: normal;
+    			text-align: center;
+    			cursor: pointer;
+    			
+    			&:hover {
+    				background-color: lighten($c-primary, 20%);
+    			}
+    		}
+    	}
+		
+	}
+	
+	color: $input-color;
+    
+}
+
+//文字放大校对
+.text-zoom {
+    position: absolute;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    display: none;
+    height:40px;
+    line-height: 40px;
+    background-color:#fefae1;
+    border: 1px solid #ffa55c;
+    border-radius: $box-bdrs;
+    padding:0 10px;
+    margin: 5px 0;
+    white-space:nowrap;
+    font-size: $fz-lger;
+    color: #ff7200;
+    @include animation-duration(0.3s);
+    @include animation-fill-mode(both);
+    @include animation-name(ant-up);
+}
+
+
+//邮箱自动输入
+.mailAuto-list {
+    position: absolute;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: $input-bgc;
+    border: 1px solid $input-border;
+    border-radius: $box-bdrs;
+    margin: 5px 0;
+    padding: 5px 0;
+    font-size: $fz;
+    @include box-shadow(0 0 6px rgba(128, 128, 128, .35));
+    @include animation-duration(0.3s);
+    @include animation-fill-mode(both);
+    @include animation-name(ant-up);
+    
+    p {
+        height: 20px;
+        line-height: 20px;
+        padding: 0 10px;
+        color: #ccc;
+    }
+    
+    li {
+        height: 22px;
+        line-height: 22px;
+        padding: 0 10px;
+        white-space:nowrap;
+        cursor: pointer;
+        
+        &.active {
+            background:$c-hover;
+        }
+    }
+}

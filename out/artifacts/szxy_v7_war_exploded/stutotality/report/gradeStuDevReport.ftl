@@ -1,0 +1,32 @@
+<div class="evaluate-item" id="eva-inquiry-box">
+    <table class="table table-bordered eva-inquiry-table">
+        <thead>
+        <tr>
+            <th>班级</th>
+            <th>道德素质</th>
+            <th>行为修为</th>
+            <th>学习品质</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>小一01班</td>
+            <td>42.158</td>
+            <td>42.158</td>
+            <td>42.158</td>
+        </tr>
+        <tr>
+            <td>小一01班</td>
+            <td>42.158</td>
+            <td>42.158</td>
+            <td>42.158</td>
+        </tr>
+        <tr>
+            <td>小一01班</td>
+            <td>42.158</td>
+            <td>42.158</td>
+            <td>42.158</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

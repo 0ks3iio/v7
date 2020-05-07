@@ -1,0 +1,83 @@
+
+package net.zdsoft.newgkelective.data.optaplanner.shuff.solver;
+    dialect "java"
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.optaplanner.core.api.score.buildin.bendable.*;
+
+import net.zdsoft.newgkelective.data.optaplanner.shuff.domain.*;
+import function net.zdsoft.newgkelective.data.optaplanner.shuff.func.ShuffFunction.getCalaSameBathInGroup;
+import function net.zdsoft.newgkelective.data.optaplanner.shuff.func.ShuffFunction.getCalaSameBath;
+import function net.zdsoft.newgkelective.data.optaplanner.shuff.func.ShuffFunction.getMinStudentInGroup;
+
+
+global BendableScoreHolder scoreHolder;
+
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+
+//同样group不能有同样科目不能位于同样批次点
+rule "rule0"
+	when
+		$groupSubject1 : GroupSubject($group1 : group, $timeSlot1 : timeSlot)
+		$groupSubject2 : GroupSubject(this != $groupSubject1, group == $group1, timeSlot == $timeSlot1)
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, 0, -1);
+end
+//同个科目有两个数据
+rule "rule1"
+	when
+		$groupSubject1 : GroupSubject($group1 : group, $subject:subject)
+		$groupSubject2 : GroupSubject(this != $groupSubject1, group == $group1,subject==$subject)
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, 0, -1);
+end
+
+//2+x或者3+0 学生公用科目批次点必须一样 
+rule "rule0_makeSameBath"
+	 when
+         $groupSubjectList: List() 
+	        from accumulate(
+	            $groupSubject : GroupSubject(),
+	            collectList( $groupSubject )
+	        )
+    then
+		scoreHolder.addHardConstraintMatch(kcontext,0, -1*getCalaSameBath($groupSubjectList));
+end
+
+rule "rule1_makeMinBath"
+	 when
+         $groupSubjectList: List() 
+	        from accumulate(
+	            $groupSubject : GroupSubject(),
+	            collectList( $groupSubject )
+	        )
+    then
+		scoreHolder.addHardConstraintMatch(kcontext,1, -1*getMinStudentInGroup($groupSubjectList));
+end
+
+
+//没有凑满的教学班，有几个就要扣几分
+rule "rule2_makeBalanced"
+	when
+		TimeSlot($currentPartialSectionCount : currentPartialSectionCount)
+	then
+		scoreHolder.addSoftConstraintMatch(kcontext, 0, -1 * $currentPartialSectionCount);
+end
+
+//2+x或者3+0 学生公用科目批次点必须一样 
+rule "rule3_makeSameBathOnClass"
+	 when
+         $groupSubjectList: List() 
+	        from accumulate(
+	            $groupSubject : GroupSubject(),
+	            collectList( $groupSubject )
+	        )
+    then
+		scoreHolder.addSoftConstraintMatch(kcontext,1, -1*getCalaSameBathInGroup($groupSubjectList));
+end
+

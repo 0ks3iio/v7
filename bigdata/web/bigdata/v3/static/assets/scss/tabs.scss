@@ -1,0 +1,208 @@
+@import 'var';
+@import 'mixin';
+
+/* =10 tabs */
+/*基础*/
+.tabs {
+	position: relative;
+	border-bottom: 1px solid $c-border;
+	@include clearfix;
+	
+	& .tab{
+		position: relative;
+		float: left;
+		display: inline-block;
+		
+		&:after {
+			position: absolute;
+			top: 10px;
+			right: 0;
+			bottom: 20px;
+			display: block;
+			content: " ";
+			width: 1px;
+			background-color: #ebeceb;
+		}
+		
+		&:last-child:after {
+			display: none;
+		}
+		
+		& a {
+			position: relative;
+			display: inline-block;
+			height: 48px;
+			padding: 10px 20px 20px;
+			text-decoration: none;
+			line-height: 1;
+			font-size: $fz-lg;
+			color: $c-darken;
+		
+			&:hover {
+				color: $c-primary;
+			}
+			
+		}
+		
+		&.active a {
+			color: $c-primary;
+			
+			&:before {
+				position: absolute;
+				right: 0;
+				bottom: -1px;
+				left: 0;
+				display: block;
+				content: " ";
+				height: 2px;
+				background-color: $c-primary;
+			}
+		}
+		
+		&.disabled a{
+			cursor: $cur-d;
+			color: $c-disable;
+		}
+		
+		& i {
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			margin-right: 10px;
+			vertical-align: middle;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			
+			&.video {
+				background-image: url(../images/spirit/tabs_video.png);
+			}
+		}
+		
+		&:hover i,
+		&.active i{
+			background-position: 0 -16px;
+		}
+		
+	}
+}
+/*卡片*/
+.tabs-card {
+	& .tab {
+		margin-right: -1px;
+		
+		&:after {
+			display: none;
+		}
+		
+		& a {
+			bottom: -1px;
+			height: 40px;
+			line-height: 38px;
+			background-color: $c-line;
+			border: 1px solid $c-border;
+			padding: 0 20px;
+		}
+		
+		&.active a {
+			background-color: $c-white;
+			border-bottom-color: $c-white;
+			
+			&:before {
+				top: -1px;
+				right: -1px;
+				bottom: inherit;
+				left: -1px;
+			}
+		}
+		
+	}
+}
+/*胶囊*/
+.tabs-capsule {
+	border-bottom: 0;
+	
+	& .tab {
+		margin-right: -1px;
+		
+		&:after {
+			display: none;
+		}
+		
+		& a {
+			height: 32px;
+			line-height: 30px;
+			background-color: $c-white;
+			border: 1px solid $c-border;
+			padding: 0 20px;
+		}
+		
+		&.active a {
+			background-color: $c-primary;
+			border-color: $c-primary;
+			color: $c-white;
+			
+			&:before {
+				display: none;
+			}
+		}
+		
+		&:first-child a {
+			border-radius: 2px 0 0 2px;
+		}
+		
+		&:last-child a {
+			border-radius: 0 2px 2px 0;
+		}
+	}
+}
+/*竖状*/
+.tabs-vertical {
+	float: left;
+	width: 140px;
+	border-right: 2px solid $c-dark;
+	border-bottom: 0;
+	padding: 12px 0;
+	
+	& .tab {
+		float: none;
+		display: block;
+		
+		&:after {
+			display: none;
+		}
+		
+		& a {
+			display: block;
+			height: 40px;
+			line-height: 40px;
+			padding: 0 20px 0 0;
+			text-align: right;
+		}
+		
+		&.active a {
+			background-color: $c-line;
+			
+			&:before {
+				top: 0;
+				right: -2px;
+				bottom: 0;
+				left: inherit;
+				width: 2px;
+				height: 100%;
+			}
+		}
+		
+	}
+	
+	& ~ .tabs-panel {
+		margin-left: 140px;
+	}
+}
+
+.tabs-panel {
+	display: none;
+	
+	&.active {
+		display: block;
+	}
+}

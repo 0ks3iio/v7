@@ -1,0 +1,303 @@
+@import 'var';
+@import 'mixin';
+
+/* =2 public */
+body.scroll-no {
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+    color: $link-color;
+    
+    &:hover {
+        text-decoration: $link-hover-decoration;
+        color: $link-hover-color;
+    }
+    
+    &:active {
+        color: $link-active-color;
+    }
+}
+strong, b, .b {
+    font-weight: 700;
+}
+button, submit, .button, .submit {
+    cursor: pointer;
+}
+.height-auto {
+    height: auto !important;
+}
+
+//标题、段落
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	line-height: $lh-sm;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+h1, .h1 {
+	font-size: $fz-h1;
+}
+h2, .h2 {
+	font-size: $fz-h2;
+}
+h3, .h3 {
+	font-size: $fz-h3;
+}
+h4, h5,
+.h4, .h5 {
+	font-size: $fz-h4;
+}
+h6, .h6 {
+	font-size: $fz;
+}
+h4, h6, .h4, .h6 {
+	font-weight: $fw;
+}
+
+//浮动
+.clearfix {
+  @include clearfix;
+}
+.clr {
+    clear: both;
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+
+//显示&隐藏
+.hide, .hidden {
+    display: none;
+}
+.show, .block {
+    display: block;
+}
+.overhide {
+    overflow: hidden;
+}
+.invisible {
+  visibility: hidden;
+}
+
+//定位
+.absolute {
+    position: absolute;
+}
+.relative {
+    position: relative;
+}
+.fixed {
+    position: fixed;
+}
+
+//字体：缩进、对齐、转换、换行
+.text-indent-em {
+    text-indent: 2em;
+}
+.text-indent-hide {
+    text-indent: -9999px;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-justify {
+    text-align: justify;
+}
+.text-lowercase {
+    text-transform: lowercase;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+.text-capitalize {
+    text-transform: capitalize;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+.text-break-all {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+//文字横向滚动
+.marquee {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.marquee-inner {
+    position: absolute;
+    top: 0;
+}
+
+//渐隐动画：主要用于插件的显示隐藏
+@-webkit-keyframes ant-up {
+	from {
+		-webkit-transform: translate3d(0, 20px, 0);
+		opacity: .3
+	}
+	to {
+		-webkit-transform: translate3d(0, 0, 0);
+		opacity: 1
+	}
+}
+@keyframes ant-up {
+	from {
+		transform: translate3d(0, 20px, 0);
+		opacity: .3
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+		opacity: 1
+	}
+}
+//旋转动画：主要用于loading图片旋转
+@-webkit-keyframes spinner-spin {
+    0% {
+        -webkit-transform: rotate(0deg)
+    }
+    8.33333333% {
+        -webkit-transform: rotate(30deg)
+    }
+    16.66666667% {
+        -webkit-transform: rotate(60deg)
+    }
+    25% {
+        -webkit-transform: rotate(90deg)
+    }
+    33.33333333% {
+        -webkit-transform: rotate(120deg)
+    }
+    41.66666667% {
+        -webkit-transform: rotate(150deg)
+    }
+    50% {
+        -webkit-transform: rotate(180deg)
+    }
+    58.33333333% {
+        -webkit-transform: rotate(210deg)
+    }
+    66.66666667% {
+        -webkit-transform: rotate(240deg)
+    }
+    75% {
+        -webkit-transform: rotate(270deg)
+    }
+    83.33333333% {
+        -webkit-transform: rotate(300deg)
+    }
+    91.66666667% {
+        -webkit-transform: rotate(330deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+@keyframes spinner-spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    8.33333333% {
+        transform: rotate(30deg)
+    }
+    16.66666667% {
+        transform: rotate(60deg)
+    }
+    25% {
+        transform: rotate(90deg)
+    }
+    33.33333333% {
+        transform: rotate(120deg)
+    }
+    41.66666667% {
+        transform: rotate(150deg)
+    }
+    50% {
+        transform: rotate(180deg)
+    }
+    58.33333333% {
+        transform: rotate(210deg)
+    }
+    66.66666667% {
+        transform: rotate(240deg)
+    }
+    75% {
+        transform: rotate(270deg)
+    }
+    83.33333333% {
+        transform: rotate(300deg)
+    }
+    91.66666667% {
+        transform: rotate(330deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+//补丁
+.m-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+@each $i in 5,10,15,20,30,50 {
+	.pt-#{$i} {
+		padding-top: $i + px;
+	}
+	.pr-#{$i} {
+		padding-right: $i + px;
+	}
+	.pb-#{$i} {
+		padding-bottom: $i + px;
+	}
+	.pl-#{$i} {
+		padding-left: $i + px;
+	}
+	.pa-#{$i} {
+		padding: $i + px;
+	}
+	.px-#{$i} {
+		padding-right: $i + px;
+		padding-left: $i + px;
+	}
+	.py-#{$i} {
+		padding-top: $i + px;
+		padding-bottom: $i + px;
+	}
+	
+	.mt-#{$i} {
+		margin-top: $i + px;
+	}
+	.mr-#{$i} {
+		margin-right: $i + px;
+	}
+	.mb-#{$i} {
+		margin-bottom: $i + px;
+	}
+	.ml-#{$i} {
+		margin-left: $i + px;
+	}
+	.ma-#{$i} {
+		padding: $i + px;
+	}
+	.mx-#{$i} {
+		margin-right: $i + px;
+		margin-left: $i + px;
+	}
+	.my-#{$i} {
+		margin-top: $i + px;
+		margin-bottom: $i + px;
+	}
+}

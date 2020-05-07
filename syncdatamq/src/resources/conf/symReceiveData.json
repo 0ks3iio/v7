@@ -1,0 +1,27 @@
+{
+    "base_unit_sample": {       
+        "send_table_name":"base_unit",
+        "receive_column_ignore":"",
+        "receive_column_only":"",
+        "receive_deal_data_url":"",
+        "column_transfer":[
+        {"send_column_name":"modify_time", "receive_column_name":"modify_time", "column_type":"date"},
+        {"send_column_name":"creation_time", "receive_column_name":"creation_time", "column_type":"date"}
+        ]
+    },
+    "base_student_sample": {       
+        "send_table_name":"base_student2",
+        "receive_column_ignore":"",
+        "receive_column_only":"",
+        "column_transfer":[]
+    },    
+    "base_unit": {       
+        "receive_deal_data_url":"http://127.0.0.1/syncdatamq/openapi/receive/unit"
+    },
+    "base_user": {       
+        "receive_deal_data_url":"http://127.0.0.1/syncdatamq/openapi/receive/user"
+    },
+    "base_teacher_bak":{
+    
+    }
+}

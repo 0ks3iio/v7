@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf8"?>
+
+<project name="bulid" basedir="." default="war">
+	
+	<!--打包修改部分-->
+	<!--这里调整要打的包名-->
+	<!--basedata war
+	<property name="war.systems" value="framework,basedata" />	
+	<property name="version" value="7.0.0.1" />
+	<property name="product" value="basedata-sv7-${version}" />
+	<property name="deploy-file" value="deploy-file/basedata-remote" />
+	<property name="remote-jar" value="remote-basedata-1.0.jar" />
+	-->
+
+	<!--openapi war
+	<property name="war.systems" value="framework,openapi" />	
+	<property name="version" value="7.0.0.1" />
+	<property name="product" value="openapi-sv7-${version}" />
+	<property name="deploy-file" value="deploy-file/openapi" />
+
+	-->
+
+	<property name="war.systems" value="framework,basedata,system,desktop,gkelective,scoremanage,openapi" />	
+	<property name="version" value="7.0.0.2" />
+	<property name="product" value="openapi-sv7-${version}" />
+	<property name="deploy-file" value="deploy-file/null" />
+
+	<!--打包修改内容结束-->
+	
+	<property name="svn.username" value="deploy" />
+	<property name="svn.password" value="deploy123" />
+	<property name="build.dir" value="build" />		
+	<import file="macrodef.xml"/>
+	<tstamp>
+          <format property="today" pattern="yyyyMMddHHmm" offset="0" unit="day"/>
+    </tstamp>
+	
+	<!--系统编译文件依赖包-->
+	<path id="javac.classPath">
+		<fileset dir="class-lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="tomcat-lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${build.dir}/war/${today}/WEB-INF/lib" erroronmissingdir="false">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="remote-lib" erroronmissingdir="false">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<!--SVN 依赖包-->
+	<path id="svnant.classPath">
+		<fileset dir="build-lib">
+		  <include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classPath" />  	
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	<!--打印JDK version-->
+	<target name="print-version">
+		<echo>Java/JVM version: ${ant.java.version}</echo>
+		<echo>Java/JVM detail version: ${java.version}</echo>
+	</target>
+
+	<target name="init" depends="print-version">	
+		<echo>initializer dirs</echo>
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}/war-deploy-file" />		
+		<mkdir dir="${build.dir}/../class-lib" />				
+	</target>		
+	<svnSetting id="svnparams" svnkit="true" username="${svn.username}" password="${svn.password}"  javahl="false" /> 
+		
+	<target name="checksvn" depends="init">  
+		<for list="${war.systems}" param="subSystem">  
+		    <sequential>  
+		    	<echo>update @{subSystem} from svn</echo>
+				<svn refid="svnparams">  	
+					<checkout url="http://192.168.0.73/v7/@{subSystem}/" destPath="${build.dir}/@{subSystem}" /> 
+				</svn>		     
+		    </sequential>  
+		</for> 		
+	</target> 	
+	
+
+	<macrodef name="build-war" description="打包">
+		<attribute name="subSystem" />
+		<attribute name="today" />
+		<attribute name="build-dir" />
+		<sequential>
+		<mkdir dir="@{build-dir}/@{subSystem}" />
+		<echo message="@{subSystem} building..." />
+		<copy-subsystem resourcePath="@{build-dir}/@{subSystem}/src/resources" webPath="@{build-dir}/@{subSystem}/web" webDestPath="@{build-dir}/war/@{today}" resourceDestPath="@{build-dir}/war/@{today}/WEB-INF/classes" classPath="javac.classPath" />
+		<mkdir dir="${build.dir}/war/${today}/WEB-INF/lib" />
+		<delete dir="@{build-dir}/@{subSystem}-class" failonerror="false" />		
+		<javac-subsystem destPath="@{build-dir}/@{subSystem}-class" srcPath="@{build-dir}/@{subSystem}/src/java" classPath="javac.classPath" />
+		<create-jar jarname="@{subSystem}" version="build@{today}" dest="@{build-dir}/war/@{today}/WEB-INF/lib" classes="@{build-dir}/@{subSystem}-class"/>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="build-remote-jar" description="打包">
+		<attribute name="subSystem" />
+		<attribute name="today" />
+		<attribute name="build-dir" />
+		<sequential>  
+		<delete dir="@{build-dir}/@{subSystem}-class" failonerror="false" />	
+		<delete dir="@{build-dir}/@{subSystem}-remote-src" failonerror="false" />		
+		<mkdir dir="@{build-dir}/@{subSystem}-remote-src" />
+		<copy includeEmptyDirs="false" todir="@{build-dir}/@{subSystem}-remote-src"  preservelastmodified="true" overwrite="true">
+			<fileset dir="@{build-dir}/@{subSystem}/src/java">
+				<include name="**/entity/*.*"/>
+				<include name="**/dto/*.*"/> 
+				<include name="**/Evn*.*" />
+				<include name="**/utils/*.*" />
+				<include name="**/annotation/*.*" />
+				<include name="**/remote/service/*RemoteService.*"/> 	
+				<exclude name="**/LoginInfo*.*" />
+				<exclude name="**/echarts/**/*.*" />
+				<exclude name="**/Task*.*" /> 			
+			</fileset>			
+		</copy>
+		
+
+		<javac-subsystem destPath="@{build-dir}/@{subSystem}-class" srcPath="@{build-dir}/@{subSystem}-remote-src" classPath="javac.classPath" />
+
+
+		<create-jar jarname="remote-@{subSystem}" version="build@{today}" dest="@{build-dir}/war" classes="@{build-dir}/@{subSystem}-class"/>
+		<delete dir="@{build-dir}/@{subSystem}-remote-src" failonerror="false" />
+	</sequential>
+	</macrodef>
+
+	<target name="build-remote-jars" depends="checksvn">
+		<delete dir="${build.dir}/war" failonerror="false" />
+		<for list="${war.systems}" param="subSystem">  
+		    <sequential>  
+				<echo>build remote-@{subSystem}-X.jar from svn</echo>		
+				<build-remote-jar subSystem="@{subSystem}" today="${today}" build-dir="${build.dir}"/>
+			</sequential>  
+		</for> 
+		<delete file="${build.dir}/war/remote-framework.jar" />
+	</target>
+
+
+	<target name="war" depends="checksvn">
+		<delete dir="${build.dir}/war" failonerror="false" />	
+		<echo>update lib</echo>
+		<svn refid="svnparams">  	
+			<checkout url="http://192.168.0.73/v7/common-lib/" destPath="${build.dir}/../class-lib" /> 
+		</svn>		
+		<for list="${war.systems}" param="subSystem">  
+		    <sequential>  
+		    	<echo>build system @{subSystem} from svn</echo>
+				<build-war subSystem="@{subSystem}" today="${today}" build-dir="${build.dir}"/>
+		    </sequential>  
+		</for> 			
+		<copy includeEmptyDirs="false" todir="${build.dir}/war/${today}"  preservelastmodified="true" overwrite="true">
+			<fileset dir="${build.dir}/war-deploy-file">
+				<include name="*.*"/>
+				<include name="**/*.*"/> 
+				<exclude name="**/.svn/*"/>
+			</fileset>			
+		</copy>	
+		
+		<copy includeEmptyDirs="false" todir="${build.dir}/war/${today}/WEB-INF/lib" overwrite="true" preservelastmodified="true">
+ 			<fileset dir="${build.dir}/../class-lib">
+ 				<exclude name="**/.svn/*" /> 						
+ 				<include name="**/*.*"/> 
+ 				<include name="."/> 
+ 			</fileset>
+ 		</copy>
+
+ 		<copy includeEmptyDirs="false" todir="${build.dir}/war/${today}" overwrite="true" preservelastmodified="true">
+ 			<fileset dir="${build.dir}/../${deploy-file}">
+ 				<exclude name="**/.svn/*" /> 						
+ 				<include name="**/*.*"/> 
+ 				<include name="."/> 
+ 			</fileset>
+ 		</copy>
+
+		<war warfile="${build.dir}/war/${product}-${today}.war" needxmlfile="false">
+			<fileset dir="${build.dir}/war/${today}">
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="zdsoft" />
+				<attribute name="Implementation-Title" value="${product}" />
+				<attribute name="Implementation-Vendor" value="${product}" />
+				<attribute name="Implementation-Version" value="${version}.build${today}" />
+			</manifest>
+		</war>		
+	</target>
+	
+	<target name="war-only" depends="init">
+		<delete dir="${build.dir}/war" failonerror="false" />
+		<for list="${war.systems}" param="subSystem">  
+		    <sequential>  
+		    	<echo>build system @{subSystem} from svn</echo>	    					
+				<build-war subSystem="@{subSystem}" today="${today}" build-dir="${build.dir}"/>
+		    </sequential>  
+		</for> 	
+		<copy includeEmptyDirs="false" todir="${build.dir}/war/${today}"  preservelastmodified="true" overwrite="true">
+			<fileset dir="${build.dir}/war-deploy-file">
+				<include name="*.*"/>
+				<include name="**/*.*"/> 
+				<exclude name="**/.svn/*"/>
+			</fileset>			
+		</copy>	
+		<copy includeEmptyDirs="false" todir="${build.dir}/war/${today}" overwrite="true" preservelastmodified="true">
+ 			<fileset dir="${build.dir}/../deploy-file">
+ 				<exclude name="**/.svn/*" /> 						
+ 				<include name="**/*.*"/> 
+ 				<include name="."/> 
+ 			</fileset>
+ 		</copy>
+		<war warfile="${build.dir}/war/${product}-${today}.war" needxmlfile="false">
+			<fileset dir="${build.dir}/war/${today}">
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="zdsoft" />
+				<attribute name="Implementation-Title" value="${product}" />
+				<attribute name="Implementation-Vendor" value="${product}" />
+				<attribute name="Implementation-Version" value="${version}.build${today}" />
+			</manifest>
+		</war>		
+			
+	</target>
+</project>
+
+
+

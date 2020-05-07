@@ -1,0 +1,1 @@
+package net.zdsoft.familydear.service;import net.zdsoft.basedata.service.BaseService;import net.zdsoft.familydear.entity.FamilyDearMember;/** * family_dear_member  * @author  *  */public interface FamilyDearMemberService extends BaseService<FamilyDearMember,String> {}

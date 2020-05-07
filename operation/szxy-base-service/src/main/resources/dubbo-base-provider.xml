@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:service interface="net.zdsoft.szxy.base.api.ClassRemoteService" ref="classRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.FamilyRemoteService" ref="familyRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.GradeRemoteService" ref="gradeRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.MicrocodeDetailRemoteService" ref="microcodeDetailRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.RegionRemoteService" ref="regionRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.SchoolRemoteService" ref="schoolRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.ServerRemoteService" ref="serverRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.StudentRemoteService" ref="studentRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.SysOptionRemoteService" ref="sysOptionRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.SystemIniRemoteService" ref="systemIniRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.TeacherRemoteService" ref="teacherRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.UnitRemoteService" ref="unitRemoteService" version="1.0.0" />
+    <dubbo:service interface="net.zdsoft.szxy.base.api.UserRemoteService" ref="userRemoteService" version="1.0.0" />
+</beans>

@@ -1,0 +1,277 @@
+@import 'var';
+@import 'mixin';
+
+/* =8 steps */
+/*基础*/
+.steps {
+	& li {
+		position: relative;
+		float: left;
+		width: 20%;
+		height: 20px;
+		line-height: 20px;
+		
+		&:before {
+			position: absolute;
+			top: 9px;
+			right: 0;
+			left: 0;
+			z-index: 8;
+			display:block;
+			content:" ";
+			height: 2px;
+			background-color: $c-darken;
+		}
+		
+		&:first-child:before {
+			display: none;
+		}
+		
+		& span {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 9;
+			display: block;
+			padding: 0 10px;
+			background-color: $c-white;
+			color: $c-darken;
+		}
+		
+		& i {
+			display: inline-block;
+	        width: 20px;
+	        height: 20px;
+	        line-height: 18px;
+	        border-radius: 50%;
+	        border: 1px solid $c-darken;
+	        margin: 0 8px 0 0;
+	        text-align: center;
+	        font-style: inherit;
+	        
+	    }
+	}
+	
+	& li.active{
+		&:before {
+			background-color: $c-primary;
+		}
+		
+		& i,
+		& span {
+			color: $c-primary;
+		}
+		
+		 & i {
+	        border-color: $c-primary;
+	    }
+		
+	}
+}
+/*点状*/
+.steps-dot {
+	padding-top: 40px;
+	
+	& li {
+		line-height: 1;
+		
+		& span {
+			top: -28px;
+			right: -100px;
+			width: 200px;
+			height: 43px;
+			background: none;
+			padding: 0;
+			text-align: center;
+			font-size: $fz-lger;
+		}
+		
+		& i {
+			position: absolute;
+			right: 95px;
+			bottom: 0;
+			z-index: 10;
+			width: 10px;
+			height: 10px;
+			background-color: $c-darken;
+			margin-right: 0;
+			text-indent: -9999em;
+		}
+	}
+	
+	& li.active{
+		&:before {
+			background-color: $c-primary;
+		}
+		
+		& i {
+			background-color: $c-primary;
+		}
+	}
+}
+/*高级：基础+点状*/
+.steps-advanced {
+	padding-top: 40px;
+	
+	& li {
+		line-height: 1;
+		
+		&:before {
+			height: 12px;
+			background-color: $c-border;
+			border-top: 3px solid $c-border;
+			border-bottom: 3px solid $c-border;
+		}
+		
+		& span {
+			top: -33px;
+			right: -100px;
+			width: 200px;
+			height: 66px;
+			background: none;
+			padding: 0;
+			text-align: center;
+			font-size: $fz-lger;
+			color: $c-darken !important;
+		}
+		
+		& i {
+			position: absolute;
+			right: 82px;
+			bottom: 0;
+			z-index: 10;
+			display: block;
+			width: 36px;
+			height: 36px;
+			line-height: 24px;
+			background-color: $c-border;
+			border: 6px solid $c-border !important;
+			margin-right: 0;
+			color: $c-white;
+		}
+	}
+	
+	& li.active{
+		&:before {
+			background-color: $c-primary;
+		}
+		
+		& i {
+			background: url(../images/icon/right_white_15x10.png) no-repeat center center $c-primary;
+			text-indent: -9999em;
+		}
+	}
+}
+/*三角形*/
+.steps-arrow {
+	& li {
+		float: left;
+		width: 20%;
+		padding-right: 32px;
+		
+		& a,
+		& span {
+		    display: block;
+		    background: $c-line;
+		    text-decoration: none;
+		    position: relative;
+		    height: 30px;
+		    line-height: 28px;
+		    padding: 0 10px 0 20px;
+		    color: $c-darken;
+		    
+		    &:before,
+		    &:after {
+		        content: "";
+		        position: absolute;
+		        top: 0;
+		        border: 0 solid $c-line;
+		        border-width: 15px 15px;
+		        width: 0;
+		        height: 0;
+		    }
+		    
+		    &:before {
+		        left: -30px;
+		        border-left-color: transparent;
+		    }
+		    
+		    &:after {
+		        left: 100%;
+		        border-color: transparent;
+		        border-left-color: $c-line;
+		    }
+		    
+		    & i {
+		        display: inline-block;
+		        float: left;
+		        width: 20px;
+		        height: 20px;
+		        line-height: 18px;
+		        border-radius: 50%;
+		        border: 1px solid $c-darken;
+		        margin: 5px 8px 0 0;
+		        text-align: center;
+		        font-style: inherit;
+		    }
+		    
+		}
+		
+		& a:hover {
+	    	background-color: darken($c-primary, 10%);
+	    	color: $c-white;
+	    	
+	        &:before {
+	        	border-color: darken($c-primary, 10%);
+	        	border-left-color: transparent;
+	        }
+	        
+	        &:after {
+		        border-left-color: darken($c-primary, 10%);
+		    }
+		    
+		    & i {
+		        border-color: $c-white;
+		        color: $c-white;
+		    }
+	    }
+		
+		&.active a,
+		&.active span {
+		    background-color: $c-primary;
+		    color: $c-white;
+		    
+		    &:before {
+		        border-color: $c-primary;
+		        border-left-color: transparent;
+		    }
+		    
+		    &:after {
+		        border-left-color: $c-primary;
+		    }
+		    
+		    & i {
+		        border-color: $c-white;
+		        color: $c-white;
+		    }
+		}
+		
+		&:first-child a:before,
+		&:first-child span:before {
+		    border: none;
+		}
+	}
+}
+/*个数处理*/
+.steps-2 li {
+    width: 50%;
+}
+.steps-3 li {
+    width: 33.3%;
+}
+.steps-4 li {
+    width: 25%;
+}
+.steps-5 li {
+    width: 20%;
+}

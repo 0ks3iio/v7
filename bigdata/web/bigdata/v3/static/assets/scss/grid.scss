@@ -1,0 +1,47 @@
+$lte7:true; //ie6,7
+$pageWidth:1200px; //页面总体宽度
+$colWidth:60px;    //最小栏目宽度
+$colMargin:10px;   //左右外边距
+$columns:$pageWidth / ($colWidth + $colMargin * 2); //自动计算出栏目数
+
+/* =3 grid */
+
+%clearfix {
+    @if $lte7 {
+        *zoom: 1;
+    }
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+.row {
+    @extend %clearfix;
+}
+
+%col {
+    float: left;
+    margin-right: $colMargin;
+    margin-left: $colMargin;
+}
+@for $i from 1 through $columns {
+  .col-#{$i} {
+      width: ($colWidth * $i) + (($colMargin * 2) * ($i - 1));
+      @extend %col;
+  }
+}
+@for $i from 1 through $columns {
+  @if $i == $columns {
+      .col-offset-#{$columns} {
+          margin-left: 100%;
+      }
+  } @else {
+      .col-offset-#{$i} {
+          margin-left: ($colWidth + $colMargin * 2) * $i + $colMargin;
+      }
+  }
+}

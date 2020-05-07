@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+    http://www.springframework.org/schema/aop   
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx 
+ 	http://www.springframework.org/schema/tx/spring-tx.xsd    
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+	<!-- interceptor setting -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+            <mvc:mapping path="/api/remote/openapi/**"/>
+            <mvc:mapping path="/api/openapi/**"/>
+            <bean class="net.zdsoft.api.base.interceptor.DataInterfaceInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+           <mvc:mapping path="/api/remote/openapi/v3.0/**"/>
+           <mvc:mapping path="/api/openapi/v3.0/**"/>
+           <mvc:mapping path="/api/remote/openapi/sync/update/v3.0/**"/>
+           <mvc:mapping path="/api/openapi/sync/update/v3.0/**"/>
+           <mvc:mapping path="/api/remote/openapi/sync/save/v3.0/**"/>
+           <mvc:mapping path="/api/openapi/sync/save/v3.0/**"/>
+           <bean class="net.zdsoft.api.base.interceptor.InterfaceJudgeInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/bigdata/api/**" />
+            <mvc:exclude-mapping path="/bigdata/api/regist/**"/> 
+            <mvc:exclude-mapping path="/bigdata/api/verify-code/**"/> 
+            <mvc:exclude-mapping path="/bigdata/api/index"/> 
+            <mvc:exclude-mapping path="/bigdata/api/developer/page"/> 
+            <mvc:exclude-mapping path="/bigdata/api/login/page"/>
+            <mvc:exclude-mapping path="/bigdata/api/openapiSup/**"/>
+            <mvc:exclude-mapping path="/bigdata/api/inteManager/**"/>
+            <mvc:exclude-mapping path="/bigdata/api/interEntity/**"/>
+            <mvc:exclude-mapping path="/bigdata/api/interParam/**"/>
+            <mvc:exclude-mapping path="/bigdata/api/interType/**"/>
+            <bean class="net.zdsoft.api.base.interceptor.GlobalInterceptor">
+            </bean>
+        </mvc:interceptor>
+	</mvc:interceptors>
+	<bean id="apiHelperAspect" class="net.zdsoft.api.base.aop.ApiQueryData"></bean>
+	<aop:config>
+	    <aop:pointcut expression="execution(* net.zdsoft.api.openapi.remote.openapi.action.base..*Data(..))" id="apiPointcut"/>
+	    <aop:aspect ref="apiHelperAspect">
+	        <!--循环通知-->
+	        <aop:around method="saveLogger" pointcut-ref="apiPointcut"/> 
+	    </aop:aspect>
+	</aop:config>
+	
+</beans>

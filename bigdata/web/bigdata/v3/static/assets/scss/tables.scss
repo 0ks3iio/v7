@@ -1,0 +1,144 @@
+@import 'var';
+@import 'mixin';
+
+/* =6 tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+//基础
+.tables {
+    th,
+    td {
+        height: 48px;
+        border-bottom: 1px solid $c-border;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: $c-darken;
+        
+        .choice {
+            margin: 0;
+        }
+        
+        .btn-link.dropdown-toggle {
+            height: 22px;
+            padding-left: 0;
+            font-weight: 700;
+            color: $c-darken;
+            
+            &:after {
+                border-color: $c-darken transparent transparent;
+            }
+        }
+        
+        .dropdown-menu {
+            border-color: $c-primary;
+            @include box-shadow(0 0 6px rgba(225,51,26,.2));
+            border-radius: 0;
+            padding: 0;
+            
+            > li.active > a {
+                background-color: $c-primary !important;
+                color: $c-white !important;
+            }
+            
+            > li.disabled > a {
+                background-color: $c-white !important;
+            }
+            
+            > li > a:hover {
+                background-color: $c-hover;
+            }
+        }
+        
+    }
+    
+    th {
+        background-color: $c-head;
+        text-align: left;
+        font-weight: 700;
+        
+        &.text-right {
+            text-align: right;
+        }
+    }
+    
+    tr:nth-child(2n) td{
+        background-color: $c-separate;
+    }
+    
+    tr:hover td{
+        background-color: $c-hover;
+    }
+    
+    td {
+        
+        a {
+            vertical-align: middle;
+        }
+    }
+    
+    &-line {
+        margin: 0 5px;
+        vertical-align: middle;
+        font-size: $fz-sm;
+        color: $c-line;
+    }
+}
+
+//嵌套、折叠
+.tables-nest {
+    tr:nth-child(2n) td{
+        background-color: $c-white;
+    }
+    
+    tr.has-inner {
+        display: none;
+        
+        > td {
+           border-bottom: 0;
+           padding: 0 20px; 
+        }
+        
+    }
+    
+    tr.open-inner {
+        display: table-row;
+        
+        td {
+           background-color: $c-head !important; 
+        }
+        
+        tr:hover td{
+            background-color: $c-hover !important;
+        }
+    }
+    
+    i.toggle-next {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: url(../images/icon/tables_plus.png) no-repeat 0 0;
+        cursor: pointer;
+        
+        &.open {
+            background-image: url(../images/icon/tables_minus.png);
+        }
+    }
+}
+
+
+//带边框
+.tables-border {
+    th,
+    td {
+        border: 1px solid $c-border;
+    }
+    
+    .choice > .choice-name::before {
+        margin-right: 0;
+    }
+}
+
+

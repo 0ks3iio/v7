@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+    http://www.springframework.org/schema/aop   
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx 
+ 	http://www.springframework.org/schema/tx/spring-tx.xsd    
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd" default-lazy-init="true">
+
+	<bean id="mvc_properties" class="net.zdsoft.framework.integration.spring.ExternalPropertyPlaceholderConfigurer">
+        <property name="resourceFiles">
+        <list>
+            <value>classpath*:conf/*.properties</value>
+        	<!-- 
+            <value>classpath:conf/conf.properties</value>
+            <value>classpath:conf/framework.properties</value>
+             -->
+        </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+
+	<mvc:default-servlet-handler />
+	<mvc:annotation-driven conversion-service="conversionService">
+		<mvc:message-converters>
+			<bean class="net.zdsoft.framework.config.UTF8StringHttpMessageConverter" />
+		</mvc:message-converters>
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" >
+				<property name="oneIndexedParameters" value="true" />
+			</bean>
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+	
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <ref bean="dateConvert"/>
+            </list>
+        </property>
+    </bean>
+	<bean id="dateConvert" class="net.zdsoft.framework.converter.DateConverter"/>
+	
+	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"/>
+		<!-- 指定所上传文件的总大小不能超过800MB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
+		<property name="maxUploadSize" value="#{800*1024*1024}"/>
+		<!--resolveLazily属性启用是为了推迟文件解析，以便在UploadAction 中捕获文件大小异常-->  
+		<!--property name="resolveLazily" value="true"/-->
+	</bean>
+	 
+	<context:component-scan base-package="net.zdsoft"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- freemarker视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="suffix" value="" />
+		<property name="cache" value="true" />
+		<property name="order" value="2" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<!-- 此变量值为pageContext.request, 页面使用方法：req.contextPath -->
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="exposeRequestAttributes" value="false" />
+		<property name="exposeSessionAttributes" value="true"/>
+		<property name="requestContextAttribute" value="request" />
+	</bean>
+	
+	<!-- interceptor setting -->
+	<mvc:interceptors>
+        <!-- 适配微服务的 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/micro/adapter/**"/>
+			<bean class="net.zdsoft.adapter.MicroAdapterAuthenticationInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="net.zdsoft.framework.interceptor.CommonLoggerInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+
+			<mvc:exclude-mapping path="/datacenter/**"/>
+			<mvc:exclude-mapping path="/examinfo/stu/**"/>
+			<mvc:exclude-mapping path="/problem/**"/>
+			<mvc:exclude-mapping path="/openapiSup/**"/>
+			<mvc:exclude-mapping path="/openapiSup/**"/>
+			<mvc:exclude-mapping path="/remote/openapi/**"/>
+			<mvc:exclude-mapping path="/mobile/open/**"/>
+            <mvc:exclude-mapping path="/openapi/**"/>
+            <mvc:exclude-mapping path="/developer/**"/>
+            <mvc:exclude-mapping path="/superAdmin/**"/>
+            <mvc:exclude-mapping path="/appManage/**"/>
+            <mvc:exclude-mapping path="/data/manage/**"/>
+            <mvc:exclude-mapping path="/eccShow/**"/>
+            <mvc:exclude-mapping path="/homepage/register/**"/>
+			<mvc:exclude-mapping path="/desktop/app/**"/>
+			<mvc:exclude-mapping path="/exammanage/edu/examReports/**"/>
+			<mvc:exclude-mapping path="/exammanage/examReoprt/**"/>
+			<mvc:exclude-mapping path="/exammanage/scoreRanking/**"/>
+			<mvc:exclude-mapping path="/examanalysis/emReport/**"/>
+			<mvc:exclude-mapping path="/bigdata/api/**"/>
+			<bean class="net.zdsoft.framework.interceptor.CommonHandlerInterceptor">
+				<property name="excludeUrls">
+					<list>
+						<value>/operation/website/index</value>
+						<value>/operation/trialUser/trialUserRegister</value>
+						<value>/homepage/login/page</value>
+						<value>/fpf/logout/page</value>
+						<value>/homepage/loginUser/page</value>
+						<value>/homepage/loginPage/page</value>
+						<value>/homepage/switch/account</value>
+						<value>/homepage/logout/page</value>
+						<value>/fpf/switch/account</value>
+						<value>/desktop/verifyQuestionImage</value>
+						<value>/desktop/verifyImage</value>
+						<value>/login/verify.action</value>
+						<value>/login/invalidate.action</value>
+						<value>/verify/login</value>
+						<value>/desktop/unify/unify-desktop.action</value>
+						<value>/desktop/verifyImage</value>
+						<value>/zdsoft/crop/doPortrait</value>
+						<value>/login/loginForPassport.action</value>
+						<value>/developer/sso/passportDocument</value>
+						<value>/basedata/showTimetable/index/page</value>
+						<value>/basedata/showTimetable/detail/page</value>
+						<value>/fpf/login/ding-talk</value>
+						<value>/fpf/author/ding-talk</value>
+						<value>/homepage/login/ding-talk</value>
+						<value>/homepage/author/ding-talk</value>
+						<value>/fpf/execute/script</value>
+						<value>/sgi_bin/device_entry/entry.aspx</value>
+					</list>
+				</property>
+				<property name="excludePaths">
+					<list>
+						<value>/common/</value>
+						<value>/ex/</value>
+						<value>/openapi/</value>
+						<value>/developer/</value>
+						<value>/static/</value>
+						<value>/syncdata/</value>
+						<value>/system/ops</value>
+						<value>/superAdmin</value>
+						<value>/eClassCard/</value>
+						<value>/webuploader/</value>
+						<value>/micro/adapter/</value>
+					</list>
+				</property>
+				<property name="includeUrls">
+					<list>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/openapiSup/**" />
+			<bean class="net.zdsoft.framework.interceptor.OpenApiHandlerInterceptor">
+				<property name="excludeUrls">
+				<list>
+					<value>/openapiSup/home/login/page</value>
+					<value>/openapiSup/home/loginUser/page</value>
+					<value>/openapiSup/home/regist/page</value>
+				</list>
+			</property>
+			</bean>
+		</mvc:interceptor>
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/sync/remote/openapi/**" />-->
+			<!--<bean class="net.zdsoft.syncdata.interceptor.BaseSynInterfaceInterceptor">-->
+			<!--</bean>-->
+		<!--</mvc:interceptor>-->
+	</mvc:interceptors>
+	<!-- task任务扫描注解 -->  
+	<task:annotation-driven/>
+</beans>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+    http://www.springframework.org/schema/aop   
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx 
+ 	http://www.springframework.org/schema/tx/spring-tx.xsd    
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+	
+
+	<!-- 配置freeMarker的模板路径 -->
+	<bean id="eisFreeMarkerConfigurer" class="net.zdsoft.framework.config.EisFreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="resourceUrl" value="${eis_resource_url}"></entry>
+				<!--<entry key="webUrl" value="${eis_web_url}"></entry>-->
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">0</prop>
+				<prop key="defaultEncoding">UTF-8</prop>
+				<prop key="url_escaping_charset">UTF-8</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="number_format">0.######</prop>
+				<prop key="whitespace_stripping">true</prop>
+			</props>
+		</property>
+		<property name="preTemplateLoaders" ref="eisTemplaterLoaders" />
+	</bean>
+	
+	<util:list id="eisTemplaterLoaders" list-class="java.util.ArrayList" value-type="net.zdsoft.framework.config.EisFreemarkerTemplateLoader">
+		<ref bean="eisFreemarkerTemplateLoader"></ref>
+	</util:list>
+	<bean id="eisFreemarkerTemplateLoader" class="net.zdsoft.framework.config.EisFreemarkerTemplateLoader">
+		<!--EisFreemarker模板加载器会自动添加一个宏 {webmacro.ftl commonWeb} 以下参数可以控制哪些路径下的模板不添加这个宏调用（即使添加了这个宏，但是参数默认是不会有任何效果的）-->
+		<property name="excludePaths" ref="excludePaths" />
+	</bean>
+
+	<!-- -->
+	<util:list id="excludePaths" list-class="java.util.ArrayList" value-type="java.lang.String">
+		<value>openapi/*</value>
+		<value>openapiSub/*</value>
+		<value>remote/*</value>
+		<value>desktop/login/*</value>
+		<value>system/ops/*</value>
+		<value>superAdmin/*</value>
+		<value>fw/*</value>
+	</util:list>
+
+</beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
+	<solutionClass>net.zdsoft.newgkelective.data.optaplanner.c3f7sectioningv4.domain.SectioningSolution</solutionClass>
+	
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.c3f7sectioningv4.domain.CurriculumCourse</entityClass>
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.c3f7sectioningv4.domain.CourseSection</entityClass>
+
+<!-- 	<entityClass>net.zdsoft.newgkelective.data.optaplanner.c3f7sectioning.domain.Student</entityClass>
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.c3f7sectioning.domain.StudentCurriculum</entityClass> -->
+
+	<scoreDirectorFactory>
+		<scoreDrl>businessconf/divideSolver/studentCourseSectioningSolverRules.drl</scoreDrl>
+	</scoreDirectorFactory>
+
+	<termination>
+		<secondsSpentLimit>1800</secondsSpentLimit>
+	</termination>
+	<noChangePhase />
+	
+	<localSearch>
+		<changeMoveSelector>
+	
+		 </changeMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>60</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<lateAcceptanceSize>400</lateAcceptanceSize>
+			<entityTabuSize>5</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+	</localSearch>
+	
+	<localSearch>
+		<changeMoveSelector>
+
+		 </changeMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>60</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<entityTabuSize>15</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1000</acceptedCountLimit>
+		</forager>
+	</localSearch>
+</solver>

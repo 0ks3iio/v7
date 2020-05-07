@@ -1,0 +1,31 @@
+
+package net.zdsoft.newgkelective.data.optaplanner.c2f3sectionscheduling.solver;
+    dialect "java"
+
+import org.optaplanner.core.api.score.buildin.bendable.*;
+
+import net.zdsoft.newgkelective.data.optaplanner.c2f3sectionscheduling.domain.*;
+
+global BendableScoreHolder scoreHolder;
+
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+rule "rule0"
+	when
+		$studentCourse1 : StudentCourse($student1 : student, $timeSlot1 : timeSlot)
+		$studentCourse2 : StudentCourse(this != $studentCourse1, student == $student1, timeSlot == $timeSlot1)
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, 0, -1);
+end
+
+/* */
+//没有凑满的教学班，有几个就要扣几分
+rule "rule1"
+	when
+		TimeSlot($currentPartialSectionCount : currentPartialSectionCount, $currentPartialSectionCount > 0)
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, 1, -1 * $currentPartialSectionCount);
+end
+

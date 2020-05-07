@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
+	<solutionClass>net.zdsoft.newgkelective.data.optaplanner.c2f3sectionscheduling.domain.SectioningSolution</solutionClass>
+	
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.c2f3sectionscheduling.domain.StudentCourse</entityClass>
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.c2f3sectionscheduling.domain.TimeSlot</entityClass>
+
+	<scoreDirectorFactory>
+		<scoreDrl>businessconf/sectionscheduling/sectioningLayerSolverRules2.drl</scoreDrl>
+	</scoreDirectorFactory>
+
+	<termination>
+		<terminationCompositionStyle>OR</terminationCompositionStyle>
+		<secondsSpentLimit>600</secondsSpentLimit>
+		<bestScoreLimit>[0/0/0/0]hard/[0/0]soft</bestScoreLimit>
+	</termination>
+	<noChangePhase />
+	
+   	<localSearch>
+   		<unionMoveSelector>
+   			<changeMoveSelector/>
+			<swapMoveSelector>
+				<filterClass>net.zdsoft.newgkelective.data.optaplanner.c2f3sectionscheduling.moveFilter.SameStudentCourseSwapFilter</filterClass>
+		 	</swapMoveSelector>
+		</unionMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>20</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<lateAcceptanceSize>400</lateAcceptanceSize>
+			<entityTabuSize>5</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+	</localSearch>   
+	
+	<localSearch>
+   		<unionMoveSelector>
+   			<changeMoveSelector/>
+			<swapMoveSelector>
+				<filterClass>net.zdsoft.newgkelective.data.optaplanner.c2f3sectionscheduling.moveFilter.SameStudentCourseSwapFilter</filterClass>
+		 	</swapMoveSelector>
+		</unionMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>20</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<entityTabuSize>9</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1000</acceptedCountLimit>
+		</forager>
+	</localSearch>
+</solver>

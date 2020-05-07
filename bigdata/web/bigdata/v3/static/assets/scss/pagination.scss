@@ -1,0 +1,150 @@
+@import 'var';
+@import 'mixin';
+
+/* =7 pagination */
+.pagination {
+	margin: 10px 0;
+	
+	& .label {
+		color: $c-dark;
+	}
+	
+	& .form-paging {
+		width: $form-width;
+		padding: 0 2px;
+		text-align: center;
+	}
+}
+.pagination-list {
+	display: inline-block;
+	*display: inline;
+	
+	& > li {
+		display: inline-block;
+		*display: inline;
+		*zoom: 1;
+		vertical-align: middle;
+		
+		& > a, & > span {
+			position: relative;
+			float: left;
+			display: inline-block;
+			min-width: $page-width;
+			height: $page-width;
+			line-height: ($page-width - 2);
+			border: 1px solid $c-border;
+			border-radius: 2px;
+			margin-right: 6px;
+			padding: 0 5px;
+			text-decoration: none;
+			text-align: center;
+			color: $c-dark;
+			
+			&:hover {
+				border-color: $c-primary;
+				color: $c-primary;
+			}
+			
+		}
+		
+		& > a {
+            background: $c-white;
+        }
+		
+		&.active > a, &.active > span {
+			background-color: $c-primary ;
+			border-color: $c-primary ;
+			color: #fff;
+		}
+		
+		&.disabled > a, &.disabled > span {
+			border-color: $c-border;
+			color: $c-disable;
+			cursor: $cur-d;
+		}
+		
+		&.more > a, &.more > span {
+			border-width: 0 !important;
+			color: $c-light !important;
+		}
+	}
+}
+.pagination-lg {
+	& .label {
+		font-size: $fz-lger;
+	}
+	
+	& .form-paging {
+		width: $form-width-lg;
+	}
+	
+	& .pagination-list {
+		& > li {
+			& > a, & > span {
+				min-width: $page-width-lg;
+				height: ($page-width-lg - 6);
+				line-height: ($page-width-lg - 8);
+				font-size: $fz-lger;
+			}
+		}
+	}
+}
+.pagination-sm {
+	& .label {
+		font-size: $fz-sm;
+	}
+	
+	& .form-paging {
+		width: $form-width-sm;
+	}
+	
+	& .pagination-list {
+		& > li {
+			& > a, & > span {
+				min-width: $page-width-sm;
+				height: $page-width-sm;
+				line-height: ($page-width-sm - 2);
+				font-size: $fz-sm;
+			}
+		}
+	}
+}
+
+
+//简化版
+.pagination-lite {
+	& .pagination-list {
+		& > li {
+			& > a, & > span {
+				background-color: transparent;
+				border-color: transparent;
+				margin-right: 0;
+			}
+			
+			&.line > span{
+				min-width: auto;
+				margin: 0;
+			}
+			
+			&.more > span{
+				margin-right: -10px;
+			}
+		}
+	}
+	
+	& .form-paging {
+		width: 50px;
+	}
+	
+	&.pagination-sm .form-paging {
+		width: 40px;
+	}
+	
+	&.pagination-lg .form-paging {
+		width: 60px;
+	}
+}
+
+
+
+

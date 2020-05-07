@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 使用multicast广播注册中心暴露服务地址 -->
+	<dubbo:registry address="${dubbo.registry.address}" />
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo"  />
+
+	<dubbo:service interface="net.zdsoft.stuwork.remote.service.StuworkRemoteService"
+		ref="stuworkRemoteService" />
+	<dubbo:service interface="net.zdsoft.tutor.remote.service.TutorRemoteService"
+		ref="tutorRemoteService" />
+	
+</beans>

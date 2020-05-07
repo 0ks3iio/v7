@@ -1,0 +1,2 @@
+注：optaplanner这部分不要和项目有耦合性（因为要单独拿出来调试），如果非要调用项目的类，请再封装一层后调用且用判断过滤
+例如：NKForLectureSolver需要调用RedisUtils，先封装为NKRedisUtils再调用，然后用currentSolverId参数（这个是实际使用过程中才会有的参数，单独调试不用这个参数）过滤

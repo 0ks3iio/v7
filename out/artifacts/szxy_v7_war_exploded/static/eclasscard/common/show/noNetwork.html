@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="UTF-8">
+	<title>无网络</title>
+	<meta name="viewport">
+	<script src="${request.contextPath}/eclasscard/common/show/js/flexible.js"></script>
+	<style>
+		*{padding:0;margin:0;}
+		html{height:100%;}
+		body{
+			min-height:100%;
+			display:-webkit-box;
+			display:-webkit-flex;
+			display:flex;
+			font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+			background:-webkit-gradient(linear, left top, left bottom, from(#d4e9ff), to(#fff));
+			background:-webkit-linear-gradient(top, #d4e9ff, #fff);
+			background:linear-gradient(to bottom, #d4e9ff, #fff);
+		}
+		.container{
+			width:666px;
+			margin: auto;
+			text-align:center;
+		}
+		.container img{
+			display:block;
+			max-width:100%;
+		}
+		.text{
+			padding:45px 0;
+			border-top:2px solid;
+			margin-top:20px;
+			font-size:24px;
+			text-align:left;
+			color:#539be7;
+		}
+		.btn{
+			min-width: 150px;
+			height: 52px;
+			padding: 0 30px;
+			border:none;
+			-webkit-border-radius:8px;
+			        border-radius:8px;
+			margin-top:30px;
+			-webkit-box-shadow: 0 8px #307ac7;
+			        box-shadow: 0 8px #307ac7;
+			font-size:24px;
+			line-height:52px;
+			color:#fff;
+			background-color: #539be7;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img id='image' src="images/offline.png" alt="">
+		<div class="text">
+			<p>服务正在连接中...</p>
+		</div>
+		<button type="button" class="btn" onclick="refresh()">刷新</button>
+	</div>
+</body>
+</html>
+<script src="js/jquery.min.js"></script>
+<script>
+	var domain = GetQueryString("domain");
+	var deviceNumber = GetQueryString("deviceNumber");
+	var view = GetQueryString("view");
+	$(document).ready(function(){
+		refresh();
+		setInterval(function(){
+			refresh();
+    	},20000);
+	})
+	
+	function refresh(){
+		doSkipPage();
+	}
+	/* 请求服务，成功说明服务可用，返回true,跳转正常页;否则返回false，跳提示页 */
+	function getServerUsable() {
+		var defer = $.Deferred();
+		var xhr = $.ajax({
+			url:domain+'/eccShow/eclasscard/get/server/usable',
+			data:{},
+			timeout : 5000, //超时时间设置，单位毫秒
+			type:'post',
+			success:function(data){
+				defer.resolve(true);
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				defer.resolve(false);
+			},
+			complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+		　　　　        if(status=='timeout'){
+		　　　　        	defer.resolve(false);
+		　　　　        	xhr.abort();
+				}
+	　　		}
+		});
+		return defer.promise();
+	}
+
+	/*检测服务是否可用，可用执行传入函数，不可用跳转提示页*/
+	function doSkipPage() {
+		 $.when(getServerUsable()).done(function(data){
+			if(data){
+				showIndex();
+			}
+		});
+	}
+
+	/*获取地址栏参数*/
+	function GetQueryString(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		console.log(r);
+		if(r!=null) return  unescape(r[2]); return null;
+	}
+	
+	function showIndex(){
+		window.location.href= domain+"/eccShow/eclasscard/showIndex?deviceNumber="+deviceNumber+"&view="+view;
+	}
+	
+</script>

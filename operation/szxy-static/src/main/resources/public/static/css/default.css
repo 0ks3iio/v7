@@ -1,0 +1,77 @@
+﻿/*----------public----------*/
+body,button,input,select,textarea{color:#444;}
+.abtn-blue,.abtn-blue-big,.popUp-layer .tt,.memorandum .grid .table-scroll .table-kb-wek td.hover,.memorandum .grid .table-scroll .top-layer .dt,.memorandum .grid .schedule-slider li.current,.newest .tab span.current,.pub-search .btn,.select_list02_container .level-list-line a:hover,.select_list02_container .level-list-line a.current,.pub-sub-tab li.current,.base-operation .page .page-list span.current,.table-list .audit-progress-step2 .num1,.table-list .audit-progress-step3 .num1,.table-list .audit-progress-step3 .num2,.table-time th.today,.table-time-new th.today,.tree-menu-select .first-level .level-name-current,.permission-wrap .item-current,.permission-wrap .item-current:hover,.select-group .btn a:hover,.admin a.current,.state-wrap .state-layer .abtn-submit,.youth-edit .slider .tt,.pub-tri-tab li.current{background:#317eeb;color:#fff;}
+.base-operation .page .page-list span.current,.address .address-select a.current,.table-onAuty tr td .noSelected-wrap:hover,.holidays-setting table td .holidays-wrap .remark-txt,.permission-wrap .item-current,.permission-wrap .item-current:hover,.state-wrap .state-layer .abtn-submit,.tabMenu .active,.tabMenu .active .mainlevel_a{border-top:1px solid #3198dd;}
+.user-sList span.current,.select_list02_container .user-sList span.current,.popUp-layer,.mini-top .user-info .info-layer,.mini-top .user-info-hover .new-msg,.pub-two-tab li.current{border:1px solid #3198dd;}
+#deskApp .app-content .app-wrap ul li:hover p,.address .address-select a.current,.schedule-plan .list p.even,.week-plan .table-plan tr.interval td,.application-wrap,.table-edit-bgcolor th,.table-edit-bgcolor td,.table-list .audit-progress,.table-list tr.tr-wrap td,.table-time-new tr.even td,.table-bg-blue th,.table-bg-blue td,.table-onAuty tr.even td,.holidays-setting table td.month,.tree-menu-select .second-level,.tree-menu-search .dt,.permission-tt,.address-selected,.class-grouping,.internship-assess-table tr.odd td,.youth-edit,.class-setting,.reportTable,.app-info,.active-lottery ul li .wrap,.article-comment,.popUp-layer .dd,.query-builder,.table-list td,.table-form .td-opt,.select_list02_container .dd{background:#f6fbff;}
+.table-list th,.table-list td,.table-list-detail th,.table-list-detail td,.table-list-edit .input-txt,.print-wrap-zj table th,.print-wrap table td,.internship-assess-table th,.internship-assess-table td,.week-plan .table-plan th,.week-plan .table-plan td,.table-dt,.table-form th,.table-form td,.table-form td.tt-blue,.table-list td.tt-blue,.holidays-setting .dt,.holidays-setting table th,.holidays-setting table td,.class-grouping .grouping-wrap,.document-reader .reader-container,.move-group .group,.annunciate,.docReader,.docReader-wrap,.fw-flow,.fw-sent-info,.typical-table th,.typical-table td{border:1px solid #c8c8c8;}
+.table-list th,.table-list td,.table-list-detail th,.table-list-detail td,.print-wrap-zj table th,.print-wrap table td,.table-dt{color:#000;}
+.table-list th,.fw-sent-info{background:#c5e1fb;color:#000;}
+.mt-userinfo .date-info .day span{color:#3198dd;}
+.base-operation{background:#e8f4ff;color:#000;}
+.base-operation .page .page-list span.current{background:#3198dd;border:1px solid #3198dd;}
+.user-group .dt-show{background-color:#3198dd;}
+.mini-top .user-info .info-layer .info-tab span.current,.tabMenu ul{border-bottom:2px solid #3198dd;}
+.mini-top .user-info .info-layer .info-tab span.current,.menu .list a.current span,.table-list tr.current td{color:#026db7;}
+.mini-top .user-info .skin:hover,.mini-top .user-info .setting:hover,.mini-top .user-info .board:hover,.mini-top .user-info .help:hover,.NB-menu .list li.hover a.tt,.NB-menu .list li a.tt:hover,.NB-menu .list li.current a.tt,.NB-menu .list li.has a.tt:hover,.NB-sub-menu{background-color:#2385cc;}
+.menu .more .show-more:hover{background-color:#208bd3;}
+.notice-item .tt span.title,.pub-tab .pub-tab-list li.current{color:#2a92dc;}
+.menu .more-list{background:#2a92dc;}
+.menu .more-list a:hover{background:#2385cc;}
+
+/*----------body----------*/
+body.index-new{background:url(../images/default/body_bg.jpg) no-repeat top center #e2f4fe;}
+
+/*----------header----------*/
+#header{background:url(../images/default/header_bg.png) no-repeat top center;}
+body.index #header{background:url(../images/default/header_bg_index.png) no-repeat top center;}
+body.index-new #header{background:url(../images/default/header_bg_index_new.png) no-repeat top center;}
+.menu .list a:hover{background:url(../images/default/menu_bg.png) no-repeat 0 -50px;}
+.menu .list a:hover span{background:url(../images/default/menu_bg.png) no-repeat right -50px;}
+.menu .list a.current{background:url(../images/default/menu_bg.png) no-repeat 0 4px;}
+.menu .list a.current span{background:url(../images/default/menu_bg.png) no-repeat right 4px;}
+.sub-menu-grid .small-model li:hover,.sub-menu-grid .big-model li.current,.sub-menu-grid .small-model li.current,.sub-menu-grid .big-model li:hover{border:1px solid #99c4ec;background:#d5ebff;}
+.mini-top .user-info-hover .new-msg{background:url(../images/default/mail2.png) no-repeat center center #FFF;}
+
+/*----------新版导航----------*/
+.main-nav .item-tt-hover,.main-nav .nav-inner .nav-inner .item-tt-hover{background-color:#1a7ab9;}
+.main-nav .item-wrap td .sub-nav a:hover{background:#d9effb;border:1px solid #82b9dd;}
+.inside-nav-list ul li a:hover{background:#d9effb;}
+.inside-nav-list ul li.current a{background:#058de9;}
+
+/*----------container----------*/
+/*桌面*/
+.memo .dt{background:url(../images/default/line.png) no-repeat 0 1px;}
+.memo .dt .add,.common-system .dt .add{background:url(../images/default/add2.png) no-repeat;}
+.memo .memo-list ul li.hover .memo-wrap{border:1px dashed #3198dd;}
+.memorandum ul.dt li.current{color:#3198dd;}
+.memorandum ul.dt .add-bw{background:url(../images/default/bw_add.png) no-repeat 0 3px;}
+.memorandum .grid .option,.table-dt,.table-list tr.tr-hover td,.table-form th,.table-list tr.current td{background:#e6f3ff;}
+.memorandum .grid .option .prev{background:url(../images/default/icon_left.png) no-repeat;}
+.memorandum .grid .option .next{background:url(../images/default/icon_right.png) no-repeat;}
+.memorandum .grid .table-scroll .table-kb-mon td.hover{background:url(../images/default/app_add.png) no-repeat 58px 22px #3198dd;}
+.desk-item-inner .dt,.board-wrap li .dt{background:url(../images/default/line.png) no-repeat 0 1px;}
+#deskApp .app-slider .app-wrap ul li i{background:url(../images/default/app_add.png) no-repeat 0 -3px;}
+#commonApp .app-list-yes li a:hover{background-color:#f6fbff;}
+#commonApp .app-list-no li a:hover{background:url(../images/default/app_add.png) no-repeat top right #f6fbff;}
+.mt-userinfo .client-info p.name .set{background:url(../images/default/set2.png) no-repeat;}
+.common .dt .set,.re-common .dt .set{background:url(../images/default/set2.png) no-repeat;}
+.common .dt .set-link{background:url(../images/default/link.png) no-repeat;}
+.add-item .desk-item-inner{background:url(../images/default/add7.png) no-repeat center 82px;}
+.parents-school li:hover{background:#f6fbff;}
+.common-wrap .open-list,#setDeskApp{background:url(../images/default/app_more.png) no-repeat;}
+/*列表*/
+.table-onAuty tr td .tempSelected-wrap,.table-onAuty tr td .tempSelected-wrap:hover{background:url(../images/default/current.png) no-repeat right bottom;}
+/*用户选择*/
+.user-sList span.current,.select_list02_container .user-sList span.current{background:url(../images/default/current.png) no-repeat right bottom #fff;}
+.tabMenu .active,.tabMenu .active .mainlevel_a{border:1px solid #3198dd;border-bottom:1px solid #fff;}
+/*tab*/
+.pub-two-tab li.current{background:url(../images/default/current.png) no-repeat right bottom;}
+
+.tab-menu dd{ float:left; width: 80px;background: #262d37;}
+.tab-menu a{ display:block; line-height:38px; font-size: 14px; color:#6f7b92; outline:0; text-align: center;}
+.tab-menu a:hover{ text-decoration:none;}
+.tab-menu dd.active a{ border-bottom:2px solid #fff; color:#fff;}
+
+/*东莞奇葩*/
+.header-mini{background:url(../images/default/header_bg_mini.png) no-repeat top center !important;}

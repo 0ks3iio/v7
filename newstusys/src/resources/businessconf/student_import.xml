@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by zdsoft (zdsoft) -->
+<root> 
+	<object define="学生基本信息" name="student_import" entityclassname="net.zdsoft.newstusys.businessimport.entity.StudentImport" 
+			tablename="base_student" description="证件号必须唯一,不可重复。">
+		<field define="姓名" name="stuname" dbname="student_name" required="Y" type="String(100)" example="如：刘函"/>
+		<field define="证件编号" name="identitycard" dbname="identity_card" required="Y" unique="Y" type="String(30)"  example="如：440111008202200420091。&lt;font color='red'&gt;如果不能正常显示，请将excel中，这列的格式设置成文本格式&lt;/font&gt;" />
+		<field define="班级" name="classid" dbname="class_id" type="String(60)" example="如：高一（01）班" />
+		<field define="曾用名" name="oldname" dbname="old_name" type="String(100)" example="如：刘寒"/>
+		<field define="性别" name="sex" dbname="sex" mcode="DM-XB" example="如：男" />
+		<field define="出生日期" name="birthday" dbname="birthday" type="Date" example="如：20030810(年份+月份+天)。&lt;font color='red'&gt;请将excel中，这列的格式设置成文本格式&lt;/font&gt;" help="日期型"/>	
+		<field define="民族" name="nation" dbname="nation" mcode="DM-MZ" example="如：汉族"/>
+		<field define="政治面貌" name="background" dbname="background" mcode="DM-ZZMM"  example="如：中国共产主义青年团团员"/>
+		<field define="国籍" name="country" dbname="country" mcode="DM-COUNTRY" example="如：中国"/>
+		<field define="港澳台侨外" name="compatriots" dbname="compatriots" mcode="DM-GATQ" example="如：无"/>
+		<field define="证件类型" name="identitycardType" dbname="identitycard_type" mcode="DM-SFZJLX" example="如：身份证"/>
+		<field define="学号" name="stucode" dbname="student_code" type="String(20)" example="如：440111008202200420091。&lt;font color='red'&gt;如果不能正常显示，请将excel中，这列的格式设置成文本格式&lt;/font&gt;"/>
+		<field define="班内编号" name="classorderid" dbname="class_inner_code" type="String(3)" regex="[1-9][0-9]{0,2}" errorMsg="只能是大于0的3位以内的整数。" example="如：53"></field>
+		<field define="学生类别" name="studentType" dbname="student_type" mcode="DM-XSLB" example="如：普通学生"/>
+		<field define="原毕业学校" name="oldSchoolName" dbname="old_School_Name" type="String(30)" example="如：学军小学"/>
+		<field define="入学年月" name="toschooldate" dbname="to_school_date" type="YearMonth" example="年填4位数字、月填2位数字，如‘201101’" />
+		<field define="一卡通卡号" name="cardnumber" dbname="card_number" unique="Y" type="String(30)" example="如：2200420091。&lt;font color='red'&gt;如果不能正常显示，请将excel中，这列的格式设置成文本格式&lt;/font&gt;"/>
+		<field define="户籍省县" name="registerPlace" dbname="register_place" mcode="Region" example="如：浙江省杭州市西湖区"/>
+		<field define="户籍镇/街" name="registerStreet" dbname="register_street" type="String(100)" example="如：古荡街道"/>
+		<field define="籍贯" name="nativeplace" dbname="native_place" mcode="Region" example="如：甘肃省兰州市"/>
+		<field define="家庭住址" name="homeaddress" dbname="home_address" type="String(60)" example="如：杭州市文三路477号"/>
+		<field define="家庭邮编" name="postalcode" dbname="postalcode" regex="[0-9]{6}"  errorMsg="只能是六位数字。"  example="如：310013。&lt;font color='red'&gt;只能是6位数字&lt;/font&gt;"/>
+		<field define="家庭电话" name="familymobile" dbname="family_mobile" regex="^[0-9]{1,20}$"  errorMsg="请输入正确的联系电话(不能超过20位数字)。"   example="如：05718******* 或 135********"/>
+		
+		<field define="监护人" name="familyRealName" type="String(20)" example="如：王五"/>		
+		<field define="监护人与学生关系" name="relation" mcode="DM-GX" example="如：父亲"/>		
+		<field define="监护人联系电话" name="familyMobilephone" type="String(20)" regex="^[0-9]{1,20}$" errorMsg="请输入正确的手机号码(不能超过20个数字)。" example="如：13456789012"/>
+		<field define="父亲姓名" name="realname1" dbname="real_name" required="N" type="String(30)" displayOrder="51" example="如：张建设" />
+		<field define="父亲政治面貌" name="background1" dbname="background" mcode="DM-ZZMM" example="如：中国共产主义青年团团员"/>
+		<field define="父亲文化程度" name="culture1" dbname="culture" mcode="DM-WHCD" example="如：中国共产主义青年团团员"/>
+		<field define="父亲单位" name="company1"  type="String(60)" displayOrder="61" example="如：演示学校" />
+		<field define="父亲职务" name="duty1"  type="String(20)" displayOrder="62" example="如：校长" />
+		<field define="父亲手机号" name="linkphone1" dbname="link_phone" required="N" type="String(20)" displayOrder="54" regex="^[0-9]{1,20}$" errorMsg="请输入正确的联系电话(不能超过20个数字)。" example="如：13800000000。&lt;font color='red'&gt;如果不能正常显示，请将excel中，这列的格式设置成文本格式&lt;/font&gt;"/>
+		<field define="父亲证件类型" name="identitycardType1" dbname="identitycard_type" mcode="DM-SFZJLX" example="如：身份证"/>
+		<field define="父亲证件号" name="identitycard1" dbname="identity_card" unique="Y" type="String(30)"  example="如：440111008202200420091。&lt;font color='red'&gt;如果不能正常显示，请将excel中，这列的格式设置成文本格式&lt;/font&gt;" />
+		<field define="父亲国籍" name="country1" dbname="country" mcode="DM-COUNTRY" example="如：中国"/>
+		<field define="父亲出生日期" name="birthday1" dbname="birthday" type="Date" example="如：20030810(年份+月份+天)。&lt;font color='red'&gt;请将excel中，这列的格式设置成文本格式&lt;/font&gt;" help="日期型"/>	
+		<!-- 家长二 -->
+		<field define="母亲姓名" name="realname2" dbname="real_name" required="N" type="String(30)" displayOrder="51" example="如：张建设" />
+		<field define="母亲政治面貌" name="background2" dbname="background" mcode="DM-ZZMM" example="如：中国共产主义青年团团员"/>
+		<field define="母亲文化程度" name="culture2" dbname="culture" mcode="DM-WHCD" example="如：中国共产主义青年团团员"/>
+		<field define="母亲单位" name="company2"  type="String(60)" displayOrder="61" example="如：演示学校" />
+		<field define="母亲职务" name="duty2"  type="String(20)" displayOrder="62" example="如：校长" />
+		<field define="母亲手机号" name="linkphone2" dbname="link_phone" required="N" type="String(20)" displayOrder="54" regex="^[0-9]{1,20}$" errorMsg="请输入正确的联系电话(不能超过20个数字)。" example="如：13800000000。&lt;font color='red'&gt;如果不能正常显示，请将excel中，这列的格式设置成文本格式&lt;/font&gt;"/>
+		<field define="母亲证件类型" name="identitycardType2" dbname="identitycard_type" mcode="DM-SFZJLX" example="如：身份证"/>
+		<field define="母亲证件号" name="identitycard2" dbname="identity_card" unique="Y" type="String(30)"  example="如：440111008202200420091。&lt;font color='red'&gt;如果不能正常显示，请将excel中，这列的格式设置成文本格式&lt;/font&gt;" />
+		<field define="母亲国籍" name="country2" dbname="country" mcode="DM-COUNTRY" example="如：中国"/>
+		<field define="母亲出生日期" name="birthday2" dbname="birthday" type="Date" example="如：20030810(年份+月份+天)。&lt;font color='red'&gt;请将excel中，这列的格式设置成文本格式&lt;/font&gt;" help="日期型"/>	
+		
+		<field define="特长爱好" name="strong" dbname="strong" type="String(1000)" example="如："/>
+		<field define="获奖情况" name="rewardRemark" dbname="reward_Remark" type="String(1000)" example="如："/>
+		<field define="简历" name="resumeStr" type="String(1000)" example="如："/>
+	</object>
+	
+</root>

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project name="macrodef" basedir="../">
+
+	<!-- 宏定义复制文件,空目录忽略,取比较日期之后的最新文件 -->
+	<macrodef name="copy-file">
+		<attribute name="kind" />
+		<attribute name="src"/>
+		<attribute name="todir"/>
+		<element name="file-set" optional="true"/>
+		<sequential>
+			
+			 	<copy includeEmptyDirs="false" todir="@{todir}" overwrite="true" preservelastmodified="true">
+ 					<fileset dir="@{src}">
+ 						<exclude name="**/.svn/*" /> 						
+ 						<file-set />
+ 					</fileset>
+ 				</copy>
+			 			
+		</sequential>
+	</macrodef>	
+
+	<macrodef name="javac-subsystem" description="编译子系统模块，同时把配置文件copy到WEB-INF下">
+		<attribute name="destPath" />
+		<attribute name="srcPath" />
+		<attribute name="classpath" />
+		
+		<attribute name="javac.target" default="1.6"/>
+		<attribute name="javac.encode" default="UTF-8"/>
+		<element name="resource-prepare" optional="true" />
+		<sequential>
+			<mkdir dir="@{destPath}"/>
+			<javac 
+				srcdir="@{srcPath}" 
+				destdir="@{destPath}" 
+				classpathref="@{classpath}" 
+				debug="on" source="@{javac.target}" target="@{javac.target}" encoding="@{javac.encode}" includeantruntime="false"
+				fork="true" 				
+				/>						 
+		</sequential>
+	</macrodef>	
+	
+	<macrodef name="copy-subsystem" description="拷贝文件">
+		<attribute name="resourcePath" />
+		<attribute name="webPath" />
+		<attribute name="webDestPath" />
+		<attribute name="classpath" />
+		<attribute name="resourceDestPath" />
+		
+		<element name="resource-prepare" optional="true" />
+		<sequential>
+		
+			<copy includeEmptyDirs="false" todir="@{webDestPath}"  preservelastmodified="true" overwrite="true">
+				<fileset dir="@{webPath}">
+					<include name="*.*"/>
+					<include name="**/*.*"/> 
+					<exclude name="**/.svn/*"/>
+				</fileset>			
+			</copy>
+
+		<copy includeEmptyDirs="false" todir="@{resourceDestPath}"  preservelastmodified="true" overwrite="true">
+			<fileset dir="@{resourcePath}">
+				<include name="*.*"/>
+				<include name="**/*.*"/> 
+				<exclude name="**/.svn/*"/>
+			</fileset>
+		</copy>	
+		<!--
+		<copy includeEmptyDirs="false" todir="@{destPath}"  preservelastmodified="true" overwrite="true">
+			<fileset dir="@{srcPath}">
+				<include name="**/*"/>				
+				<exclude name="**/.svn/*"/>
+				<exclude name="**/_SYNCAPP/*" />
+			</fileset>
+		</copy>		-->
+		</sequential>
+	</macrodef>	
+
+	<!-- 宏定义java编译,注意公共包的特殊处理,如复制static,template,page及freemarker等文件,-->
+	<macrodef name="javac-code" description="编译子系统模块，同时把配置文件copy到WEB-INF下">
+		<attribute name="srcPath" />
+		<attribute name="resourcePath" />
+		<attribute name="webPath" />
+		<attribute name="destPath" />
+		<attribute name="webDestPath" />
+		<attribute name="classpath" />
+		<!-- java编译参数设置-->
+		<attribute name="javac.target" default="1.6"/>
+		<attribute name="javac.encode" default="UTF-8"/>
+
+		<element name="resource-prepare" optional="true" />
+		<sequential>
+			<mkdir dir="@{destPath}"/>
+			<copy includeEmptyDirs="false" todir="@{webDestPath}"  preservelastmodified="true" overwrite="true">
+				<fileset dir="@{webPath}">
+					<include name="*.*"/>
+					<include name="**/*.*"/> 
+					<exclude name="**/.svn/*"/>
+				</fileset>
+				<fileset dir="@{resourcePath}">
+					<include name="*.*"/>
+					<include name="**/*.*"/> 
+					<exclude name="**/.svn/*"/>
+				</fileset>
+			</copy>	
+
+			<javac 
+				srcdir="@{srcPath}" 
+				destdir="@{destPath}" 
+				classpathref="@{classpath}" 
+				debug="on" source="@{javac.target}" target="@{javac.target}" encoding="@{javac.encode}" includeantruntime="false"
+
+				fork="true" 
+								
+			 />
+
+		</sequential>
+	</macrodef>
+	
+	<!-- 宏定义创建jar包 -->
+	<macrodef name="create-jar">
+		<attribute name="jarname"/>
+		<attribute name="version"/>
+		<attribute name="dest"/>
+		<attribute name="classes"/>
+		<sequential>
+			<jar destfile="@{dest}/@{jarname}.jar" basedir="@{classes}" >
+				<manifest>
+	                <attribute name="Built-By" value="zdsoft" />
+	                <attribute name="Implementation-Title" value="@{jarname}" />
+	                <attribute name="Implementation-Vendor"
+	                           value="ZDSoft Networks" />
+	                <attribute name="Implementation-Version"
+	                           value="@{version}" />
+	            </manifest>
+			</jar>
+		</sequential>
+	</macrodef>
+
+
+
+	<!-- 宏定义复制页面文件 -->
+	<macrodef name="copy-webapp">
+		<attribute name="web-src"/>
+		<attribute name="deployPath" />
+		<sequential>
+			<copy-file kind="web" src="@{web-src}" todir="@{deployPath}">
+				<file-set>
+					<exclude name="**/WEB-INF/"/>
+					<exclude name="/static/**/*.*" />
+				</file-set>
+			</copy-file>
+		</sequential>
+	</macrodef>	
+	
+	<!-- 宏定义用正则表达式从build的properties文件中读取解析子系统变量 -->
+	<macrodef name="parse-subsys">
+		<attribute name="subsys"/>
+		<sequential>
+	    	<propertyregex override="yes" property="module" input="@{subsys}" regexp="(.*)" select="\1"/>  
+		</sequential>
+	</macrodef>
+
+</project>

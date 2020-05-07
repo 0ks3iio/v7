@@ -1,0 +1,81 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+q:before,q:after{content:' '}
+abbr,acronym{border:0;}
+
+/* 文字排版 */
+.f12{font-size:12px;}
+.f14{font-size:14px;}
+.f16{font-size:16px;}
+.f30{font-size:30px;}
+.fb{font-weight:bold;}
+.fn{font-weight:normal;}
+.t2{text-indent:2em;}
+.unl{text-decoration:underline;}
+.no_unl{text-decoration:none;}
+
+/* 定位 */
+.tl{text-align:left;}
+.tc{text-align:center;}
+.tr{text-align:right;}
+.bc{margin-left:auto;margin-right:auto;}
+.vm{vertical-align:middle;}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.cb{clear:both;}
+.cl{clear:left;}
+.cr{clear:right;}
+.clearfix:after{content:'.';display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{display:inline-block;}
+*html .clearfix{height:1%;}
+.clearfix{display:block;}
+.zoom{zoom:1}
+.of_auto{ overflow:auto;}
+.hidden{visibility:hidden;}
+.none{display:none;}
+.db{ display:block;}
+.dib{ display:inline-block;}
+
+/* position */
+.pr{position:relative;}
+.pa{position:absolute;}
+
+/* width height */
+.w455{ width:455px;}
+
+/* padding margin */
+.m20{margin: 20px;}
+.mt30{ margin-top:30px;}
+.mt80{margin-top: 80px;}
+.mr20{margin-right: 20px;}
+.mb5{margin-bottom: 5px;}
+
+/* color */
+.c-red{ color:#f5222d;}
+.c-000{color: #000;}
+.c-333{color: #333;}
+
+/* button */
+.btn{ display:inline-block; border:none; text-align:center; cursor:pointer;}
+.btn:hover{ text-decoration:none;}
+.btn01{ height:48px; padding: 0 40px; border-radius:4px; background:#01d78d; color:#fff; line-height:48px; font-size:18px;}
+.btn01:hover{ background:#10d560;}
+.btn02{ height:36px; padding: 0 20px; border-radius:18px; background:#2371f3; color:#fff; line-height:36px; font-size:16px;}
+.btn02:hover{ background:#318cfb;}
+.btn03{ height:34px; padding: 0 20px; border: 1px solid #2371f3; border-radius:17px; background:#fff; color:#2371f3; line-height:34px; font-size:16px;}
+.btn03:hover{ background:#318cfb; border-color: #318cfb; color: #fff;}
+.btn04{box-sizing:border-box;width:100%;border: 1px solid #e8e8e8;border-radius: 4px;line-height: 33px;font-size: 14px;color: #999;}
+.btn04:hover{text-decoration: underline;}
+
+/* text */
+.text01{ height:38px; padding:0 10px; border:1px solid #d9d9d9; border-radius: 4px; line-height: 38px; color:#999;}
+.text01.error{ border-color:#f5222d;}

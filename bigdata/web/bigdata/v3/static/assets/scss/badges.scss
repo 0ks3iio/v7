@@ -1,0 +1,154 @@
+@import 'var';
+@import 'mixin';
+
+/* =13 badge */
+
+//*****S badge mixin *****//
+// badge var 按钮颜色控制
+@mixin badge-var($color, $background, $border) {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+}
+// badge sizes 按钮尺寸控制
+@mixin badge-size($height, $border-radius, $padding-horizontal, $font-size) {
+	height: $height;
+	line-height: $height - 2;
+    border-radius: $border-radius;
+    padding-right: $padding-horizontal;
+    padding-left: $padding-horizontal;
+    font-size:$font-size;
+}
+//*****E badge mixin *****//
+
+
+//*****S 样式生成 *****//
+.badge {
+    *overflow:visible;
+    display: inline-block;
+    border: 1px solid transparent;
+    margin-bottom: 0; // For input.badge
+    white-space: nowrap;
+    vertical-align: middle;
+    text-decoration: none;
+    text-align: center;
+    @include badge-size($badge-height, $badge-bdrs, $badge-px, $fz);
+}
+
+//按钮颜色
+.badge-primary {
+    @include badge-var($c-white,$c-primary,$c-primary);
+}
+.badge-info {
+    @include badge-var($c-white,$c-info,$c-info);
+}
+.badge-success {
+    @include badge-var($c-white,$c-success,$c-success);
+}
+.badge-warning {
+    @include badge-var($c-white,$c-warning,$c-warning);
+}
+.badge-danger {
+    @include badge-var($c-white,$c-danger,$c-danger);
+}
+.badge-default {
+    @include badge-var($c-white,$c-bright,$c-bright);
+}
+
+//按钮尺寸
+.badge-sm {
+    @include badge-size($badge-height-sm, $badge-bdrs-sm, $badge-px-sm, $fz-sm);
+}
+.badge-lg {
+    @include badge-size($badge-height-lg, $badge-bdrs-lg, $badge-px-lg, $fz-lg);
+    
+}
+
+//反白、幽灵状态
+.badge-inverse.badge-primary {
+    @include badge-var($c-primary,transparent,$c-primary);
+}
+.badge-inverse.badge-info {
+    @include badge-var($c-info,transparent,$c-info);
+}
+.badge-inverse.badge-success {
+    @include badge-var($c-success,transparent,$c-success);
+}
+.badge-inverse.badge-warning {
+    @include badge-var($c-warning,transparent,$c-warning);
+}
+.badge-inverse.badge-danger {
+    @include badge-var($c-danger,transparent,$c-danger);
+}
+.badge-inverse.badge-default {
+    @include badge-var($c-dark,transparent,$c-dark);
+}
+
+//点状、数字
+.badge-dot,
+.badge-count {
+	position: relative;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+    
+	> sup {
+	    position: absolute;
+		z-index: 10;
+	}
+}
+
+.badge-dot {
+	> sup {
+		top: -3px;
+		right: -5px;
+		height: 5px;
+		width: 5px;
+		border-radius: 100%;
+		@include translateX(-50%);
+		@include transform-origin(0 center);
+	}
+}
+
+.badge-count {
+	> sup {
+		top: -8px;
+		right: -21px;
+		width: 42px;
+		text-align: center;
+		
+		> span {
+			display: inline-block;
+			border-radius: 100px;
+			padding: 3px 6px;
+			line-height: 1;
+			color: $c-white;
+		}
+	}
+}
+
+
+.badge-dot sup.primary,
+.badge-count sup.primary span {
+	background: $c-primary;
+}
+
+.badge-dot sup.info,
+.badge-count sup.info span {
+	background: $c-info;
+}
+
+.badge-dot sup.success,
+.badge-count sup.success span {
+	background: $c-success;
+}
+
+.badge-dot sup.warning,
+.badge-count sup.warning span {
+	background: $c-warning;
+}
+	    
+	    
+//*****E 样式生成 *****//
+
+

@@ -1,0 +1,118 @@
+///***常用变量
+
+// ===1 特殊变量，鼠标相关等……
+//不可用鼠标状态
+$cur-d:    not-allowed !default;
+
+
+// ===2 字体相关
+//字体
+$fm:   "Microsoft YaHei","SimSun",Tahoma,Verdana,Arial !default; 
+$fm-m: "Microsoft YaHei" !default; //微软雅黑
+$fm-s: "SimSun" !default; //宋体：错误提示星号
+$fm-h: "SimHei" !default; //黑体
+$fm-a: Arial !default;   //英文字体
+//字号
+$fz:		               14px !default;
+$fz-smer:	floor(($fz * 0.72)) !default; //10px
+$fz-sm:		floor(($fz * 0.88)) !default; //12px
+$fz-lg:		floor(($fz * 1.15)) !default; //16px
+$fz-lger:	floor(($fz * 1.29)) !default; //18px
+$fz-h1:		floor(($fz * 2.15)) !default; //30px
+$fz-h2:		floor(($fz * 1.72)) !default; //24px
+$fz-h3:		floor(($fz * 1.45)) !default; //20px
+$fz-h4:		floor(($fz * 1.15)) !default; //16px
+$fz-h5:		floor(($fz * 1.15)) !default; //16px
+$fz-h6:		$fz !default;
+//加粗
+$fw: 700 !default;
+//行高
+$lh:      1.5 !default;
+$lh-sm:     1 !default;
+$lh-lg:   1.8 !default;
+
+
+// ===3 颜色
+//基础色、中性色
+$c-black:          #000 !default;       //
+$c-darken:         #333 !default;       //一级文本色，用于标题正文等
+$c-dark:           #666 !default;       //二级文本色，用于部分次级文本
+$c-light:          #999 !default;       //三级文本色，用于说明性文字
+$c-lighten:        #ccc !default;       //四级文本色，用于特殊需要
+$c-white:          #fff !default;       //用于按钮、徽章等文字上
+//中性色新增
+$c-bright:         #aaa !default;       //明亮
+$c-brighter:       #eee !default;       //更亮
+//分隔色
+$c-head:		   #fafafa !default;	//背景色，用于表格头部标题背景
+$c-border:		   #d9d9d9 !default;	//边界线，用于描边
+$c-line:           #e8e8e8 !default;   //分隔色，用于表格、栏目分隔线隔开多个元素
+$c-separate:	   #fcfcfc !default;	//分隔色，用于表格、栏目整块分隔使用
+$c-hover:	       #fff1eb !default;	//背景色，用于表格鼠标滑过、选中
+$c-bgc:		       #f5f5f5 !default;	//背景色，用于特殊栏目背景底色
+//品牌色+功能色
+$c-primary:		   #e1331a !default; 	//产品主色，用于按钮导航背景等
+$c-info:		   #1890ff !default;	//主要用于连接
+$c-success:		   #52c41a !default;	//成功，用于审核通过保存成功等功能提示
+$c-warning:		   #faad14 !default;	//警告，用于关键操作提示
+$c-danger:		   #f5222d !default;	//错误，用于错误提示
+$c-disable:		$c-lighten !default;	//禁用色，用于按钮禁用、icon用色
+//=== 文本链接 ===
+$link-color:             		$c-primary !default;
+$link-hover-color:       		lighten($link-color, 10%) !default;
+$link-active-color:      		darken($link-color, 10%) !default;
+$link-disabled-color:    		$c-disable !default;
+$link-hover-decoration:  		underline !default;
+
+
+// ===4 容器相关
+//用于button、input等
+$box-height: 	32px !default;	//容器高度
+$box-bdrs: 		 4px !default;	//容器圆角半径
+$box-px: 		14px !default;	//容器横向内补丁
+
+$box-height-sm: 26px !default;
+$box-bdrs-sm:    4px !default;
+$box-px-sm:		14px !default;
+
+$box-height-lg: 40px !default;
+$box-bdrs-lg:    4px !default;
+$box-px-lg:		20px !default;
+
+//用于下拉按钮、菜单
+$dropdown-zindex:  				3 !default;
+$dropdown-bgc:     				$c-white !default;
+$dropdown-bdc:     				$c-line !default;
+$dropdown-fz:      				$fz !default;
+$dropdown-bgc-hover: 			$c-hover !default;
+
+//用于badge
+$badge-height: 		24px !default;
+$badge-bdrs: 		4px !default;
+$badge-px: 			6px !default;
+
+$badge-height-sm: 	20px !default;
+$badge-bdrs-sm: 	4px !default;
+$badge-px-sm: 		6px !default;
+
+$badge-height-lg: 	30px !default;
+$badge-bdrs-lg: 	4px !default;
+$badge-px-lg: 		10px !default;
+
+
+// ===5 表单 
+$input-px: 				10px !default;
+$input-bgc:             $c-white !default;
+$input-bg-disabled:     $c-head !default;
+$input-color:           $c-darken !default;
+$input-border:          $c-border !default;
+$input-focus-border:    $c-primary !default;
+
+
+// ===6 分页
+$form-width: 		30px !default;
+$form-width-sm: 	28px !default;
+$form-width-lg: 	45px !default;
+$page-width: 		32px !default;
+$page-width-sm: 	26px !default;
+$page-width-lg: 	46px !default;

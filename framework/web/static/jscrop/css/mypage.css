@@ -1,0 +1,37 @@
+#preview-pane {
+    background-color: white;
+    border-left: 1px solid #dbdbdb;
+    z-index: 2000;
+    width:100px;
+    height: 300px;
+    float: right;
+
+}
+#preview-pane .preview-container {
+    height: 80px;
+    overflow: hidden;
+    width: 80px;
+    margin-top: 80px;
+    margin-left: 10px;
+}
+.preview-container-smaller{
+    height: 40px;
+    overflow: hidden;
+    width: 40px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+.portrait-setting-container{
+    width: 550px;
+    height: 300px;
+    overflow: hidden;
+}
+.jscrop-container{
+    width: 400px;
+    height: 300px;
+    float: left;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+}

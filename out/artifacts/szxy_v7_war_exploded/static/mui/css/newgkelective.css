@@ -1,0 +1,116 @@
+﻿/*公共-重置浏览器*/
+html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif;font-size: 12px;color: #333;}ul,li{margin: 0;padding: 0;list-style: none;}a:hover{text-decoration:underline}ins,a{text-decoration:none;color: #333;}a:hover{text-decoration: none;}
+.mt-5{margin-top: 5px;}.mt-10{margin-top: 10px;}.mt-15{margin-top: 15px;}.mt-20{margin-top: 20px;}.mb-30{margin-bottom: 30px;}.mr-5{margin-right: 5px;}.mr-10{margin-right: 10px;}.mr-15{margin-right: 15px;}.mr-20{margin-right: 20px;}.mr-25{margin-right: 25px;}.mr-30{margin-right: 30px;}.ml-5{margin-left: 5px;}.ml-10{margin-left: 10px;}.ml-20{margin-left: 20px;}.mx-5{margin: 0 5px;}.mx-10{margin: 0 10px;}.pa-10{padding: 10px;}.pa-15{padding: 15px;}.f-12{font-size:12px}.f-13{font-size:13px}.f-14{font-size:14px}.f-15{font-size:15px}.f-16{font-size:16px}.f-17{font-size:17px}.f-18{font-size:18px}.f-20{font-size:20px}.f-22{font-size:22px}.f-24{font-size:24px}.f-32{font-size:32px}
+.mtt-5{margin-top: -5px;}
+.c-red{color:#e64857}.c-pink{color: #ef919c;}.c-darkRed,a.c-darkRed{color:#ed1b2c}.c-blue{color:#0090e9}.c-green{color:#43b244}.c-orange{color:#fe3c09}.c-333{color:#333}.c-444{color:#444}.c-555{color:#555}.c-666{color:#666}.c-777,a.c-777{color:#777}.c-888{color:#888}.c-999,a.c-999{color:#999}.c-cost{text-decoration:line-through;}.c-wb{word-wrap:break-word;word-break:break-all}.placeholder{color:#999}
+.f-left {float:left;}.f-right{float:right;}
+.mui-trash {margin:8px;width:14px;height: 14px;display: inline-block;background-image: url(../images/icon/icon-dele.png); background-size:100% ;}
+.color-gray {color:#999;}
+.color-blue {color:#399eff;}
+.icon-diao {font-size: 12px;padding:1px 3px;border-radius: 3px;background-color:#fb9a00;color:#fff;}
+/*IOS移动web页面支持弹性滚动*/
+.ios-touch{-webkit-overflow-scrolling:touch;}
+/*flexbox布局*/
+.fn-flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.fn-flex-col{-webkit-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+.fn-flex-row{-webkit-box-orient:horizontal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}
+.fn-flex-auto{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+
+/*mui*/
+body,.mui-content {background-color:#f5f5f5;}
+.mui-bg-white {background-color:#fff;}
+.mt10 {margin-top:10px;}
+.f14 {font-size: 14px;}
+.f15 {font-size: 15px;}
+/*header*/
+.mui-bar{background-color: #fff;box-shadow: none;border-bottom: #e5e5e5 solid 1px;}
+.mui-bar .mui-icon{color: #199dff;}
+.mui-bar .mui-icon span {font-size: 15px;}
+.mui-bar .mui-title{font-size: 18px;color: #000;/*margin:0 50px;*/}
+.mui-btn-close {position: absolute;top:0;left:80px;width:40px;height: 44px;line-height: 45px;display: inline-block;color: #fff;font-size: 15px;}
+.mui-bar.mui-bar-tab{background: #fff;border-top: 1px solid #d9d9d9;border-bottom: 0;-webkit-box-shadow: 0 1px 30px #d9d9d9;box-shadow: 0 1px 30px #d9d9d9;}
+.mui-bar-grey{background-color: #f9f9f9;border-bottom: 1px solid #bebebe;box-shadow: none;}
+.mui-bar-grey .mui-icon,.mui-bar-grey .mui-title,.mui-bar-grey .mui-btn-close{color: #333;}
+.mui-bar-nav.mui-bar .mui-icon.mui-txt-conserve {padding-top: 15px;font-size: 16px;font-weight: normal;}
+.mui-bar-nav .mui-icon-arrowdown,.mui-bar-nav .mui-icon-arrowup {font-size: 16px;}
+.mui-bar.mui-bar-search{background: #f0eff5;border-bottom: #cacaca solid 1px;}
+/*底部选项卡*/
+
+/*内容区域*/
+.mui-bg-g {height: 15px;width: 100%;display: block;background-color:#f5f5f5 ;}
+.mui-style01.mui-card {margin: 15px;position: relative;border-radius: 10px;background-color: #fff;background-clip: padding-box;box-shadow: 2px 8px 10px rgba(194, 190, 190, 0.2);} 
+.mui-style01.mui-card .mui-media-header {width: 92%;color:#333;font-size: 16px;margin-bottom: 10px;  white-space:normal}
+.mui-style01.mui-card .mui-table-view-cell {min-height: 90px;}
+.mui-style01.mui-table-view:first-child {margin-top:0;}
+.mui-style01.mui-table-view:before,.mui-style01.mui-table-view:after {background: none;}
+.mui-style01.mui-table-view .mui-media-body {padding-left:5px;}
+.mui-style01.mui-table-view .mui-navigate-right:after {font-size: 20px;}
+.mui-style01 .mui-table-view-cell >a.mui-navigate-right:not(.mui-btn).mui-active {background: none;}
+.mui-choosectime {color:#999;margin-bottom: 0;font-size: 12px;}
+.mui-style01-tip {position: absolute;top:0;right: 10px;font-size: 12px;color:#fff;width:22px;line-height: 14px;padding:5px;border-radius: 0 0 5px 5px;z-index: 2;}
+.mui-table-view-chevron p.f-15 {font-size:15px;}
+.mui-table-view-chevron p.f-14 {font-size:14px;}
+.mui-message {position: absolute;top: 33%;right: 35px;}
+.bgColor-orange {background-color: #ffb156;}
+.bgColor-green {background-color: #38c196;}
+.bgColor-gray {background-color: #d5d5d5;}
+.box-selectCourse {background: #fff;position: relative;padding-bottom: 10px;}
+.box-body {padding:0 5px;}
+.box-border-top:before {position: absolute;right: 0;top: 0;left: 20px;height: 1px;content: ''; -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);background-color: #d9d9d9;}
+.box-header {color:#111;font-size: 15px;padding:10px 20px 2px 20px;}
+.mui-style01.mui-table-view.mui-grid-view .mui-table-view-cell {padding:5px 0 8px 14px;}
+.mui-style01.mui-table-view.mui-grid-view .mui-table-view-cell>a:not(.mui-btn) {margin:0 2px;padding:0;}
+.gk-course-list{overflow:hidden;}
+.gk-course-list > li a{display:block;background-color:#f6f6f6;border:1px solid #c9c9c9;border-radius: 2px;color:#333;}
+.gk-course-list > li a .gk-course-xk {position: absolute;right:5px;top:5px;width: 23px;height: 23px;background: url(../images/icon/x-icon1.png) no-repeat;background-size:100%;}
+.gk-course-list > li.selected a .gk-course-xk {background: url(../images/icon/x-icon2.png) no-repeat;background-size:100%;}
+.gk-course-list > li.disabled{opacity:0.45;}
+.gk-course-list > li.disabled.selected a .gk-course-xk {background: url(../images/icon/x-icon1.png) no-repeat;background-size:100%;}
+.gk-course-img{padding:10px 6%;}
+.gk-course-name{margin:0;font-size:14px;font-weight: normal;line-height:28px;text-align:center;background-color:#e4e4e4;}
+.gk-course-list > li.mui-active .gk-course-img{background:#e4e4e4;}
+.gk-course-list > li.mui-active .gk-course-name{background-color:#d5d5d5;}
+.gk-course{display:inline-block;font-size:0;vertical-align:middle;}
+.gk-course-g{width:68px;height:93px;}
+.gk-course-g + .gk-course-g{margin-left:-52px;}
+.gk-course-g-geography{background:url(../images/icon/g-icon1.png) no-repeat;background-size: 100%;}
+.gk-course-g-chemistry{background:url(../images/icon/g-icon2.png) no-repeat;background-size: 100%;}
+.gk-course-g-technology{background:url(../images/icon/g-icon3.png) no-repeat;background-size: 100%;}
+.gk-course-g-history{background:url(../images/icon/g-icon4.png) no-repeat;background-size: 100%;}
+.gk-course-g-biology{background:url(../images/icon/g-icon5.png) no-repeat;background-size: 100%;}
+.gk-course-g-physics{background:url(../images/icon/g-icon6.png) no-repeat;background-size: 100%;}
+.gk-course-g-politics{background:url(../images/icon/g-icon7.png) no-repeat;background-size: 100%;}
+.gk-course-s{width:70px;height:98px;}
+.gk-course-tip{width: 100%;min-height: 30px;line-height: 20px;padding:5px;margin-bottom: 0;font-size: 14px;border:1px solid #ff5d48;border-left:none;border-right: none;text-align:center;color:#ff5d48;}
+.gk-course-tip-bg {display: block;width: 100%;height:100%;position: absolute;top:0;left:0;z-index: -1;background-color:#f7eae8;opacity: 0.9;}
+.gk-course-tip .mui-icon.mui-minus {width:12px;height: 12px;background:url(../images/icon/x-icon3.png) no-repeat;background-size: 100%;vertical-align: middle;padding-bottom: 5px;margin-right: 5px;}
+.gk-course-btn{margin:30px 0;}
+.gk-course-tip2{padding:5px 15px;margin:5px 15px 8px 15px;border:1px solid #ff5d48;border-radius:2px;background-color:#fce5e0;color: #ff5d48;font-size: 12px;line-height: 18px;}
+
+.mui-km-course .gk-course-list {margin:10px 15px;}
+.mui-km-course .gk-course-list > li{float:left;margin-bottom: 10px;} 
+.mui-km-course .gk-course-list > li a { background: none; border: none;}
+.mui-km-course .gk-course-list .gk-course-name {border-radius: 45px;margin: 0 5px;background-color: #f2f1f3; color:#333;font-size: 14px;}
+.mui-km-course .gk-course-list > li.selected a .gk-course-name{background-color: #399eff;color:#fff;}
+.mui-bar.mui-bar-tab.mui-bar-course{height:auto;background: transparent;border-top:none;box-shadow: none;-webkit-box-shadow:none;}
+.mui-bar-courseBtn {width:100%;height: 60px;background-color: #fff;text-align: center;}
+.mui-bar .mui-bar-courseBtn .mui-btn {width:100%;max-width:150px;right:0;top:10px;border-radius: 40px;height: 40px;line-height: 40px;padding:0;font-size: 16px;}
+.mui-bar-courseBtn .mui-btn.mui-btn-grey {background-color: #d5d5d5;border:none;}
+.mui-bar-courseBtn .mui-btn.mui-btn-primary {background: -webkit-linear-gradient(left, #19caff , #199dff);background: -moz-linear-gradient(left, #19caff , #199dff);background: -o-linear-gradient(left, #19caff , #199dff);background: linear-gradient(left, #19caff , #199dff);box-shadow: 1px 1px 15px 1px #b3e7f7;}
+.mui-choose-tip {display: block;height: 40px;line-height: 40px;margin:10px 5px 10px 20px;font-size: 15px;text-align: left;}
+.mspace {padding:0 3px;}
+.mr-b5 {margin-right: 5%;}
+/*页面无数据*/
+.mui-page-noData{margin: 180px 20px 50px;text-align: center;}
+.mui-page-noData i{display: inline-block;background-size: 100%;margin-bottom: 5px;}
+.mui-page-noData i{width: 120px;height: 97px;background-image: url(../images/icon/noData-tip.png);}
+.mui-page-noData .opt{color:#999;}
+
+
+/*placeholder字体颜色*/
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {color: #ccc;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {color: #ccc;}
+input:-moz-placeholder, textarea:-moz-placeholder {color: #ccc;}
+input::-moz-placeholder, textarea::-moz-placeholder {color: #ccc;}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {color: #ccc;}

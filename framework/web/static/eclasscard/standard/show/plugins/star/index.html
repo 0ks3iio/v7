@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>星级评分插件</title>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="js/star.js"></script> 
+    <style type="text/css">
+      *{
+        margin:0;
+        padding:0;
+
+
+      }
+      h3{
+        text-align: center;
+        margin-top: 100px;
+      }
+      body{
+        background:#e2e9f1;
+      }
+      li{
+        list-style: none;
+      }
+      .rating{
+        width:240px;
+        height:48px;
+        margin:20px auto;
+      }
+      .rating-item{
+        float: left;
+        width:47px;
+        height:47px;
+        background:url(images/icon.png) no-repeat;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+
+<!-- 星级评价 -->
+   <h3>默认点亮半颗星星(点击后可再选)</h3>
+   <ul id = "rating" class="rating">
+       <li class="rating-item" title="很不好"></li>
+       <li class="rating-item" title="不好"></li>
+       <li class="rating-item" title="一般"></li>
+       <li class="rating-item" title="好"></li>
+       <li class="rating-item" title="很好"></li>
+   </ul>
+   <h3>默认点亮整颗半颗(点击后禁止可选)</h3>
+    <ul id = "rating2" class="rating">
+       <li class="rating-item" title="很不好"></li>
+       <li class="rating-item" title="不好"></li>
+       <li class="rating-item" title="一般"></li>
+       <li class="rating-item" title="好"></li>
+       <li class="rating-item" title="很好"></li>
+   </ul>
+
+<script>
+//调用方法
+//点击后可再选
+$('#rating').star({
+     mode:'LightEntire', //整颗星
+     num:2,
+});
+//点击后禁止再可选
+$('#rating2').star({
+     mode:'LightHalf', //半颗星
+     num:2.5
+});
+$('#rating2').on('chosen',function(){
+     $('#rating').star('unbindEvent');
+})
+</script>
+</body>
+</html>

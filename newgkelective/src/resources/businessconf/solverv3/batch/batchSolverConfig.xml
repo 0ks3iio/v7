@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
+	<solutionClass>net.zdsoft.newgkelective.data.optaplanner.domain.batch.BatchScheduleSolution</solutionClass>
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.domain.batch.BatchLecture</entityClass>
+
+	<scoreDirectorFactory>
+		<scoreDrl>businessconf/solverv3/batch/batchSolverRules.drl</scoreDrl>
+	</scoreDirectorFactory>
+
+	<termination>
+		<!-- <secondsSpentLimit>600</secondsSpentLimit> -->
+		<bestScoreLimit>[0/0]hard/[0/0]soft</bestScoreLimit>
+	</termination>
+	<noChangePhase />
+	
+	<!-- <constructionHeuristic>
+	    <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+	  </constructionHeuristic> -->
+	
+	<localSearch>
+  		<unionMoveSelector>
+   			<changeMoveSelector/>
+			<swapMoveSelector/>
+		</unionMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>3</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<lateAcceptanceSize>400</lateAcceptanceSize>
+			<simulatedAnnealingStartingTemperature>[0/0]hard/[0/0]soft</simulatedAnnealingStartingTemperature>
+			<!-- <stepCountingHillClimbingSize>400</stepCountingHillClimbingSize> -->
+			<entityTabuSize>5</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+	</localSearch>
+
+	<!-- <localSearch>
+  		<unionMoveSelector>
+   			<changeMoveSelector/>
+			<swapMoveSelector>
+				<filterClass>net.zdsoft.newgkelective.data.optaplanner.func.LectureSwapMoveFilter</filterClass>
+			</swapMoveSelector>
+		</unionMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>100</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<entityTabuSize>15</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1000</acceptedCountLimit>
+			<finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType>
+		</forager>
+	</localSearch> -->	
+</solver>

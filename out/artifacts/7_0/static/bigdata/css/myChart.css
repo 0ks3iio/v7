@@ -1,0 +1,91 @@
+.box-self{
+    position:relative;
+    margin-bottom:20px;
+    padding: 10px 0px 20px;
+}
+.box-header-self{
+    position:relative;
+}
+.box-title-self{
+    padding:20px 0;
+    font-size:20px;
+    font-weight:normal;
+    line-height:20px;
+    text-align:center;
+    font-weight: bolder;
+    color:#535353;
+}
+.box-body-self{
+    padding:0 20px;
+}
+
+/*自定义数值*/
+.teacher-number{
+    margin:0 -1.7%;
+    overflow:hidden;
+    font-size:0;
+    text-align:center;
+}
+.teacher-number li{
+    display:inline-block;
+    padding:12px 2.6%;
+    border:1px solid #666;
+    border-radius:5px;
+    margin:0 1.6%;
+    font-size:24px;
+    line-height:1;
+    color:#535353;
+    font-weight: bolder;
+}
+
+/*比例*/
+.teacher-sex{
+    border-radius:15px;
+    overflow:hidden;
+    height:28px;
+    line-height:28px;
+}
+.teacher-sex div{
+    float:left;
+    height:100%;
+    font-size:14px;
+    text-align:right;
+    color:#fff;
+}
+.teacher-sex-male{background-color:#1f83f5;}
+.teacher-sex-female{background-color:#d142a4;}
+
+/*报表*/
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+td,
+th {
+    padding: 0;
+}
+.table-self{
+    width:100%;
+    max-width:100%;
+}
+.table-self th,
+.table-self td{
+    padding:10px 12px;
+    text-align: left;
+}
+.table-self thead, .table-self tbody{border-bottom: 3px solid #999}
+.table-self thead{border-top: 3px solid #999;}
+.table-self th{color: #323232;}
+.table-self td{border-bottom:1px solid #999;color: #343434;}
+
+/*字体数值*/
+@font-face {
+    font-family: Quartz;
+    src: url("../css/fonts/Quartz Regular.ttf");
+}
+.number-self {
+    font-family: Quartz , sans-serif;
+    font-size: 72px;
+    color: #368ff7;
+    text-align: center;
+}

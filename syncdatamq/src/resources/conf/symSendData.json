@@ -1,0 +1,24 @@
+{
+	"base_unit_sample": {
+		"where_filter_column": "modify_time",
+		"order_by_column": "creation_time",
+		"where_extend": "",
+		"send_column_ignore": "",
+		"send_column_only": ""
+	},
+	"base_student_sample": {
+		"where_filter_column": "modify_time",
+		"order_by_column": "creation_time",
+		"where_extend": "",
+		"send_column_ignore": "",
+		"send_column_only": ""
+	},
+	"base_unit": {
+		"where_filter_column": "modify_time",
+		"order_by_column": "creation_time",
+		"where_extend": "",
+		"send_column_ignore": "",
+		"send_column_only": "",
+		"set_date":[{"name":"root_unit_id", "vlaue":"962e31d2d4624bfeae38db90e50226e5"}]
+	}
+}

@@ -1,0 +1,154 @@
+@import 'var';
+@import 'mixin';
+
+/* =12 feedback */
+.feedback {
+	position: fixed;
+	right: 10px;
+	bottom: 30px;
+	z-index: 11;
+	
+	> a {
+		position: relative;
+		z-index: 10;
+		display: block;
+		width: 44px;
+		height: 44px;
+		background-color: #a3a0a0;
+		margin-bottom: 5px;
+		overflow: hidden;
+		text-decoration: none;
+		
+		> i,
+		> span,
+		&:after {
+			position: absolute;
+		    display: block;
+		}
+		
+		> i,
+		> span {
+			z-index: 12;
+		}
+		
+		> i {
+			top: 9px;
+			right: 9px;
+			width: 26px;
+			height: 26px;
+			background: url(../images/spirit/feedback.png) no-repeat 0 0;
+		}
+		
+		&.code > i {
+			background-position: 0 0;
+		}
+		
+		&.service > i {
+			background-position: 0 -26px;
+		}
+		
+		&.help > i {
+			background-position: 0 -52px;
+		}
+		
+		&.top > i {
+			background-position: 0 -78px;
+		}
+		
+		> span {
+			top: 8px;
+			right: 5px;
+			bottom: 8px;
+			left: 5px;
+			display: none;
+			line-height: 14px;
+			text-align: center;
+			font-size: $fz-sm;
+			color: $c-white;
+		}
+		
+		&:after {
+			top: 22px;
+		    left: 22px;
+		    z-index: 11;
+		    content: " ";
+		    width: 0;
+		    height: 0;
+		    border-radius: 50%;
+		    @include transition(all .32s cubic-bezier(.24,.82,.48,.89));
+		}
+		
+		&:hover {
+			//IE7
+			*background-color: $c-primary;
+			
+			> i {
+				display: none;
+			}
+			
+			> span {
+				display: block;
+			}
+			
+			&:after {
+				top: -8px;
+			    left: -8px;
+			    width: 60px;
+			    height: 60px;
+				background-color: $c-primary;
+			}
+		}
+	}
+	
+	> .code-layer {
+		position: absolute;
+		top: 0;
+		right: 60px;
+		display: none;
+		*width: 200px;
+		background-color: $c-white;
+		border: 1px solid $c-border;
+		padding: 10px;
+		white-space:nowrap;
+		
+		> p {
+			display: inline-block;
+			*float: left;
+			width: 100px;
+			text-align: center;
+			
+			> img {
+				display: block;
+				width: 80px;
+				height: 80px;
+				margin: 0 auto;
+			}
+		}
+		
+		&:before,
+		&:after {
+			position:absolute;
+			display: block;
+			content: " ";
+			width:0;
+			height:0;
+			border-width:12px 0 12px 12px;
+			border-style:solid;
+		}
+		
+		&:before {
+			top:12px;
+			right:-12px;
+			z-index: 10;
+			border-color:transparent transparent transparent $c-border;
+		}
+		
+		&:after {
+			top:12px;
+			right:-11px;
+			z-index: 11;
+			border-color:transparent transparent transparent $c-white;
+		}
+		
+	}
+}

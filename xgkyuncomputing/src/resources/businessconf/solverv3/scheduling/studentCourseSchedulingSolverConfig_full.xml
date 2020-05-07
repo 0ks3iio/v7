@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
+	<solutionClass>net.zdsoft.newgkelective.data.optaplanner.domain.scheduling.CGStudentCourseSchedule</solutionClass>
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.domain.scheduling.CGSectionLecture</entityClass>
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.domain.scheduling.CGPeriod</entityClass>
+	<!-- <entityClass>net.zdsoft.newgkelective.data.optaplanner.domain.scheduling.CGCourseSection</entityClass> -->
+
+	<scoreDirectorFactory>
+		<!-- <scoreDrl>businessconf/solverv3/scheduling/studentCourseSchedulingRules3.0.drl</scoreDrl> -->
+		<scoreDrl>businessconf/solverv3/scheduling/studentCourseSchedulingRules.drl</scoreDrl>
+	</scoreDirectorFactory>
+
+	<moveThreadCount>AUTO</moveThreadCount>
+	<termination>
+		<terminationCompositionStyle>OR</terminationCompositionStyle>
+		<secondsSpentLimit>1500</secondsSpentLimit>
+		<bestScoreLimit>[0/0/0/0]hard/[0/0/-2000]soft</bestScoreLimit>
+	</termination>
+	<noChangePhase />
+	
+	<localSearch>
+		<unionMoveSelector>
+   			<changeMoveSelector/>
+			<swapMoveSelector>
+				<filterClass>net.zdsoft.newgkelective.data.optaplanner.util.LectureSwapMoveFilter</filterClass>
+			</swapMoveSelector>
+		</unionMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<lateAcceptanceSize>400</lateAcceptanceSize>
+			<entityTabuSize>5</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+	</localSearch>
+	
+	<localSearch>
+		<unionMoveSelector>
+   			<changeMoveSelector/>
+			<swapMoveSelector>
+				<filterClass>net.zdsoft.newgkelective.data.optaplanner.util.LectureSwapMoveFilter</filterClass>
+			</swapMoveSelector>
+		</unionMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>50</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<entityTabuSize>15</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1000</acceptedCountLimit>
+		</forager>
+	</localSearch>	
+
+</solver>

@@ -1,0 +1,19 @@
+.header-wrap-login,.header-wrap,.footer-wrap{min-width:1200px;}
+
+/* header */
+.header-wrap{height:109px;background:#fff;border-bottom:1px solid #d13434;}
+.header-inner{width:1200px;margin:0 auto;}
+.logo{float:left;width:215px;height:90px;margin: 10px 0 9px;}
+.logo a{display: block;height: 41px;margin-top: 25px;}
+.logo img{height:41px;}
+.header-name{float:left;width:200px;height:55px;line-height:55px;border-left:1px solid #e9e9e9;padding-left:20px;margin-top:27px;font-size:24px;color:#333;}
+.header-login-inner .back-home{float:right;display:inline-block;height:20px;padding-left:25px;margin-top:44px;background:url(../images/icon/home.png) left top no-repeat;line-height:20px;font-size:14px;color:#666;}
+.header-login-inner .back-home:hover{color:#d13434;background-position: left -20px;text-decoration: none;}
+.header-wrap-login{height: 80px;margin-bottom: -20px;}
+.header-wrap-login .logo{height:61px;}
+.header-wrap-login .logo a{margin-top: 10px;}
+
+/* footer */
+.footer-wrap{position:absolute; bottom:0; width:100%;background:#434343;}
+.footer-inner{width:1200px;margin:0 auto;color: #999;text-align: center;line-height: 50px;font-size: 14px;}
+.footer-wrap-login{position:absolute; bottom:0; width:100%;background:#fff;color: #8f8f8f;text-align: center;line-height: 50px;}

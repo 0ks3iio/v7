@@ -1,0 +1,12 @@
+/********** 面包屑 **********/
+.breadcrumb {display:none;position:fixed;top:46px;left:210px;right:0;z-index:1000;border-bottom:1px solid #e8e8e8;border-radius:0;-webkit-box-shadow:0px 1px 3px rgba(207,210,212,0.6);box-shadow:0px 1px 3px rgba(207,210,212,0.6);background:#fff;}
+.sidebar.collapsed + .main-content .breadcrumb{left:60px;-webkit-transition:left .15s;-o-transition:left .15s;transition:left .15s;}
+.page-tab-wrap.show + .main-content-inner > .breadcrumb{top:86px;}
+.breadcrumb li{float:left;}
+.breadcrumb li + li:before {padding:0 10px;content: "\f105";font-family: 'FontAwesome';color: #cfd7e3;}
+.breadcrumb li a,.breadcrumb li.active {color: #317eeb;}
+.breadcrumb .back{float:left;display:inline-block;width:44px;height:24px;margin:0 15px 0 -15px;border-right:1px solid #e8e8e8;background: url(../images/public/back.png) center center no-repeat;}
+.breadcrumb .title{float:left;font-size: 16px;color: #333;font-weight: bold;}
+.breadcrumb.show + .page-content{padding: 60px 20px 20px 20px;}
+
+

@@ -1,0 +1,67 @@
+
+package net.zdsoft.optaplanner.selectionschedulesolution.solver;
+    dialect "java"
+
+import org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScoreHolder;
+
+import java.util.List
+import java.util.ArrayList;
+
+import net.zdsoft.gkelective.data.action.optaplanner.domain.ArrangeClassRoom;
+import net.zdsoft.gkelective.data.action.optaplanner.domain.ArrangeStudent;
+import net.zdsoft.gkelective.data.action.optaplanner.domain.ArrangeConstantInfo;
+import net.zdsoft.gkelective.data.action.optaplanner.domain.ArrangeSubjectBatch;
+import function net.zdsoft.gkelective.data.action.optaplanner.func.DroolsDebugUtility.print;
+import function net.zdsoft.gkelective.data.action.optaplanner.func.SelectionScheduleFunction.calcStudentTooManyInOneRoomFunc;
+import function net.zdsoft.gkelective.data.action.optaplanner.func.SelectionScheduleFunction.calAveScore;
+
+global HardMediumSoftScoreHolder scoreHolder;
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+
+// 学生不能没有班级批次上课
+rule "assignEveryStudentToAClassRoom"
+    when
+        $student : ArrangeStudent(subjectBatch == null)
+    then
+    	//print(drools, "assignEveryStudentToAClassRoom");
+        scoreHolder.addHardConstraintMatch(kcontext, -1);
+end
+
+// ############################################################################
+// Medium constraints
+// ############################################################################
+
+// 教室容量有限,学生不能太多挤在一个批次
+rule "calcStudentTooManyInOneRoomFunc"
+    when
+        $constantInfo : ArrangeConstantInfo()
+        $studentList : List() 
+	        from accumulate(
+	             $student : ArrangeStudent(subjectBatch != null),
+	            collectList( $student )
+	        )
+    then
+    	//print(drools, "calcStudentTooManyInOneRoomFunc");
+        scoreHolder.addMediumConstraintMatch(kcontext,  calcStudentTooManyInOneRoomFunc($constantInfo, $studentList));
+end
+
+// ############################################################################
+// Soft constraints
+// ############################################################################
+
+//班级平均分
+//rule "calAveScore"
+//    when
+//        $constantInfo : ArrangeConstantInfo()
+//        $studentList : List() 
+//	        from accumulate(
+//	             $student : ArrangeStudent(subjectBatch != null),
+//	            collectList( $student )
+//	        )
+//    then
+//    	//print(drools, "calAveScore");
+//        scoreHolder.addSoftConstraintMatch(kcontext,  calAveScore($constantInfo, $studentList));
+//end

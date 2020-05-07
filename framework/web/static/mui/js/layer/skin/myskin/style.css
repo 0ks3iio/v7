@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+
+body .layer-ext-myskin .layui-layer-title{ background:#2e8ded; color:#fff;}
+body .layer-ext-myskin .layui-layer-btn{}
+body .layer-ext-myskin .layui-layer-btn a{}

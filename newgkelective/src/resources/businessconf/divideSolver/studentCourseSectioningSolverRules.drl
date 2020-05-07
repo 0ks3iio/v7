@@ -1,0 +1,75 @@
+/*
+ * Copyright 2010 Red Hat, Inc. and/or its affiliates.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package net.zdsoft.newgkelective.data.optaplanner.c3f7sectioningv4.solver;
+    dialect "java"
+
+import org.optaplanner.core.api.score.buildin.bendable.*;
+
+import net.zdsoft.newgkelective.data.optaplanner.c3f7sectioningv4.domain.*;
+import function net.zdsoft.newgkelective.data.optaplanner.c3f7sectioningv4.domain.CourseSection.getCourseSectionConflictCount;
+
+global BendableScoreHolder scoreHolder;
+
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+
+//班级人数不能爆仓
+rule "rule1"
+	when
+		CourseSection($currentStudentCount : currentStudentCount, $maxSectionSize : maxSectionSize, $currentStudentCount > $maxSectionSize)
+	then
+		//scoreHolder.addHardConstraintMatch(kcontext, 0, -1 * ($currentStudentCount - $maxSectionSize));
+		scoreHolder.addHardConstraintMatch(kcontext, 0, -1);
+end
+
+
+//教学班之间的冲突，要最少
+rule "rule0"
+	when
+		$section1 : CourseSection($id : id, $course : course, currentStudentCount > 0, $currentStudentBitSet1 : currentStudentBitSet)
+		//CourseSection(id != $id, $conflictStudentCount : this.getCourseSectionConflictCount($courseSection), $conflictStudentCount > 0)
+		$section2 : CourseSection(id > $id, course != $course, currentStudentBitSet.intersects($currentStudentBitSet1))
+	then
+		//scoreHolder.addHardConstraintMatch(kcontext, 1, -1 * getCourseSectionConflictCount($section1, $section2));
+		scoreHolder.addHardConstraintMatch(kcontext, 1, -1);
+end
+
+
+//班级人数要均匀
+rule "rule2"
+	when
+		CourseSection($currentStudentCount : currentStudentCount, $avgSectionSize : avgSectionSize, $currentStudentCount > 0)
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, 2, -1 * ($currentStudentCount - $avgSectionSize) * ($currentStudentCount - $avgSectionSize));
+end
+
+/*
+//平行班的平均成绩要相等
+rule "rule3"
+	when
+		CourseSection($currentStudentCount : currentStudentCount, $currentAvgCourseScore : currentAvgCourseScore, $avgCourseScore : avgCourseScore, $currentStudentCount > 0)
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, 3, -1 * ($currentAvgCourseScore - $avgCourseScore) * ($currentAvgCourseScore - $avgCourseScore));
+end
+*/
+
+// ############################################################################
+// Soft constraints
+// ############################################################################
+

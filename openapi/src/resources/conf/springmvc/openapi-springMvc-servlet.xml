@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+    http://www.springframework.org/schema/aop   
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx 
+ 	http://www.springframework.org/schema/tx/spring-tx.xsd    
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+	<!-- interceptor setting -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+            <mvc:mapping path="/remote/openapi/**"/>
+            <mvc:mapping path="/openapi/**"/>
+            <mvc:exclude-mapping path="/remote/openapi/office/**"/>
+            <mvc:exclude-mapping path="/remote/openapi/stuLeave/info"/>
+            <mvc:exclude-mapping path="/remote/openapi/userSubscribe/**"/>
+            <mvc:exclude-mapping path="/remote/openapi/listDept"/> 
+            <mvc:exclude-mapping path="/remote/openapi/listDeptUser"/> 
+            <mvc:exclude-mapping path="/remote/openapi/listGroup"/> 
+            <mvc:exclude-mapping path="/remote/openapi/listGroupItems"/> 
+            <mvc:exclude-mapping path="/remote/openapi/listUnitDuty"/> 
+            <mvc:exclude-mapping path="/remote/openapi/listDutyUser"/> 
+            <mvc:exclude-mapping path="/remote/openapi/listUnits"/> 
+            <mvc:exclude-mapping path="/remote/openapi/listTeacher"/> 
+            <mvc:exclude-mapping path="/remote/openapi/mcode/**"/> 
+            <mvc:exclude-mapping path="/openapi/listDept"/> 
+            <mvc:exclude-mapping path="/openapi/listDeptUser"/> 
+            <mvc:exclude-mapping path="/openapi/listGroup"/> 
+            <mvc:exclude-mapping path="/openapi/listGroupItems"/> 
+            <mvc:exclude-mapping path="/openapi/listUnitDuty"/> 
+            <mvc:exclude-mapping path="/openapi/listDutyUser"/> 
+            <mvc:exclude-mapping path="/openapi/listUnits"/> 
+            <mvc:exclude-mapping path="/openapi/listTeacher"/> 
+            <mvc:exclude-mapping path="/remote/openapi/outside/**"/>
+             
+            <mvc:exclude-mapping path="/openapi/devDoc/万朋单点认证(passport)接入说明V2.2.doc"/> 
+            <bean class="net.zdsoft.remote.openapi.interceptor.DataInterfaceInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+           <mvc:mapping path="/remote/openapi/v2.0/**"/>
+           <mvc:mapping path="/openapi/v2.0/**"/>
+           <mvc:mapping path="/remote/openapi/update/v2.0/**"/>
+           <mvc:mapping path="/openapi/update/v2.0/**"/>
+           <mvc:mapping path="/remote/openapi/sync/v2.0/**"/>
+           <mvc:mapping path="/openapi/sync/v2.0/**"/>
+           <bean class="net.zdsoft.remote.openapi.interceptor.InterfaceJudgeInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/developer/**" />
+            <mvc:mapping path="/data/manage/**" />
+            <mvc:exclude-mapping path="/developer/regist"/> 
+            <mvc:exclude-mapping path="/developer/regist/**"/> 
+            <mvc:exclude-mapping path="/developer/showClause"/> 
+            <mvc:exclude-mapping path="/developer/index"/> 
+            <mvc:exclude-mapping path="/developer/login"/> 
+            <mvc:exclude-mapping path="/developer/verifyImage"/>
+            <mvc:exclude-mapping path="/developer/devDoc/**"/>
+            <mvc:exclude-mapping path="/data/manage/page"/>
+            <mvc:exclude-mapping path="/data/manage/interface"/>  
+            <mvc:exclude-mapping path="/data/manage/param"/>  
+            <mvc:exclude-mapping path="/developer/sso/**"/>
+            <mvc:exclude-mapping path="/data/manage/business/**"/>
+            <mvc:exclude-mapping path="/developer/interface/count/**"/>
+            <bean class="net.zdsoft.remote.openapi.interceptor.GlobalInterceptor">
+            </bean>
+        </mvc:interceptor>
+	</mvc:interceptors>
+</beans>

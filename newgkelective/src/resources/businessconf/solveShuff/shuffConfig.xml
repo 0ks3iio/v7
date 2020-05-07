@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
+	<solutionClass>net.zdsoft.newgkelective.data.optaplanner.shuff.domain.ShuffleSolution</solutionClass>
+	
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.shuff.domain.GroupSubject</entityClass>
+	<entityClass>net.zdsoft.newgkelective.data.optaplanner.shuff.domain.TimeSlot</entityClass>
+
+	<scoreDirectorFactory>
+		<scoreDrl>businessconf/solveShuff/shuffSolve.drl</scoreDrl>
+	</scoreDirectorFactory>
+
+	<termination>
+		<terminationCompositionStyle>OR</terminationCompositionStyle>
+		<secondsSpentLimit>3600</secondsSpentLimit>
+		<bestScoreLimit>[0/0]hard/[0/0]soft</bestScoreLimit>
+	</termination>
+	<noChangePhase />
+	
+   	<localSearch>
+		<swapMoveSelector>
+			<filterClass>net.zdsoft.newgkelective.data.optaplanner.shuff.domain.ShuffSwapFilter</filterClass>
+		 </swapMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>15</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<lateAcceptanceSize>400</lateAcceptanceSize>
+			<entityTabuSize>5</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1</acceptedCountLimit>
+		</forager>
+	</localSearch>    
+	
+	<localSearch>
+		<swapMoveSelector>
+			<filterClass>net.zdsoft.newgkelective.data.optaplanner.shuff.domain.ShuffSwapFilter</filterClass>
+		 </swapMoveSelector>
+		
+		<termination>
+			<unimprovedSecondsSpentLimit>15</unimprovedSecondsSpentLimit>
+		</termination>
+	
+		<acceptor>
+			<entityTabuSize>9</entityTabuSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>1000</acceptedCountLimit>
+		</forager>
+	</localSearch>
+</solver>

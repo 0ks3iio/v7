@@ -1,0 +1,228 @@
+body{background:#fff;overflow-x:auto;overflow-y:hidden;color:#444;}
+#header,#container{min-width:1190px;}
+#header{height:40px;background:#317eeb;}
+#header .tt{float:left;width:200px;padding-left:10px;font:100 18px/40px "Microsoft YaHei";color:#fff;}
+#header .opt{float:right;width:500px;text-align:right;}
+#header .opt a{display:inline-block;height:40px;line-height:40px;background:#1665c1;padding:0 15px;font-size:14px;font-weight:700;color:#fff;}
+#container{}
+.sidebar-left{position:relative;float:left;width:160px;min-height:500px;background:#374051;border-right:3px solid #efeeee;}
+.sidebar-left .group-list{border-bottom:1px solid #495263;overflow: auto;}
+.sidebar-left .group-list .title{position:relative;height:39px;padding-left:9px;border-bottom:1px solid #495263;border-top:1px solid #495263;color: #fff;font-size: 14px;line-height:39px;cursor: pointer;}
+.sidebar-left .group-list .title i{position: absolute;right: 9px;top: 12px;}
+.sidebar-left ol{display: none;overflow: auto;}
+.sidebar-left ol li a{display:block;height:39px;line-height:39px;padding-left:18px;font-size:14px;color:#fff;}
+.sidebar-left ol li a:hover,.sidebar-left ol li.current a{background:#317eeb;text-decoration:none;color:#fff;}
+.sidebar-left ul{border-top:1px solid #4a5364;border-left:1px solid #4a5364;overflow:auto;}
+.sidebar-left ul li{border-bottom:1px solid #495263;}
+.sidebar-left ul li a{display:block;height:39px;line-height:39px;padding-left:9px;font-size:14px;color:#fff;}
+.sidebar-left ul li a:hover,.sidebar-left ul li.current a{background:#317eeb;text-decoration:none;color:#fff;}
+.sidebar-filter{}
+.sidebar-filter p.tt{background:#6f7b92;border:1px solid #6f7b92;padding:0 5px;margin:10px 5px;}
+.sidebar-filter p.tt .txt{width:100%;height:20px;line-height:20px;background:none;border:0;color:#fff;}
+.sidebar-filter p.tt input::-webkit-input-placeholder{color:#374051;}
+.sidebar-filter .inner{position:relative;margin:0 6px;}
+.sidebar-filter .list{position:absolute;top:-10px;left:-1px;display:none;width:100%;max-height:200px;background:#6f7b92;border:1px solid #6f7b92;border-top:0;overflow:auto;z-index: 1;}
+.sidebar-filter .list a{display:block;height:20px;line-height:20px;padding:0 5px;color:#fff;}
+.sidebar-filter .list a:hover{background:#000;text-decoration:none;}
+.sidebar-right{float:right;min-height:500px;border-left:3px solid #efeeee;}
+.content{min-height:500px; margin-left: 163px;}
+.re-content{margin-left: 0;}
+
+
+/*排课表*/
+.syllabus-table{width:100%;border-collapse:collapse;}
+.syllabus-table th,.syllabus-table td{border:1px solid #bfbfbf;text-align:center;}
+.syllabus-table th{background:#f1f2f6;}
+.syllabus-table td{background:#f7fcff;}
+.syllabus-table td.line{background:#fff;font-size:0;}
+span.item{position: relative;display:block;min-height:20px;background:#daf4da;margin:1px;overflow:hidden;}
+span.item-hover{background:#f6fbff;}/*鼠标滑过*/
+span.item-can{background:#9fe09f;}/*可选*/
+span.item-lock{background:#fee8ba;}/*已选中 锁定*/
+span.item-sel{background:#ffa2a2 !important;}/*已选中*/
+span.item-con{background:#f6fbff;}/*冲突*/
+span.item span{display:block;text-align:center;white-space:nowrap;overflow:hidden;}
+span.item .course,span.item .otherCourse{color:#444;font-weight: bold;}
+span.item .room,span.item .otherRoom{color:#444;font-size: 12px;}
+span.item .name,span.item .otherName,span.item .grade{color:#0863d5;}
+span.item .icon{position: absolute;top: 0;right: 0;display: block;width: 18px;}
+span.item .icon i{display: block;height: 18px;line-height: 18px;border-radius: 1px;margin-bottom: 1px;text-align: center;font-style:normal;}
+span.item .icon-t{background-color: #fecd57;color: #ac7f12;}
+span.item .icon-d{background-color: #5fca43;color: #23860d;}
+span.item .icon-g{background-color: #f38585;color: #a03030;}
+
+span.item .s-d-week{float: left;width: 50%;}
+span.item .s-d-week .course,span.item .s-d-week .otherCourse{display:inline-block;max-width: 45px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+span.item .s-d-week .type{position:relative;display: inline-block;width:15px;border-radius:50%;background: rgba(0,0,0,.2);font-size: 12px;line-height: 15px;}
+span.item .replace{position: absolute;top: 0;left: 50%;bottom:0;width:21px;margin-left:-10px;background: url(../images/array/replace-bg.png) center center no-repeat;}
+span.item .replace a{position:absolute;left:5px;top:50%;margin-top:-8px;color: #444;}
+span.item .replace a:hover{color: #337fe9;text-decoration: none;}
+/*班级课表*/
+.content .syllabus-tt{height:45px;background:#c5e1fb;}
+.content .syllabus-tt .tit{margin-right:180px;height:45px;line-height:45px;padding-left:15px;font-size:16px;font-weight:700;overflow:hidden;}
+.content .syllabus-tt .tit a{font-size:12px;}
+.content .syllabus-tt .tips{float:right;float:right;width:180px;}
+.content .syllabus-tt .tips span{display:block;float:left;width:56px;height:14px;line-height:14px;padding-left:24px;margin-top:5px;}
+.content .syllabus-tt .tips span.lock{background:url(../images/array/logo_1.png) no-repeat;width:76px;}
+.content .syllabus-tt .tips span.con{background:url(../images/array/logo_3.png) no-repeat;}
+.content .syllabus-tt .tips span.can{background:url(../images/array/logo_4.png) no-repeat;}
+.content .syllabus-tt .tips span.sel{background:url(../images/array/logo_2.png) no-repeat;width:76px;}
+.content .syllabus-table th{height:38px;font-size:14px;font-weight:700;}
+.content .syllabus-table th.sort{width:30px;}
+.content .syllabus-table td{font:100 14px "Microsoft YaHei";}
+.content .syllabus-table td.line{height:9px;}
+.content .syllabus-table td span.item-hover .course,.content .syllabus-table td span.item-hover .room,.content .syllabus-table td span.item-hover .otherCourse,.content .syllabus-table td span.item-hover .otherRoom{color:#0863d5;}
+.content .syllabus-table span.item{width: auto !important;}
+.content .syllabus-tt2{height:75px;}
+.content .syllabus-tt2 .tips{padding-top:15px;}
+.content .syllabus-tt2 .tit-info{padding-left:10px;}
+.content .syllabus-tt2 .tit-info .info{padding:10px 0;font-weight:700;}
+.content .syllabus-tt2 .tit-info .info span{margin-right:5px;font-size:16px;}
+.content .syllabus-tt2 .tit-info .abtn{float:left;display:block;width:24px;height:24px;line-height:24px;background:#3198dd;border-radius:3px;text-align:center;font-size:14px;font-weight:700;color:#fff;}
+.content .syllabus-tt2 .tit-info .abtn:hover{text-decoration:none;}
+.content .syllabus-tt2 .tit-info .abtn-no{background:#959a9e;cursor:inherit;}
+
+/*教师课表*/
+.sidebar-right .syllabus-tt{height:22px;line-height:22px;background:#e6f3ff;border-right:1px solid #c8c8c8;border-left:1px solid #c8c8c8;font-weight:700;}
+.sidebar-right .syllabus-tt .tab{float: left;width: 50%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sidebar-right .syllabus-tt .tab.active{border-bottom:1px solid #317eeb;color: #317eeb;}
+.sidebar-right .syllabus-table th{height:22px;font-weight:100;}
+.sidebar-right .syllabus-table th.sort{width:22px;}
+.sidebar-right .syllabus-table td.line{height:3px;}
+.sidebar-right .syllabus-table td span.item{background:#f6fbff;}
+.sidebar-right .syllabus-table td span.item-can{background:#9fe0a0;}/*可选*/
+.sidebar-right .syllabus-table td span.item-over{background:#6cc46c;}/*先选中后鼠标滑过*/
+.sidebar-right .syllabus-table td span.item-hover{background:#ace3ac;}/*鼠标滑过*/
+.sidebar-right .syllabus-table td span.item-lock{background:#fef0d1;}/*已选中 锁定*/
+.sidebar-right .syllabus-table td span.odd-even:last-child{border-top: 1px solid #c8c8c8;}
+.sidebar-right .syllabus-table td span.odd-even:last-child span:first-child{border-top: 1px solid #f7fbff;}
+/*未排课程*/
+.syllabus-from{padding:5px;overflow:hidden;zoom:1;}
+.syllabus-from li{float:left;width:100px;margin-bottom:5px;cursor:pointer;}
+.syllabus-from li.cln-item{position:absolute;}
+.syllabus-from li p{height:42px;background:#99c9f5;margin:0 3px;overflow:hidden;zoom:1;}
+.syllabus-from li span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:16px;text-align:center;font:100 12px "Microsoft YaHei";}
+.syllabus-from li span.room,.syllabus-from li span.otherRoom{display:none;}
+.syllabus-from li span.surplus{float:right;width:18px;height:32px;background:#2d9feb;padding:5px 0;text-align:center;color:#444;}
+.syllabus-from li span.tt{margin-right:18px;padding:5px 0;}
+.syllabus-from li span.tt span.course,.syllabus-from li span.tt span.otherCourse{color:#444;}
+.syllabus-from li span.tt span.name,.syllabus-from li span.tt span.otherName{color:#1d70d9;}
+.syllabus-from li.over .item{background:#abaeb9;}
+.syllabus-from li.over span.surplus{background:#9497a3;}
+.syllabus-from li.over span.tt span.name{color:#fff;}
+.syllabus-from li.empty .item{height:38px;background:#fff;border:1px solid #c8c8c8;padding:1px;}
+.syllabus-from li.empty .item span{height:38px;background:#c2edc2;}
+.syllabus-from li.sel p{background:#ffa8a8;}
+.syllabus-from li.sel span.surplus{background:#f86d6d;}
+.syllabus-from li.s-d-week span.tt{margin-right: 0;}
+.syllabus-from li.s-d-week span.tt > span{float:left;width: 46px;border-left: 1px solid #2d9feb;}
+.syllabus-from li.s-d-week span.tt > span:first-child{border: none;}
+.syllabus-from li.s-d-week span.surplus{display: none;}
+/*未排课克隆元素*/
+li.cln-item{position:absolute;z-index:999;width:100px;}
+li.cln-item p{height:42px;background:#2d9feb;margin:0 3px;overflow:hidden;zoom:1;}
+li.cln-item span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:16px;text-align:center;font:100 12px "Microsoft YaHei";}
+li.cln-item span.room,li.cln-item span.otherRoom{display:none;}
+li.cln-item span.surplus{float:right;width:18px;height:32px;background:#0d7eca;padding:5px 0;text-align:center;color:#444;}
+li.cln-item span.tt{margin-right:18px;padding:5px 0;}
+li.cln-item span.tt span.course,li.cln-item span.tt span.otherCourse{color:#444;}
+li.cln-item span.tt span.name,li.cln-item span.tt span.otherName{color:#4871d0;}
+li.cln-item.sel p{background:#ffa2a2;}
+li.cln-item.sel span.surplus{background:#f86d6d;}
+li.cln-item.s-d-week span.tt{margin-right: 0;}
+li.cln-item.s-d-week span.tt > span{float:left;width: 46px;border-left: 1px solid #f86d6d;}
+li.cln-item.s-d-week span.tt > span:first-child{border: none;}
+li.cln-item.s-d-week span.surplus{display: none;}
+/*教师选择*/
+.sidebar-right-wrap{height:355px;background:#f6fbff;border-right:1px solid #c8c8c8;border-bottom:1px solid #c8c8c8;}
+.sidebar-right-wrap .tab{height:36px;overflow:hidden;}
+.sidebar-right-wrap .tab li{position:relative;float:left;width:33.33%;height:36px;cursor:pointer;}
+.sidebar-right-wrap .tab li span{position:absolute;top:0;left:-1px;display:block;width:100%;height:34px;line-height:34px;background:#e6f3ff;border:1px solid #c8c8c8;text-align:center;font-weight:700;color:#444;}
+.sidebar-right-wrap .tab li.current span{background:#f6fbff;border-bottom:1px solid #f6fbff;}
+.sidebar-right-wrap .tab-item{height:284px;background:#fff;overflow-x:hidden;overflow-y:auto;font-size: 14px;}
+.sidebar-right-wrap .tablewrap{height:320px;overflow-x:hidden;overflow-y:auto;}
+.sidebar-right-wrap .tablewrapsearch{height:280px;overflow-x:hidden;overflow-y:auto;}
+.sidebar-right-wrap table{width:100%;border-collapse:collapse;}
+.sidebar-right-wrap table td{height:32px;background:#fff;}
+.sidebar-right-wrap table td.name{width:50px;padding-left:15px;}
+.sidebar-right-wrap table td.opt{width:40px;}
+.sidebar-right-wrap table tr.even td{background:#f1f2f6;}
+.sidebar-right-wrap table tr.current td{background:#c5e1fb;}
+
+.sidebar-right-wrap table tr.conflict td{color: #f5222d;}
+.sidebar-right-wrap table tr.conflict td.opt a{color: #ccc;cursor: not-allowed;}
+
+.sidebar-right-wrap table tr.open td{background:#c5e1fb;}
+.sidebar-right-wrap table tr.inner td{background:#f6fbff;font-size: 12px;}
+.sidebar-right-wrap table tr.inner p{height: 24px;line-height: 24px;padding-left: 25px;color: #444;}
+.sidebar-right-wrap table tr.inner p span{margin:0 3px;font-weight: 700;color: #ff6000;}
+.sidebar-right-wrap table tr.inner p .input-txt{width: 200px;height: 18px;}
+.sidebar-right-wrap table tr.inner p.abtn{padding:8px 0 10px 61px;}
+/*.sidebar-right-wrap table tr.inner p.abtn a{display: inline-block;width: 60px;height: 25px;line-height: 25px;background-color: #c5e1fb;border-radius: 1px;margin-right: 10px;text-align: center;color: #0863d5;}*/
+
+
+/*搜索*/
+.pub-search{height:23px;border:1px solid #d0d5d8;background:#fff;margin:5px;position:relative;}
+.pub-search .txt{box-sizing:border-box;width:100%;height:23px;line-height:23px;border:0;padding:0 5px;}
+.pub-search .btn{position:absolute;top:-1px;right:-1px;display:block;width:60px;height:25px;line-height:25px;text-align:center;border-radius:3px;cursor:pointer;}
+.pub-search-list{position:absolute;top:23px;left:-1px;z-index:999;width:100%;border:1px solid #a0b2be;background:#fff;}
+.pub-search-list a{display:block;height:25px;line-height:25px;padding:0 5px;}
+.pub-search-list a:hover{background:#f3f3f3;}
+
+
+
+/*课表调整过程添加元素*/
+body>span.item{position:absolute;top:100px;left:100px;z-index:999;font:100 14px "Microsoft YaHei";}
+
+
+/*自动关闭错误提示*/
+.auto-layer-mask{position:absolute;top:0;left:0;z-index:99998;width:100%;height:100%;background:rgba(0,0,0,0.3);filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#33000000',EndColorStr='#33000000');}
+.auto-layer{position:absolute;top:0;left:0;z-index:99999;max-width:300px;background:#fff;border-radius:5px;padding:10px 20px;text-align:center;font:100 16px "Microsoft YaHei";}
+
+.array-set{padding:10px 20px 20px;}
+.array-set .tit{position:relative;height:20px;border-top:1px solid #ddd;margin-top:20px;}
+.array-set .tit span{position:absolute;top:-11px;left:0;height:20px;line-height:20px;background:#fff;padding-right:10px;font-size:14px;font-weight:700;}
+.array-set .did .ui-checkbox{float:left;width:29%;margin:5px 0;}
+
+.no-data {
+    height: 20px;
+    text-align: center;
+    padding-top: 100px;
+    color: #999fa5;
+    background: url(../../static/images/no_data2.png) no-repeat top center;
+    font: normal 14px/20px "Microsoft YaHei";
+}
+
+.popUp-layer-tips .mysuccess {
+    background: url(../../static/images/icon/success1.png) no-repeat left center;
+}
+.popUp-layer-tips .mywarn {
+    background: url(../../static/images/icon/warn.png) no-repeat left center;
+}
+.popUp-layer-tips .error{
+	background:url(../../static/images/icon/error.png) no-repeat left center;
+}
+
+.popUp-layer-tips .mysuccess, .popUp-layer-tips .myerror, .popUp-layer-tips .mywarn {
+    display: inline-block;
+    /*height: 48px;*/
+    line-height: 24px;
+    padding-left: 30px;
+    text-align: left;
+    margin: 0 20px;
+}
+
+/* 课程提示 */
+.coursetip{color: #fff;font-size: 14px;}
+.coursetip .hd{padding-left:9px;background:#262d37;line-height: 40px;}
+.coursetip .bd{height:250px;overflow:auto;padding:0 9px;line-height: 21px;}
+.coursetip .bd p{padding:8px 0;border-bottom: 1px solid #495263;}
+
+/* 自定义 */
+.tableContainer{overflow: auto;}
+.table{width: 100%;border-collapse: collapse;border-spacing: 0;}
+.table th,.table td{padding:8px;border: 1px solid #ddd;color: #333;font-size: 14px;line-height: 1.42857143;}
+.table th{background: #ececec;font-weight: bold;}
+.table tbody tr:nth-of-type(odd){background: #fcfcfc;}
+.table tbody tr:hover{background: #f5f5f5;}
+

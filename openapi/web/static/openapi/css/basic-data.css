@@ -1,0 +1,98 @@
+/*-----------------------------------*\
+    #基础数据前台
+\*-----------------------------------*/
+body{background-color: #eff2f5;}
+h1{padding: 20px 0;text-align: center;font-size: 24px;font-weight: 700;}
+h2{font-size: 16px;font-weight: 700;}
+.form-control-inline{display: inline-block;width: 100px;}
+body.reg .form-horizontal .form-group:last-child{margin-bottom: 80px;}
+/********** breadcrumb **********/
+#breadcrumb{margin:0 -63px 30px 0;}
+#breadcrumb li{float: left;width: 33.33%;padding-right: 40px;}
+#breadcrumb li span{display: block;background: #ececec;text-decoration: none;position: relative;height: 46px;line-height: 46px;padding: 0 10px 0 5px;text-align: center;font-size: 16px;font-weight: 700;color: #666;margin-right: 23px;}
+#breadcrumb li.active span{background-color: #34a5f3;color: #fff;}
+#breadcrumb li.active span:before{border-color: #34a5f3;border-left-color: transparent;}
+#breadcrumb li.active span:after{border-left-color: #34a5f3;}
+#breadcrumb li:first-child spana{padding-left: 15px;-moz-border-radius: 4px 0 0 4px;-webkit-border-radius: 4px;border-radius: 4px 0 0 4px;}
+#breadcrumb li:first-child span:before{border: none;}
+#breadcrumb li:last-child span{padding-right: 15px;-moz-border-radius: 0 4px 4px 0;-webkit-border-radius: 0;}
+#breadcrumb li:last-child span:after{border: none;}
+#breadcrumb li span:before, #breadcrumb li span:after{content: "";position: absolute;top: 0;border: 0 solid #ececec;border-width: 23px 40px;width: 0;height: 0;}
+#breadcrumb li span:before{left: -50px;border-left-color: transparent;}
+#breadcrumb li span:after{left: 100%;border-color: transparent;border-left-color: #ececec;}
+
+/********** header **********/
+.header{height: 90px;background: #fff;border-bottom: 1px solid #e4e9ee;}
+.navbar-brand{height:90px;padding:10px 0;font-size:24px;line-height:1;color:inherit;}
+.navbar-brand .logo{display:inline-block;}
+.navbar-brand span{display:inline-block;padding:18px 0;}
+.header-login{float: right;height: 90px;line-height: 90px;}
+.header-login .btn-sm{padding: 3px 10px 5px;margin-left: 15px;font-size: 14px;}
+
+
+/********** banner **********/
+.banner{height: 380px;background: url(../images/base/banner.jpg) no-repeat center top;}
+.banner .join-in{padding-top: 277px;text-align: center;}
+.banner .join-in a{display: inline-block;width: 200px;height: 36px;line-height: 36px;border: 1px solid #fff;border-radius: 2px;background: none;text-align: center;font-size: 16px;font-weight: 700;color: #fff;}
+.banner .join-in a:hover{text-decoration: none;}
+
+/********** container **********/
+.feature-item{padding: 75px 0 95px;text-align: center;}
+.feature-item-img{max-width: 100%;}
+.feature-item-title{padding: 15px 0 5px;font-size: 18px;}
+/*登录*/
+.login-box > form{width: 350px;margin: 0 auto;}
+.login-title{height:90px;padding:10px 0;margin: 10px 0 20px;font-size:30px;line-height:1;text-align: center;color:4c4c4c;}
+.login-title .logo{display:inline-block;}
+.login-title span{display:inline-block;padding:18px 0;}
+.login-title-tips{position: relative;border-top: 1px solid #ccc;}
+.login-title-tips > p{position: absolute;top:-12px;left:0;width: 100%;text-align: center;}
+.login-title-tips > p > span{display: inline-block;background: #fff;padding: 0 20px;font-size: 12px;color: #ccc;}
+.login-form{margin-bottom:15px;}
+.login-form label{margin:0;}
+.login-form .input-group{width:100%;}
+.login-form .input-group-addon{width:50px;font-size:24px;color:#b8c4ce;background-color:transparent;}
+.login-form .form-control{height: 40px;border-left: 0;padding-left: 0;font-size:16px;}
+.login-tips{margin-bottom:5px;font-size:12px;color:#ff7200;}
+/*注册协议*/
+.reg-protocol{padding-bottom: 40px;}
+.reg-protocol > h2{padding-top: 10px;}
+.reg-protocol-item{margin-top: 10px;line-height: 28px;font-size: 16px;}
+/*注册*/
+body.reg h1{color: #4c5161;}
+body.reg .form-control{height: 40px;}
+body.reg .no-margin{margin: 0 !important;}
+body.reg .must{margin-right: 5px;color: #e11a21;}
+body.reg .has-success{color: #1abc9c;}
+body.reg .has-error{color: #d16e6c;}
+body.reg .has-warning{color: #fcab2b;}
+body.reg .has-success,body.reg .has-error,body.reg .has-warning{font-size: 12px;}
+body.reg .has-success .fa,body.reg .has-error .fa,body.reg .has-warning .fa{font-size: 16px;}
+body.reg .has-warning span{color: #1e9bf2;}
+body.reg .verCode-img{float:left;width:70px;height:40px;margin-left: -10px;cursor:pointer;}
+body.reg .verCode-img > img{width:70px;height:40px;}
+body.reg .verCode-change{float: left;margin: 18px 0 0 10px;}
+body.reg .twitter-typeahead,body.reg .twitter-typeahead .tt-menu{width: 100%;}
+
+
+/********** footer **********/
+.footer{background-color: #1f2738;}
+.footer-body{padding: 30px 0;}
+.footer-body > p{margin: 0;padding: 0;line-height: 26px;text-align: center;color: #7e8187;}
+.footer-body > p > a{margin: 0 20px;color: #7e8187;}
+
+
+/*-----------------------------------*\
+    #基础数据前台--超管
+\*-----------------------------------*/
+body.super{background-color: #f4f4f4;}
+body.super .header{height: 60px;background-color: #1e9bf2;box-shadow:0px 0 4px rgba(157,156,156,0.6);}
+body.super .navbar-brand{height:60px;line-height: 55px;padding: 0;color: #fff;}
+body.super .footer{background: none;}
+body.super .footer-body{padding: 10px 0;}
+body.super .footer-body > p{color: #999;}
+body.super .content > .container > .box{margin: 20px 0 0;}
+.login-box-super{width: 455px;background: #fff;margin: 260px auto 0;padding-bottom: 30px;}
+.login-title-super{height: auto;font-size: 18px;font-weight: 700;color: #666;}
+.verification-wrap{padding-top: 50px;}
+.base-app-title{font-size: 16px;font-weight: 700;color: #333;}

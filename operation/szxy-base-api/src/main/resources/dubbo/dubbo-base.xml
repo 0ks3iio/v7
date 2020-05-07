@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.ClassRemoteService" id="classRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.FamilyRemoteService" id="familyRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.GradeRemoteService" id="gradeRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.MicrocodeDetailRemoteService" id="microcodeDetailRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.RegionRemoteService" id="regionRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.SchoolRemoteService" id="schoolRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.ServerRemoteService" id="serverRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.StudentRemoteService" id="studentRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.SysOptionRemoteService" id="sysOptionRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.SystemIniRemoteService" id="systemIniRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.TeacherRemoteService" id="teacherRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.UnitRemoteService" id="unitRemoteService" version="1.0.0" />
+    <dubbo:reference interface="net.zdsoft.szxy.base.api.UserRemoteService" id="userRemoteService" version="1.0.0" />
+</beans>

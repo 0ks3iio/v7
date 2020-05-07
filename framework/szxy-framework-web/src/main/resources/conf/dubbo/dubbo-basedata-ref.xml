@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 使用multicast广播注册中心暴露服务地址 -->
+	<dubbo:registry address="${dubbo.registry.address}" />
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.AttachmentRemoteService" id="attachmentRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.ClassRemoteService" id="classRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.ClassTeachingRemoteService" id="classTeachingRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.CodeRuleDetailRemoteService" id="codeRuleDetailRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.CodeRuleRemoteService" id="codeRuleRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.ClassHourRemoteService" id="classHourRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.CourseRemoteService" id="courseRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.CourseScheduleRemoteService" id="courseScheduleRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.CourseTypeRemoteService" id="courseTypeRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.CustomRoleRemoteService" id="customRoleRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.CustomRoleUserRemoteService" id="customRoleUserRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.DateInfoRemoteService" id="dateInfoRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.DeptRemoteService" id="deptRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.DingdingMsgRemoteService" id="dingdingMsgRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.EduInfoRemoteService" id="eduInfoRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.FamilyRemoteService" id="familyRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.FieldsDisplayRemoteService" id="fieldsDisplayRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.FilePathRemoteService" id="filePathRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.GradeRemoteService" id="gradeRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.GradeTeachingRemoteService" id="gradeTeachingRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.GroupItemsRemoteService" id="groupItemsRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.GroupRemoteService" id="groupRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.OperationLogDataSyncRemoteService" id="operationLogDataSyncRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.OperationLogRemoteService" id="operationLogRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.OperationUrlRemoteService" id="operationUrlRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.OrderRemoteService" id="orderRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.RegionRemoteService" id="regionRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SchoolBuildingAreaRemoteService" id="schoolBuildingAreaRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SchoolBuildingRemoteService" id="schoolBuildingRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SchoolCalendarRemoteService" id="schoolCalendarRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SchoolRemoteService" id="schoolRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SchtypeSectionRemoteService" id="schtypeSectionRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SemesterRemoteService" id="semesterRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.StorageDirRemoteService" id="storageDirRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.StudentRemoteService" id="studentRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.StudentSelectSubjectRemoteService" id="studentSelectSubjectRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.StusysSectionTimeSetRemoteService" id="stusysSectionTimeSetRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SubSchoolRemoteService" id="subSchoolRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.SysProductParamRemoteService" id="sysProductParamRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachAreaRemoteService" id="teachAreaRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachBuildingRemoteService" id="teachBuildingRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachClassExRemoteService" id="teachClassExRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachClassRemoteService" id="teachClassRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachClassStuRemoteService" id="teachClassStuRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeacherDutyRemoteService" id="teacherDutyRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeacherRemoteService" id="teacherRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachGroupExRemoteService" id="teachGroupExRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachGroupRemoteService" id="teachGroupRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TeachPlaceRemoteService" id="teachPlaceRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.TreeRemoteService" id="treeRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.UnitRemoteService" id="unitRemoteService" />	
+<dubbo:reference interface="net.zdsoft.basedata.remote.service.UserRemoteService" id="userRemoteService" />	
+<dubbo:reference interface="net.zdsoft.power.remote.service.SysApRoleRemoteService" id="sysApRoleRemoteService" />	
+<dubbo:reference interface="net.zdsoft.power.remote.service.SysUserPowerRemoteService" id="sysUserPowerRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.AppManageRemoteService" id="appManageRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.LicenseRemoteService" id="licenseRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.LoginDomainRemoteService" id="loginDomainRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.McodeRemoteService" id="mcodeRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.ModelRemoteService" id="modelRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.ProblemRemoteService" id="problemRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.RolePermissionRemoteService" id="rolePermissionRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.RoleRemoteService" id="roleRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.ServerRegionRemoteService" id="serverRegionRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.ServerRemoteService" id="serverRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.SmsRemoteService" id="smsRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.SubSystemRemoteService" id="subSystemRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.SysOptionRemoteService" id="sysOptionRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.SystemIniRemoteService" id="systemIniRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.UnitIniRemoteService" id="unitIniRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.UserRoleRemoteService" id="userRoleRemoteService" />	
+<dubbo:reference interface="net.zdsoft.system.remote.service.WareRemoteService" id="wareRemoteService" />	
+
+</beans>

@@ -1,0 +1,102 @@
+@import 'var';
+@import 'mixin';
+
+/* =14 empty */
+
+
+//纵向
+.empty {
+	text-align: center;
+	
+	a{
+		text-decoration: none;
+		color: $c-primary;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	
+	.empty-media {
+		line-height: 1;
+		 > img {
+			width: 150px;
+			height: 150px;
+		}
+		
+		~ div {
+			margin-top: 15px;
+			font-size: $fz-lg;
+			color: $c-darken;
+		}
+	}
+	
+	&-xs {
+		.empty-media > img {
+			width: 16px;
+			height: 16px;
+		}
+	}
+	
+	&-sm {
+		.empty-media > img {
+			width: 110px;
+			height: 110px;
+		}
+	}
+	
+	&-lg {
+		.empty-media > img {
+			width: 200px;
+			height: 200px;
+		}
+	}
+}
+
+//横向
+.empty-horizontal {
+	text-align: center;
+	
+	.empty {
+		display: inline-block;
+		text-align: left;
+		@include clearfix;
+		
+		.empty-media {
+			float: left;
+			
+			+.empty-header,
+			+.empty-body {
+				margin-top: 0;
+			}
+			
+			+.empty-header {
+				line-height: 1;
+			}
+			
+			+.empty-body {
+				margin-top: -4px;
+			}
+			
+			~ div {
+				margin-left: 180px;
+			}
+		}
+	}
+	
+	.empty-xs .empty-media ~ div {
+		margin-left: 25px;
+		font-size: $fz;
+	}
+	
+	.empty-sm .empty-media ~ div {
+		margin-left: 140px;
+	}
+	
+	.empty-lg .empty-media ~ div {
+		margin-left: 230px;
+	}
+}
+
+
+

@@ -1,0 +1,23 @@
+hibernate.dialectzd=org.hibernate.dialect.MySQL5Dialect
+hibernate.connection.provider_classzd=net.sf.hibernate.connection.DBCPConnectionProvider 
+hibernate.connection.driver_classzd=com.mysql.jdbc.Driver
+hibernate.show_sqlzd=false
+hibernate.format_sqlzd=false
+BoneCP.idleConnectionTestPeriod=60
+BoneCP.idleMaxAge=60
+BoneCP.maxConnectionsPerPartition=5
+BoneCP.minConnectionsPerPartition=1
+BoneCP.partitionCount=3
+BoneCP.acquireIncrement=2  
+BoneCP.statementsCacheSize=0 
+BoneCP.releaseHelperThreads=3 
+
+#master db
+hibernate.connection.urlzd=jdbc:mysql://localhost:3306/working
+hibernate.connection.usernamezd=root
+hibernate.connection.passwordzd=root
+
+#slave db
+hibernate.connection.url.slavezd=jdbc:mysql://localhost:3306/working
+hibernate.connection.username.slavezd=root
+hibernate.connection.password.slavezd=root

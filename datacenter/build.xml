@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf8"?>
+<project name="bulid" basedir="." default="jar">
+<property name="top.dir" value=".."/>
+<import file="${top.dir}/common-ant/macrodef-v7.xml"/>
+<property name="system.one" value="framework"/>
+<!--
+需要提供dubbo服务的子系统打成jar（basedata,system,openapi,scoremanage,gkelective,studevelop,officework）
+-->
+<!--...-->
+<property name="war.systems.remote" value="framework"/>
+<!--
+需要的子系统打成jar（framework,basedata,system,openapi,desktop,scoremanage,gkelective,studevelop,officework）
+-->
+<!--...-->
+<property name="war.systems" value="${system.one}"/>
+<property name="v7.build.dir" value="v7-build"/>
+<property name="build.dir" value="${v7.build.dir}/buildclasses"/>
+<property name="ant.depend.lib" value="${top.dir}/common-ant/depend-lib-tomcat8"/>
+<property name="remote-depend-subsystems" value=""/>
+<!-- 系统编译文件依赖包 -->
+<path id="javac.classPath">
+<fileset dir="${top.dir}/v7-commonlib">
+<include name="**/*.jar"/>
+</fileset>
+
+<fileset dir="${top.dir}/${v7.build.dir}/v7-subsystems-lib">
+<include name="**/*.jar"/>
+</fileset>
+
+<fileset dir="${top.dir}/${v7.build.dir}/v7-dep-${system.one}-lib" erroronmissingdir="false">
+<include name="**/*.jar"/>
+</fileset>
+
+<fileset dir="${ant.depend.lib}">
+<include name="**/*.jar"/>
+</fileset>
+
+<fileset dir="${top.dir}/v7-@{subSystem}/lib" erroronmissingdir="false">
+<include name="**/*.jar"/>
+</fileset>
+
+</path>
+
+<taskdef resource="net/sf/antcontrib/antlib.xml">
+<classpath>
+<pathelement location="${top.dir}/common-ant/depend-lib/ant-contrib-1.0b3.jar"/>
+</classpath>
+
+</taskdef>
+
+<!-- 打印JDK version -->
+<target name="print-version">
+<echo>Java/JVM version: ${ant.java.version}</echo>
+<echo>Java/JVM detail version: ${java.version}</echo>
+</target>
+
+<target name="copy-depend-jars" depends="print-version">
+<delete dir="${top.dir}/${v7.build.dir}/v7-dep-${system.one}-lib" failonerror="false"/>
+<mkdir dir="${top.dir}/${v7.build.dir}/v7-dep-${system.one}-lib"/>
+<for list="${remote-depend-subsystems}" param="subSystem">
+<sequential>
+<echo>
+${top.dir}/${v7.build.dir}/remote-lib/remote-@{subSystem}.jar
+</echo>
+<copy file="${top.dir}/${v7.build.dir}/remote-lib/remote-@{subSystem}.jar" includeEmptyDirs="false" todir="${top.dir}/${v7.build.dir}/v7-dep-${system.one}-lib" overwrite="true" preservelastmodified="true"/>
+</sequential>
+</for>
+</target>
+<target name="jar" depends="copy-depend-jars">
+<for list="${war.systems.remote}" param="subSystem">
+<sequential>
+<echo>---build @{subSystem}-remote-entity---</echo>
+<build-war-remote subSystem="@{subSystem}" code-dir="${top.dir}/v7-@{subSystem}" build-dir="${top.dir}/${build.dir}"/>
+<echo>------------end-----------</echo>
+</sequential>
+</for>
+<for list="${war.systems}" param="subSystem">
+<sequential>
+<echo>---build system @{subSystem}---</echo>
+<build-war subSystem="@{subSystem}" code-dir="${top.dir}/v7-@{subSystem}" build-dir="${top.dir}/${build.dir}"/>
+<echo>------------end------------</echo>
+</sequential>
+
+</for>
+
+</target>
+
+</project>

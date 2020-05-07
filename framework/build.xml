@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf8"?>
+<project name="bulid" basedir="." default="jar">
+	
+	<property name="top.dir" value=".." />
+	<import file="${top.dir}/common-ant/macrodef-v7.xml"/>
+	<property name="system.one" value="framework" />
+	<!--需要提供dubbo服务的子系统打成jar（basedata,system,openapi,scoremanage,gkelective,studevelop,officework）-->
+	<property name="war.systems.remote" value="${system.one}" />
+	<!--需要的子系统打成jar（framework,basedata,system,openapi,desktop,scoremanage,gkelective,studevelop,officework）-->
+	<property name="war.systems" value="${system.one}" />
+	<property name="v7.build.dir" value="v7-build" />
+	<property name="build.dir" value="${v7.build.dir}/buildclasses" />		
+	<property name="ant.depend.lib" value="${top.dir}/common-ant/depend-lib" />
+	
+	<!--系统编译文件依赖包-->
+	<path id="javac.classPath">
+		<fileset dir="${top.dir}/v7-commonlib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${ant.depend.lib}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${top.dir}/${v7.build.dir}/remote-lib" erroronmissingdir="false">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${top.dir}/${v7.build.dir}/subSystem-lib" erroronmissingdir="false">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${top.dir}/common-ant/depend-lib/ant-contrib-1.0b3.jar"/>
+		</classpath>
+	</taskdef>
+	<!--打印JDK version-->
+	<target name="print-version">
+		<echo>Java/JVM version: ${ant.java.version}</echo>
+		<echo>Java/JVM detail version: ${java.version}</echo>
+	</target>	
+
+	<target name="jar" depends="print-version">
+
+		<for list="${war.systems.remote}" param="subSystem">  
+			<sequential>
+	    	<echo>build system @{subSystem}-remote======》</echo>
+			<build-war-remote subSystem="@{subSystem}" code-dir="${top.dir}/v7-@{subSystem}" build-dir="${top.dir}/${build.dir}"/> 
+			<echo>《======build system @{subSystem}-remote end</echo>
+			</sequential>
+		</for>
+
+		<for list="${war.systems}" param="subSystem">  
+		    <sequential>  
+		    	<echo>build system @{subSystem}======》</echo>
+				<build-war subSystem="@{subSystem}" code-dir="${top.dir}/v7-@{subSystem}" build-dir="${top.dir}/${build.dir}"/>
+				<echo>《======build system @{subSystem} end</echo>
+		    </sequential>  
+		</for>
+			
+	</target>
+
+	
+	
+</project>
+
+
+

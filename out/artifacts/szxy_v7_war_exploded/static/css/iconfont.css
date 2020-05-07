@@ -1,0 +1,173 @@
+
+@font-face {font-family: "wpfont";
+  src: url('../fonts/iconfont.eot'); /* IE9*/
+  src: url('../fonts/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont.woff') format('woff'), /* chrome, firefox */
+  url('../fonts/iconfont.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+.wpfont {
+  display: inline-block;
+  font-family:"wpfont" !important;
+  font-size:inherit;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home-fill:before { content: "\e671"; }
+
+.icon-home:before { content: "\e672"; }
+
+.icon-minus-rectangle-fill:before { content: "\e673"; }
+
+.icon-close-round-fill:before { content: "\e674"; }
+
+.icon-minus-round-fill:before { content: "\e675"; }
+
+.icon-minus-round:before { content: "\e676"; }
+
+.icon-close-round:before { content: "\e677"; }
+
+.icon-close:before { content: "\e678"; }
+
+.icon-minus:before { content: "\e679"; }
+
+.icon-plus-rectangle-fill:before { content: "\e67a"; }
+
+.icon-plus-round-fill:before { content: "\e67b"; }
+
+.icon-plus:before { content: "\e67c"; }
+
+.icon-plus-round:before { content: "\e67d"; }
+
+.icon-person-close:before { content: "\e67e"; }
+
+.icon-person-fill:before { content: "\e67f"; }
+
+.icon-group-close:before { content: "\e680"; }
+
+.icon-person:before { content: "\e681"; }
+
+.icon-group:before { content: "\e682"; }
+
+.icon-group-fill:before { content: "\e683"; }
+
+.icon-angle-single-right:before { content: "\e684"; }
+
+.icon-angle-single-up:before { content: "\e685"; }
+
+.icon-angle-single-left:before { content: "\e686"; }
+
+.icon-angle-single-down:before { content: "\e687"; }
+
+.icon-select-round-fill:before { content: "\e688"; }
+
+.icon-select-round:before { content: "\e689"; }
+
+.icon-select:before { content: "\e68a"; }
+
+.icon-question-fill:before { content: "\e68b"; }
+
+.icon-question:before { content: "\e68c"; }
+
+.icon-star:before { content: "\e68d"; }
+
+.icon-star-fill:before { content: "\e68e"; }
+
+.icon-paper-fill:before { content: "\e68f"; }
+
+.icon-paper:before { content: "\e690"; }
+
+.icon-bookmark:before { content: "\e691"; }
+
+.icon-bookmark-fill:before { content: "\e692"; }
+
+.icon-bell-fill:before { content: "\e693"; }
+
+.icon-bell:before { content: "\e694"; }
+
+.icon-calendar:before { content: "\e695"; }
+
+.icon-crown-fill:before { content: "\e696"; }
+
+.icon-credit:before { content: "\e697"; }
+
+.icon-credit-fill:before { content: "\e698"; }
+
+.icon-chart-pie-fill:before { content: "\e699"; }
+
+.icon-search:before { content: "\e69a"; }
+
+.icon-power:before { content: "\e69b"; }
+
+.icon-clock:before { content: "\e69c"; }
+
+.icon-clock-fill:before { content: "\e69d"; }
+
+.icon-caret-down:before { content: "\e69e"; }
+
+.icon-caret-up:before { content: "\e69f"; }
+
+.icon-caret-left:before { content: "\e6a0"; }
+
+.icon-caret-right:before { content: "\e6a1"; }
+
+.icon-caret-mitre:before { content: "\e6a2"; }
+
+.icon-arrow-left:before { content: "\e602"; }
+
+.icon-angle-double-up:before { content: "\e603"; }
+
+.icon-arrow-down:before { content: "\e604"; }
+
+.icon-arrow-up:before { content: "\e605"; }
+
+.icon-arrow-right:before { content: "\e606"; }
+
+.icon-mapping-fill:before { content: "\e60c"; }
+
+.icon-angle-double-down:before { content: "\e60d"; }
+
+.icon-angle-double-right:before { content: "\e60e"; }
+
+.icon-angle-double-left:before { content: "\e60f"; }
+
+.icon-directory:before { content: "\e60a"; }
+
+.icon-mapping1:before { content: "\e611"; }
+
+.icon-cog-fill:before { content: "\e610"; }
+
+.icon-cog:before { content: "\e612"; }
+
+.icon-envelope:before { content: "\e613"; }
+
+.icon-envelope-fill:before { content: "\e614"; }
+
+.icon-qr-code:before { content: "\e615"; }
+
+.icon-icon-test:before { content: "\e619"; }
+
+.icon-dialog-fill:before { content: "\e61a"; }
+
+.icon-dialog:before { content: "\e61b"; }
+
+.icon-module:before { content: "\e61c"; }
+
+.icon-module-fill:before { content: "\e61d"; }
+
+.icon-ellipsis:before { content: "\e620"; }
+
+.icon-indent:before { content: "\e621"; }
+
+.icon-dedent:before { content: "\e622"; }
+
+.icon-student:before { content: "\e624"; }
+
+.icon-teacher:before { content: "\e625"; }
+
+.icon-exclamation-round-fi:before { content: "\e628"; }
+
+.icon-exclamation-round:before { content: "\e629"; }
+

@@ -1,0 +1,30 @@
+{
+    "col": "6",
+    "title": "推荐应用",
+    "apps": [
+        {
+            "name": "人人通",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        },
+        {
+            "name": "资源库",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        },
+        {
+            "name": "微课掌上通",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        },
+        {
+            "name": "课后网",
+            "icon": "icon",
+            "url": "url",
+            "openType": "1"
+        }
+    ]
+}

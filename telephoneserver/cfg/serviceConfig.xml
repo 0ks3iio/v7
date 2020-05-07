@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!--天波考勤服务  -->
+    <service name="TelephoneServerTBService" 
+        className="net.zdsoft.server.TelephoneServerTBService"
+        serviceInterval="500">
+        <!-- 是否启用该配置:true or false -->
+		<param name="enabled" value="true" />
+        <!-- 监控的ip: 192.168.0.155 -->
+		<param name="serverIp" value="192.168.0.155" />
+        <!-- 监控的端口: 8899 -->
+        <param name="serverPort" value="8899" />
+        <!-- 上传考勤数据ip和端口: http://192.168.0.36:8020/oa7 -->
+		<param name="remoteIpPort" value="http://192.168.0.36:8020" />
+        <!-- 上传考勤数据地址-->
+		<param name="remotePath" value="/remote/openapi/office/h3chealth/doTBInOut" />
+        <!-- 一次上传最大数据量 -->
+        <param name="recordNumber" value="500" />
+        <param name="idleTime" value="80" />
+        <!-- 定时器最大线程数量 -->
+		<param name="threadNumber" value="40" /> 
+    </service>
+</config>

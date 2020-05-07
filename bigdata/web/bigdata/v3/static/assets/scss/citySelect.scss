@@ -1,0 +1,115 @@
+@import 'var';
+@import 'mixin';
+
+/* =16 citySelect */
+
+/*省市区行政区划-多级联动菜单*/
+.city-select {
+	position: absolute;
+	z-index: 99999999;
+	top: 0;
+	left: 0;
+	width: 400px;
+	background-color:$c-white;
+	border: 1px solid $dropdown-bdc;
+	border-radius: $box-bdrs;
+	@include box-shadow(0 0 6px rgba(128, 128, 128, .35));
+	margin: 10px 0 0;
+	@include animation-duration(0.3s);
+	@include animation-fill-mode(both);
+	@include animation-name(ant-up);
+}
+
+
+.city-select-tab {
+    @include clearfix;
+
+	 li {
+	    float: left;
+	    width: 33.33%;
+	    height: 32px;
+	    line-height: 31px;
+	    background-color: $c-head;
+	    border-right: 1px solid $dropdown-bdc;
+	    border-bottom: 1px solid $dropdown-bdc;
+	    text-align: center;
+	    cursor: not-allowed;
+	    
+	    &:last-child {
+	    	width: 33.34%;
+		    border-right: 0;
+		}
+		
+		&.active {
+		    background: $c-white;
+		    border-bottom: 1px solid $c-white;
+		}
+		
+		&.can {
+		    cursor: pointer;
+		}
+	}
+}
+
+.city-select-list + .city-select-tab {
+	li {
+	    border-top: 1px solid $dropdown-bdc;
+	    border-bottom: 0;
+	
+		&.active {
+		    border-top: 1px solid $c-white;
+		    border-bottom: 0;
+		}
+	}
+}
+
+
+.city-select-list {
+    padding: 20px 0;
+    
+    dl {
+	    margin: 10px 0;
+	    @include clearfix;
+	    
+	    &:last-child {
+		    margin-bottom: 0;
+		}
+		
+		dt {
+		    float: left;
+		    width: 70px;
+		    padding-left: 30px;
+		}
+		
+		dd {
+		    margin-left: 70px;
+		    @include clearfix;
+		}
+	}
+	
+}
+
+ul.city-select-list {
+    display: none;
+    padding: 20px;
+    @include clearfix;
+}
+
+.city-select-list dd > span,
+ul.city-select-list li {
+    float: left;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    margin: 0 5px 5px 0;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.city-select-list dd > span.active,
+ul.city-select-list li.active {
+    background-color: $c-primary;
+    border-radius: 3px;
+    color: $c-white;
+}

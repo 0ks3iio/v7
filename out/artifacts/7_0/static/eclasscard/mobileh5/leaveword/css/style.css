@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+html, body, h1, h2, h3, h4, h5, h6, p, span, div, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td, tfoot, caption, input, img, button, a, i, b, em, s，form, fieldset, legend{
+	margin:0;
+	padding:0;
+}
+
+fieldset, img, input, button{
+	outline-style:none;
+	border:0;
+}
+
+ul, ol{
+	list-style:none;
+}
+a {
+	text-decoration: none;
+	color:#666;
+	cursor: pointer;
+}
+textarea{
+	resize:none;
+}
+table{
+	border-collapse:collapse;
+}
+s,i,em{
+	text-decoration:none;
+	font-style:normal;
+}
+
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+.clearfix::before, .clearfix::after{
+	content:"";
+	display:table;
+	clear:both;
+}
+
+.clearfix{
+	zoom:1;   /*兼容IE6*/
+}
+
+.red{
+	color:#C81623;
+}
+.btn-deepgreen{background-color: #0DC585;border: 1ps solid #0DC585;color: #fff;}
+.no-margin{margin: 0!important;}
+.no-shadow{box-shadow: none;}
+.h-1of1{height: 100%;}
+.vh{height: 100vh;}
+.bg-grey{background-color: #EBEBEB;}
+.full{width: 100%;height: 100%;}
+.lh-50{line-height: 50px!important;}
+.bt-grey{border-top: 1px solid #C0C0C0!important;}
+.bb-grey{border-top: 1px solid #C0C0C0!important;}
+
+html{font-size: 37.5px;}
+body{background-color: #fff;}
+.title-size{font-size: 0.4rem;}
+.mui-table-view .friend-pic{width: 1.333333rem;max-width: 1.333333rem;height: 1.333333rem;position: relative;}
+.message-num{position: absolute;top: 0;right: 0;transform: translate(40%,-40%);background-color: #FD3B00;}
+.friend-name{font-size: 0.4rem;line-height: 0.666666rem;}
+.last-message{font-size: 0.346666rem;line-height: 0.666666rem;}
+.message-fail{width: 0.426666rem;height: 0.426666rem;background-color: #FD3B00;margin-right: 0.2rem;}
+.mui-table-view-cell>a:not(.mui-btn).mui-active.grey{background-color: #D9D9D9;}
+.full-content{height: 100vh;padding-bottom: 50px!important;overflow: auto;}
+.talking{padding-bottom: 0.333333rem;}
+.dialogue{padding: 0.24rem;position: relative;}
+.friend-pic{width: 1.066666rem;height: 1.066666rem;}
+.friend-dialogue{max-width: 60%;background-color: #fff;padding: 0.32rem;margin: 0 0.4rem;border: 1px solid #DFDFDF;border-radius: 0.066666rem;font-size: 0.373333rem;word-wrap: break-word;position: relative;}
+.friend-dialogue.fr{background-color: #74E39E;}
+.dialogue-time{position: absolute;bottom: -0.28rem;color: #999;font-size: 0.16rem;}
+.left-dialogue .dialogue-time{left: 1.733333rem;}
+.right-dialogue .dialogue-time{right: 1.733333rem;}
+.friend-dialogue:after{content: "";position: absolute;border-style: solid;border-width: 0.12rem;top: 0.213333rem;z-index: 1;}
+.left-dialogue .friend-dialogue:after{border-color: transparent #fff transparent transparent;left: -0.24rem;}
+.right-dialogue .friend-dialogue:after {border-color: transparent transparent transparent #74E39E;right: -0.24rem;}
+.condition{width: 0.426666rem;height: 0.426666rem;position: absolute;top: 0.32rem;}
+.right-dialogue .condition{left: -0.72rem;}
+.left-dialogue .condition{right: -0.72rem;}
+.dialogue-content{font-size: 0.4rem;}
+.dialogue-write{padding: 0.146666rem 2.213333rem 0.146666rem 1.226666rem;box-shadow: none;}
+.smile-face{width: 0.746666rem;height: 0.746666rem;position: absolute;top: 50%;left: 0.266666rem;transform: translateY(-50%);}
+.enter-message .btn{padding: 0.24rem 0.48rem;font-size: 0.4rem;}
+.enter-message{position: absolute;right: 0.266666rem;top: 0.16rem}
+.write-down{width: 100%;height: calc(100% - 40px);border: none;outline: none;resize: none;}
+
+

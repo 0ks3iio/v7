@@ -1,0 +1,75 @@
+@import 'var';
+@import 'mixin';
+
+/* =15 rating */
+//普通
+.rating-item {
+	height: 28px;
+	padding: 5px 10px;
+	
+	&.even {
+		background-color: $c-hover;
+	}
+}
+
+.rating-name,
+.rating-list,
+.rating-info {
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.rating-name {
+        width: 80px;
+        text-align: right;
+    }
+    
+.rating-list {
+    width: 140px;
+    @include clearfix;
+    
+    > a {
+        float: left;
+        display: block;
+        width: 18px;
+        height: 18px;
+        background: url(../images/spirit/star.png) no-repeat -5px 0;
+        margin: 0 5px;
+        
+        &.empty {
+            width: 0;
+            margin-right: 23px;
+        }
+        
+        &.half {
+            width: 9px;
+            margin-right: 14px;
+        }
+        
+        &:hover,
+        &.hover,
+        &.active {
+            background-position: -5px -18px;
+        }
+    }
+}
+
+.rating-info {
+    margin-left: 5px;
+    color: $c-dark;
+}
+
+//仅展示
+.rating-show  {
+	.rating-list {
+		background: url(../images/spirit/star.png) repeat 0 0;
+		
+		> a:hover {
+				background-position: -5px 0;
+		}
+		
+		> a.active:hover {
+				background-position: -5px -18px;
+		}
+	}
+}

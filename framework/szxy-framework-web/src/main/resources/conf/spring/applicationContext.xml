@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+
+
+
+
+	http://www.springframework.org/schema/data/jpa
+	http://www.springframework.org/schema/data/jpa/spring-jpa.xsd 
+
+
+
+
+	http://www.springframework.org/schema/tx 
+	 http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+
+
+
+
+	http://www.springframework.org/schema/task  
+    http://www.springframework.org/schema/task/spring-task-3.0.xsd"
+	   default-lazy-init="true">
+
+	<description>Spring公共配置文件</description>
+	<!--<cache:annotation-driven cache-manager="cacheManager" proxy-target-class="true" 
+		key-generator="redisKeyGenerator" mode="proxy" /> -->
+	<!-- <context:annotation-config /> -->
+	
+	<!-- 属性文件位置 -->
+	<!--<context:property-placeholder location="classpath*:conf/*.properties" 
+		/> -->
+	<aop:aspectj-autoproxy />
+	<bean id="sys_properties"
+		class="net.zdsoft.framework.integration.spring.ExternalPropertyPlaceholderConfigurer">
+		<property name="resourceFiles">
+			<list>
+				<value>classpath*:conf/*.properties</value>
+				<!-- 
+				<value>classpath:conf/conf.properties</value>
+				<value>classpath:conf/framework.properties</value>
+				<value>classpath:conf/redis.properties</value>
+				<value>classpath:conf/mongodb.properties</value>
+				 -->
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />  
+	</bean>
+	<!-- ===================================================================== -->
+
+	<bean id="methodTimeAdvice" class="net.zdsoft.framework.config.MethodTimeAdvice" />
+	<aop:config>
+		<!-- 用 AspectJ 的语法定义 Pointcut，这里拦截 service 包中的所有方法 -->
+		<aop:advisor id="methodTimeLog" advice-ref="methodTimeAdvice"
+			pointcut="execution(* net.zdsoft.**.service.impl..*.*(..))" />
+	</aop:config>
+
+	<bean class="net.zdsoft.framework.config.FrameworkEvn" lazy-init="false">
+		<property name="resourceFiles">
+			<list>
+				<value>classpath*:conf/*.properties</value>
+				<!-- <value>classpath:conf/conf.properties</value>
+				<value>classpath:conf/framework.properties</value>
+				<value>classpath:conf/redis.properties</value>
+				<value>classpath:conf/mongodb.properties</value>
+				 -->
+			</list>
+		</property>
+	</bean>
+
+<!--  暂时屏蔽掉 
+	<mongo:mongo host="127.0.0.1" port="27017">  
+        <mongo:options connections-per-host="200"  
+            threads-allowed-to-block-for-connection-multiplier="100"  
+            connect-timeout="1000"   
+            max-wait-time="1500"   
+            auto-connect-retry="true"  
+            socket-keep-alive="true"   
+            socket-timeout="1500"   
+            slave-ok="true"  
+            write-number="1"   
+            write-timeout="0"   
+            write-fsync="true" />  
+    </mongo:mongo>  
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">     
+        <constructor-arg ref="mongo"/>     
+        <constructor-arg name="databaseName" value="test"/>     
+      </bean>     
+         -->
+
+
+	<!-- 注入配置 -->
+	<context:component-scan base-package="net.zdsoft">
+		<context:include-filter
+			expression="net\.zdsoft\.[^.]+(dao|service|component|config|solver|custom)" type="regex" />
+	</context:component-scan>
+	<!-- 注入配置 -->
+	
+	<task:annotation-driven />
+	
+
+	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供 <bean id="targetConnectionFactory" 
+		class="org.apache.activemq.ActiveMQConnectionFactory"> <property name="brokerURL" 
+		value="tcp://localhost:61616" /> </bean> <bean id="pooledConnectionFactory" 
+		class="org.apache.activemq.pool.PooledConnectionFactory"> <property name="connectionFactory" 
+		ref="targetConnectionFactory" /> <property name="maxConnections" value="10" 
+		/> </bean> <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory"> 
+		<property name="targetConnectionFactory" ref="pooledConnectionFactory" /> 
+		</bean> <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate"> 
+		<property name="connectionFactory" ref="connectionFactory" /> </bean> <bean 
+		id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue"> 
+		<constructor-arg> <value>queue</value> </constructor-arg> </bean> <bean id="topicDestination" 
+		class="org.apache.activemq.command.ActiveMQTopic"> <constructor-arg value="topic" 
+		/> </bean> <bean id="consumerMessageListener" class="com.tiantian.springintejms.listener.ConsumerMessageListener"/> 
+		<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer"> 
+		<property name="connectionFactory" ref="connectionFactory" /> <property name="destination" 
+		ref="queueDestination" /> <property name="messageListener" ref="consumerMessageListener" 
+		/> </bean> -->
+
+	<!-- 需要在 <beans> 标签中增加对 jpa 命名空间的引用 <jpa:repositories base-package="net.zdsoft.*.dao" 
+		repository-impl-postfix="Impl" entity-manager-factory-ref="entityManagerFactory" 
+		transaction-manager-ref="txManagerJap" /> -->
+	<jpa:repositories base-package="net.zdsoft.**.dao"
+		repository-impl-postfix="Impl" entity-manager-factory-ref="entityManagerFactory"
+		factory-class="net.zdsoft.framework.dao.BaseJpaFactory"
+		transaction-manager-ref="txManagerJap" />
+
+	<!-- 使用Druid连接池 -->
+	<bean id="dataSource_master" class="com.alibaba.druid.pool.DruidDataSource "
+		init-method="init" destroy-method="close"> <!-- 基本属性 url、user、password -->
+		<property name="url" value="${hibernate.connection.url}" />
+		<property name="username" value="${hibernate.connection.username}" />
+		<property name="password" value="${hibernate.connection.password}" />
+		<property name="connectionProperties" value="${hibernate.connection.driver_class}"></property>
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="10" />
+		<property name="maxActive" value="100" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<!-- <property name="validationQuery" value="SELECT 'x'" /> -->
+		<property name="validationQuery" value="SELECT 1 from dual" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 --> <!-- 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。 -->
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="20" />
+		<!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+		<property name="filters" value="stat" />
+	</bean>
+	<bean id="dataSource_slave" class="com.alibaba.druid.pool.DruidDataSource "
+		init-method="init" destroy-method="close"> <!-- 基本属性 url、user、password -->
+		<property name="url" value="${hibernate.connection.url.slave}" />
+		<property name="username" value="${hibernate.connection.username.slave}" />
+		<property name="password" value="${hibernate.connection.password.slave}" />
+		<property name="connectionProperties" value="${hibernate.connection.driver_class}"></property>
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="10" />
+		<property name="maxActive" value="100" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<!-- <property name="validationQuery" value="SELECT 'x'" /> -->
+		<property name="validationQuery" value="SELECT 1 from dual" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 --> <!-- 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。 -->
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="20" />
+		<!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+		<property name="filters" value="stat" />
+	</bean>
+
+	<!-- 数据库读写分离配置 -->
+	<bean id="dataSource" class="com.taobao.tddl.jdbc.group.SpringTGroupDataSource"
+		init-method="init">
+		<property name="dataSources"
+			value="dataSource_master:w1r0, dataSource_slave:w0r1" />
+		<property name="type" value="oracle" />
+	</bean>
+
+	<!-- 动态dataSource -->
+	<bean id="dataSourceJap" class="net.zdsoft.framework.config.RwDataRoutingDataSource">
+		<property name="slaves" value="2" /><!-- 允许read操作的节点个数 -->
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="WRITE" value-ref="dataSource_master" />
+				<entry key="READ" value-ref="dataSource_slave" />
+				<!-- 允许部分read到slave上 -->
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSource_slave" /><!-- 
+			or master -->
+	</bean>
+
+	<bean id="namedParameterJdbcDaoSupport"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 支持事务管理 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- AOP事务配置 -->
+	<tx:advice id="defaultTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="save*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="delete*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="insert*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="remove*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="update*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="deal*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="*WithMaster" propagation="REQUIRED" read-only="false" />
+			<tx:method name="*" read-only="true" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 任何类型的返回接口， Service类下的所有方法以及任何参数 -->
+	<aop:config>
+		<aop:pointcut id="defaultServiceOperation"
+			expression="execution(* net.zdsoft..*Service.*(..)) and !execution(* net..custom..*Service.*(..))" />
+		<aop:advisor advice-ref="defaultTxAdvice" pointcut-ref="defaultServiceOperation" />
+	</aop:config>
+
+	<!-- JPA实体管理器工厂 -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSourceJap" />
+		<property name="persistenceProvider" ref="persistenceProvider" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+		<property name="packagesToScan">
+			<list>
+				<value>net.zdsoft.**.entity</value>
+				<value>net.zdsoft.**.entity.**</value>
+				<value>net.zdsoft.**.task</value>
+				<value>net.zdsoft.**.task.**</value>
+			</list>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.connection.driver_class">${hibernate.connection.provider_class}</prop>
+				<prop key="hibernate.max_fetch_depth">0</prop>
+				<prop key="hibernate.jdbc.fetch_size">18</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.generate_statistics">false</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.implicit_naming_strategy">net.zdsoft.framework.config.WpImprovedNamingStrategy</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 用于指定持久化实现厂商类 -->
+	<bean id="persistenceProvider" class="org.hibernate.jpa.HibernatePersistenceProvider" />
+	<!-- 用于设置JPA实现厂商的特定属性 -->
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<!-- 枚举类 DB2, DERBY, H2, HSQL, INFORMIX, MYSQL, ORACLE, POSTGRESQL, SQL_SERVER, 
+			SYBASE -->
+		<property name="database" value="ORACLE" />
+	</bean>
+	<!-- 用于指定一些高级特性 -->
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"></bean>
+
+	<!-- 注解式事务 -->
+	<tx:annotation-driven transaction-manager="txManagerJap" />
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<tx:advice id="txAdvice" transaction-manager="txManagerJap">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="save*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="delete*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="insert*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="remove*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="update*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="deal*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="*WithMaster" propagation="REQUIRED" read-only="false" />
+			<tx:method name="*" read-only="true" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 定义一个切入点，使事务在它的切入点内有效 -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* net.zdsoft..*Service.*(..)) and !execution(* net..custom..*Service.*(..))"
+			id="pointcut" />
+		<aop:advisor pointcut-ref="pointcut" advice-ref="txAdvice" />
+	</aop:config>
+
+	<!-- 事务管理器 -->
+	<bean id="txManagerJap" class="net.zdsoft.framework.config.MyDataSourceTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+</beans>

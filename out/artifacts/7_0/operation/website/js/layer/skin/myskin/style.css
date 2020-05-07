@@ -1,0 +1,5 @@
+@charset "utf-8";
+/* CSS Document */
+
+body .layer-ext-myskin .layui-layer-btn a{font-size: 14px;}
+body .layer-ext-myskin .layui-layer-btn .layui-layer-btn0{border-radius:3px;background: #2371f3;border-color: #2371f3;}

@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 通用 */
+html{ height:100%; word-break:break-all;}
+a,input,textarea{ outline:none;}
+a{ text-decoration:none;}
+a:hover{ text-decoration:underline;}
+body{ height:100%; background:#fff; color:#5d5b5b; font-size:16px; font-family:'Microsoft Yahei';}
+.bg1{ background:#f7f8fa;}
+.wrap{ position:relative; min-width:1180px; min-height:100%; _height:100%;}
+.centerWrap{ clear: both; padding-bottom:279px;}
+.top,.header,.center,.footer{ width:1180px; margin-left:auto; margin-right:auto;}
+.box-shadow{box-shadow: 0px 2px 8px rgba(207,210,212,0.6);}
+
+/* 顶部 */
+.topWrap{ border-bottom:1px solid #ebebeb; background:#fafafa;}
+.top{ height:29px; color:#7b7b7b; font-size:12px; line-height:29px;}
+.top .nav a{ position:relative; margin-right:25px; display:inline-block; color:#7b7b7b;}
+.top .nav a:hover,.top .nav a.active{ color:#3a7deb; text-decoration:none;}
+
+/* 页头 */
+.headerWrap{}
+.header{ height:80px;}
+.header .logo{ float:left;}
+.header .logo:hover{text-decoration: none;}
+.header .logo img{display: block;}
+.header .nav{ float:left; height:36px; margin-top:22px;}
+.header .nav a{ float:left; margin-left:36px; color:#333; line-height:36px;}
+.header .nav a:hover,.header .nav a.active{ color:#3a7deb; text-decoration:none;}
+.header .lR{ float:right; margin-top:22px;}
+.header .lR a{ margin-left:10px;}
+.header .admin{ float:right; position:relative; margin-top:22px;}
+.header .admin .name{ display:inline-block; min-width: 52px; max-width:98px; height:34px; padding:0 34px 0 18px; border: 1px solid #eaebec; border-radius: 17px; background:#fbfbfb url(../images/ico/icon01.png) right -4px no-repeat; font-size:16px; color:#666; line-height:34px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.header .admin:hover .name{ text-decoration:none;}
+.header .admin div{ display:none; position:absolute; top:36px; right:0; left: 0; padding:20px; border:1px solid #e7e7e7; background:#fff; z-index:1;}
+.header .admin:hover div{ display:block;}
+.header .admin ul li{ margin-bottom: 15px;}
+.header .admin ul a{ display:block; color: #666;}
+.header .admin ul a:hover{ color: #2371f3; text-decoration:none;}
+
+/* 页脚 */
+.footerWrap{position: absolute;bottom:0; width: 100%;background:#2e3033;}
+.footer-content{padding:24px 0;}
+.footer-content p{font-size:12px;line-height:28px;color:#c0c0c0;text-align:center;}
+.footer-inner{padding-top:25px;border-bottom:1px #45484c solid;}
+.footer-info-logo{margin-right:80px;}
+.footer-info{width:125px;margin-right:40px;}
+.footer-info .title{margin-bottom:15px;line-height:30px;color:#fff;font-size:16px;font-weight:normal;}
+.footer-info .infos-main{color:#bfbfbf;font-size:14px;}
+.footer-info .infos-main p{line-height:22px;}
+.footer-info .infos-main a{display:block;line-height:22px;color:#bfbfbf;}
+.footer-info .infos-main a:hover{color: #2371f3;text-decoration: none;}
+.footer-certified{width: 225px;}
+.footer-certified .infos-main p{margin-bottom:22px;}
+.footer-contact{width:290px;}
+.footer-contact .infos-main p{margin-bottom:8px;}
+.aboutus{text-align:center;}
+.aboutus .title{margin-bottom:15px;line-height:30px;color:#fff;font-size:16px;font-weight:normal;}
+.aboutus .aboutus-main{font-size:0;}
+.aboutus .aboutus-main p{line-height:26px;color:#c7c7c7;font-size:12px;}
+.aboutus .aboutus-main img{padding:3px;background: #fff;}

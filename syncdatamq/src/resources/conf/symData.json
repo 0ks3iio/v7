@@ -1,0 +1,66 @@
+{
+    "dbDriver": "mysql",
+    "persistenceName": "localMysql",
+    "Semester": {
+    	"tableName": "base_semester"
+    },
+    "Clazz": {       
+        "tableName": "base_class"
+    },
+    "Grade": {       
+        "tableName": "base_grade"
+    },
+    "Course": {       
+        "tableName": "base_course"
+    },
+    "Student": {       
+        "tableName": "base_student"
+    },
+    "EduInfo": {       
+        "tableName": "base_eduinfo"
+    },
+    "Teacher": {        
+        "tableName": "base_teacher"
+    },
+    "Family": {        
+        "tableName": "base_family"
+    },
+    "Dept": {        
+        "tableName": "base_dept"
+    },
+    "Unit": {
+        "tableName": "base_unit"
+    },
+    "User": {
+        "tableName": "base_user"
+    },
+    "School": {
+        "tableName": "base_school"
+    },
+    "Server": {
+        "tableName": "base_server"
+    },
+    "OperationLog": {
+        "tableName": "base_operation_log",
+        "modifyTimeColumn":"logTime",
+        "fetchSize": 100      
+    },
+    "Example": {
+    	"replaceColumns":
+    	[
+    		{"columnName":"column1", "entityName":"entity1"}, 
+    		{"columnName":"column2", "entityName":"entity2"}
+    	],
+    	"onlyUseColumns":
+    	[
+    		{"columnName":"column1", "entityName":"entity1"}, 
+    		{"columnName":"column2", "entityName":"entity2"}
+    	],
+    	"removeColumns":
+    	[
+    		{"entityName":"entity1"}, 
+    		{"entityName":"entity2"}
+    	],
+    	"tableName": "base_example"
+    },
+}
